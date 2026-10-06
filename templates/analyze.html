@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Analyze a leaf — CauliCare{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <span class="eyebrow">{{ icon('scan') }} Leaf analysis</span>
+    <h1>Analyze a cauliflower leaf</h1>
+    <p class="muted">Upload a clear photo of a cauliflower leaf. CauliCare first checks that the photo is usable and shows a cauliflower leaf; only then does the disease model run. Images are processed in memory and never stored on the server.</p>
+  </div>
+</section>
+
+<section class="container" style="padding-bottom:40px">
+  <div id="model-status" class="notice error hidden" role="status" style="margin-bottom:16px">{{ icon('alert') }}<div><b>Analysis is unavailable.</b> The trained model is not installed on this server. The Disease Library and Photo Guide still work.</div></div>
+
+  <div class="analyze-grid">
+    <div class="stack">
+      <div class="card" id="upload-card">
+        <input id="file-input" class="sr-only" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp">
+        <label id="dropzone" class="dropzone" for="file-input">
+          <span>
+            <span class="icon-tile">{{ icon('upload') }}</span>
+            <span style="display:block;font-weight:600;font-size:1.08rem">Drop a leaf photo here, or click to choose</span>
+            <span class="muted small" style="display:block;margin-top:4px">JPG, PNG or WEBP · up to {{ max_upload_mb|int }} MB</span>
+            <span class="btn btn-primary btn-sm" style="margin-top:16px">{{ icon('image') }} Choose image</span>
+          </span>
+        </label>
+
+        <div id="preview-wrap" class="hidden">
+          <div class="preview"><img id="preview-img" alt="Selected leaf photo"></div>
+          <div class="preview-bar">
+            <span class="file-meta" id="file-meta"></span>
+            <div class="row">
+              <label class="btn btn-ghost btn-sm" for="file-input">{{ icon('refresh') }} Change</label>
+              <button class="btn btn-ghost btn-sm" type="button" id="remove-btn">{{ icon('x') }} Remove</button>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="button" id="analyze-btn" style="width:100%;margin-top:14px">{{ icon('scan') }} Analyze leaf</button>
+        </div>
+        <div id="client-error" class="notice error hidden" role="alert" style="margin-top:14px">{{ icon('alert') }}<span></span></div>
+      </div>
+
+      <div class="card hidden" id="loading" role="status" aria-live="polite">
+        <div class="loading"><div class="spinner" aria-hidden="true"></div><div><b id="loading-title">Checking image…</b><div class="small muted" id="loading-sub">Making sure the photo shows a cauliflower leaf.</div></div></div>
+        <ul class="checks steps" id="steps">
+          <li data-step="check">Checking image</li>
+          <li data-step="leaf">Cauliflower leaf detected</li>
+          <li data-step="analyze">Analyzing disease</li>
+        </ul>
+      </div>
+
+      <div class="card hidden" id="error-card" role="alert">
+        <div class="notice error">{{ icon('alert') }}<div><b id="error-title">We couldn't analyze this image</b><div id="error-msg"></div></div></div>
+        <div class="actions" style="margin-top:14px">
+          <button class="btn btn-primary btn-sm" id="retry-btn" type="button">{{ icon('refresh') }} Retry</button>
+          <label class="btn btn-secondary btn-sm" for="file-input">{{ icon('image') }} Choose another image</label>
+        </div>
+      </div>
+
+      <div class="card hidden" id="refusal-card" role="alert">
+        <div class="result-head">
+          <div class="thumb"><img id="refusal-img" alt="Uploaded image"></div>
+          <div>
+            <span class="badge uncertain" id="refusal-badge">Not analyzed</span>
+            <div class="result-label" id="refusal-title"></div>
+            <p class="muted" id="refusal-msg"></p>
+            <ul class="reasons" id="refusal-reasons"></ul>
+          </div>
+        </div>
+        <div class="notice" style="margin-top:16px">{{ icon('camera') }}<div><b>A suitable photo</b> shows a cauliflower leaf filling most of the frame, in daylight, in focus, without heavy shadow or glare. <a href="{{ url_for('pages.photo_guide') }}">Read the photo guide</a>.</div></div>
+        <div class="actions" style="margin-top:16px">
+          <label class="btn btn-primary" for="file-input" id="refusal-retry">{{ icon('upload') }} Try another image</label>
+        </div>
+      </div>
+    </div>
+
+    <aside class="stack">
+      <div class="card">
+        <h3 class="card-title">{{ icon('camera') }} For a reliable result</h3>
+        <ul class="tips">
+          <li>One leaf, filling most of the frame.</li>
+          <li>Daylight or even lighting; no harsh glare.</li>
+          <li>Hold steady so the leaf is in focus.</li>
+          <li>Show the affected area clearly.</li>
+        </ul>
+        <a class="btn btn-ghost btn-sm" style="margin-top:10px;padding-left:0" href="{{ url_for('pages.photo_guide') }}">Photo guide {{ icon('arrow') }}</a>
+      </div>
+      <div class="card">
+        <h3 class="card-title">{{ icon('lock') }} Privacy</h3>
+        <p class="small muted" style="margin:0">Images are analysed in memory and never written to disk on the server. Your analysis history is saved only in this browser.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div id="result" class="hidden" style="margin-top:28px" aria-live="polite"></div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/result-view.js') }}"></script>
+<script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+{% endblock %}

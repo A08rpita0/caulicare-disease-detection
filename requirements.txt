@@ -1,0 +1,14 @@
+# Main CauliCare app. Visual similarity search runs in a separate service with its
+# own requirements: similarity_service/requirements.txt.
+
+# Web
+flask>=3.0,<4
+gunicorn>=22.0; platform_system != "Windows"
+waitress>=3.0; platform_system == "Windows"
+python-dotenv>=1.0
+
+# ML (Keras 3; the notebook model was trained with TF 2.16+ / Keras 3)
+tensorflow-cpu>=2.16,<2.21; platform_system == "Linux"
+tensorflow>=2.16,<2.21; platform_system != "Linux"
+numpy>=1.26
+pillow>=10.3

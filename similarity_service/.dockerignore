@@ -1,0 +1,6 @@
+**/__pycache__
+**/*.py[cod]
+.pytest_cache
+# Downloaded and verified during the image build instead
+models/*.onnx
+models/*.part

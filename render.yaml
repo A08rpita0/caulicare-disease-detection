@@ -1,0 +1,75 @@
+# Render Blueprint: two free web services from this repository.
+#   caulicare             Flask app: CNN, Grad-CAM, affected-area estimate, pages
+#   caulicare-similarity  DINOv2-small: cauliflower-leaf validator + FAISS similarity search
+#                         (no TensorFlow). REQUIRED: every upload is checked there first.
+# They are separate because TensorFlow and DINOv2 together exceed a 512 MB instance.
+# Render > New > Blueprint > pick this repository.
+services:
+  - type: web
+    name: caulicare
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    # One worker = one copy of the TensorFlow model in memory (fits 512 MB).
+    # Threads serve page loads while a prediction runs.
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 300 --graceful-timeout 30 --keep-alive 5
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      # Public URL of the similarity service (not a secret).
+      # Required: without it every upload is refused because it cannot be verified.
+      - key: SIMILARITY_SERVICE_URL
+        value: https://caulicare-similarity.onrender.com
+      # Same value as the similarity service's SERVICE_TOKEN, copied automatically.
+      - key: SIMILARITY_SERVICE_TOKEN
+        fromService:
+          type: web
+          name: caulicare-similarity
+          envVarKey: SERVICE_TOKEN
+      - key: SIMILARITY_TIMEOUT
+        value: "30"
+      # The leaf check gates every analysis, so it may wait for the service to wake up.
+      - key: LEAF_CHECK_TIMEOUT
+        value: "75"
+      # Render sits behind Cloudflare, which sets this header to the real client IP
+      # (and overwrites any value a client sends). Used by the rate limiter.
+      - key: CLIENT_IP_HEADER
+        value: CF-Connecting-IP
+      # Memory tuning for a 512 MB instance (tested under an emulated 0.1 CPU / 512 MB limit).
+      - key: MALLOC_ARENA_MAX
+        value: "2"
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: TF_NUM_INTRAOP_THREADS
+        value: "1"
+      - key: TF_NUM_INTEROP_THREADS
+        value: "1"
+      - key: TF_CPP_MIN_LOG_LEVEL
+        value: "2"
+      - key: MAX_CONCURRENT_PREDICTIONS
+        value: "1"
+
+  - type: web
+    name: caulicare-similarity
+    runtime: python
+    plan: free
+    region: oregon
+    # Installs the small dependency set, then downloads DINOv2-small (88.5 MB, Apache-2.0)
+    # once per build; a SHA-256 mismatch fails the build. The reference index is committed.
+    buildCommand: pip install -r similarity_service/requirements.txt && python similarity_service/download_model.py
+    startCommand: gunicorn similarity_service.app:app --bind 0.0.0.0:$PORT --workers 1 --threads 2 --timeout 120 --graceful-timeout 30 --keep-alive 5
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      # Shared secret: /search only answers requests carrying it (X-Service-Token).
+      - key: SERVICE_TOKEN
+        generateValue: true
+      - key: MALLOC_ARENA_MAX
+        value: "2"
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: MAX_CONCURRENT_SEARCHES
+        value: "1"

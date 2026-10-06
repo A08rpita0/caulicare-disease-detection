@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Photo Guide — CauliCare{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <span class="eyebrow">{{ icon('camera') }} Photo Guide</span>
+    <h1>How to take a good leaf photo</h1>
+    <p class="muted">The model learned from close-up photos of single cauliflower leaves. Photos taken the same way give the most reliable results, and poor photos are refused by the quality check.</p>
+  </div>
+</section>
+<section class="container" style="padding-bottom:40px">
+  <div class="grid-3">
+    <div class="card"><div class="icon-tile">{{ icon('sun') }}</div><h3 style="margin-top:12px">Use good light</h3><p class="muted small">Natural daylight or even indoor light. Avoid direct midday sun that causes glare, and avoid very dark shade.</p></div>
+    <div class="card"><div class="icon-tile">{{ icon('leaf') }}</div><h3 style="margin-top:12px">Keep the leaf visible</h3><p class="muted small">Photograph one leaf so it fills most of the frame. Don't cover it with fingers, labels or other leaves.</p></div>
+    <div class="card"><div class="icon-tile">{{ icon('eye') }}</div><h3 style="margin-top:12px">Stay in focus</h3><p class="muted small">Hold the phone steady, tap the leaf to focus, and retake the photo if it looks blurry.</p></div>
+    <div class="card"><div class="icon-tile">{{ icon('scan') }}</div><h3 style="margin-top:12px">Get reasonably close</h3><p class="muted small">Close enough to see spots, lesions or discolouration clearly, but with the whole affected area in view.</p></div>
+    <div class="card"><div class="icon-tile">{{ icon('image') }}</div><h3 style="margin-top:12px">Simple background</h3><p class="muted small">Avoid busy backgrounds, people, tools or packaging in the frame. A plain background works best.</p></div>
+    <div class="card"><div class="icon-tile">{{ icon('upload') }}</div><h3 style="margin-top:12px">Upload the original</h3><p class="muted small">Upload the photo itself (JPG, PNG or WEBP), not a screenshot or a heavily filtered or edited copy.</p></div>
+  </div>
+
+  <div class="grid-2" style="margin-top:24px">
+    <div class="card">
+      <h3 class="card-title">{{ icon('check') }} Suitable photo</h3>
+      <ul class="checklist">
+        <li>{{ icon('check') }}<span>A single cauliflower leaf filling most of the frame</span></li>
+        <li>{{ icon('check') }}<span>Sharp and evenly lit</span></li>
+        <li>{{ icon('check') }}<span>Symptoms (spots, lesions, discolouration) clearly visible</span></li>
+        <li>{{ icon('check') }}<span>At least a few hundred pixels on each side</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="card-title">{{ icon('x') }} Will be refused or unreliable</h3>
+      <ul class="checklist neg">
+        <li>{{ icon('x') }}<span>Blurry, very dark or overexposed photos</span></li>
+        <li>{{ icon('x') }}<span>Very small images (under 128 px on a side)</span></li>
+        <li>{{ icon('x') }}<span>Images without a leaf: people, objects, food, screenshots, blank frames</span></li>
+        <li>{{ icon('x') }}<span>Leaves of other crops: the leaf check cannot reliably tell them apart, and the model will still pick a cauliflower class</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" style="margin-top:24px"><a class="btn btn-primary" href="{{ url_for('pages.analyze') }}">{{ icon('scan') }} Analyze a leaf</a></div>
+</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ d.name }} — CauliCare{% endblock %}
+{% block content %}
+{% set pc = m.per_class.get(d.label) %}
+<section class="page-head">
+  <div class="container">
+    <a class="small" href="{{ url_for('pages.diseases') }}" style="text-decoration:none">← Disease Library</a>
+    <h1 style="margin-top:14px"><span class="swatch" style="display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:10px;vertical-align:middle;background:{{ d.color }}"></span>{{ d.name }}</h1>
+    <p class="muted">{{ d.short_description }}</p>
+    {% if d.pathogen %}<p class="small"><b>Cause:</b> {{ d.pathogen }}</p>{% endif %}
+  </div>
+</section>
+<section class="container" style="padding-bottom:40px">
+  <div class="detail-grid">
+    <div class="stack">
+      {% for key, title, ic in [('visual_signs','Visual signs to check','eye'),('common_symptoms','Common symptoms','scan'),('possible_causes','Causes and spread','droplet'),('prevention','Prevention','shield'),('general_management','General management','list'),('when_to_seek_expert_help','When to seek expert help','alert')] %}
+      {% if d[key] %}
+      <div class="card">
+        <h3 class="card-title">{{ icon(ic) }} {{ title }}</h3>
+        <ul class="detail-list">{% for s in d[key] %}<li>{{ s }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <div class="notice">{{ icon('info') }}<div>General educational information only. Registered products and regulations differ by region; confirm any treatment with your local agricultural extension officer.</div></div>
+      {% if d.sources %}
+      <div class="card"><h3>Sources</h3>
+        <ul class="detail-list">{% for s in d.sources %}<li><a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.title }}</a></li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+    </div>
+    <aside class="stack">
+      {% if pc %}
+      <div class="card">
+        <h3 class="card-title">{{ icon('chart') }} Model on this class</h3>
+        <table class="stat-table">
+          <tr><th>Precision</th><td class="n">{{ '%.2f'|format(pc.precision) }}</td></tr>
+          <tr><th>Recall</th><td class="n">{{ '%.2f'|format(pc.recall) }}</td></tr>
+          <tr><th>F1</th><td class="n">{{ '%.2f'|format(pc.f1) }}</td></tr>
+          <tr><th>Test images</th><td class="n">{{ pc.support }}</td></tr>
+        </table>
+        <p class="tiny" style="margin:10px 0 0">Measured on the held-out test set ({{ m.test_images }} images in total).</p>
+        {% if d.label in ['Bacterial spot rot', 'Downy Mildew'] %}<p class="small" style="margin:10px 0 0">This class is most often confused with {{ 'Downy Mildew' if d.label == 'Bacterial spot rot' else 'Bacterial spot rot' }}.</p>{% endif %}
+      </div>
+      {% endif %}
+      <div class="card">
+        <h3 class="card-title">{{ icon('compare') }} Other conditions</h3>
+        <ul class="detail-list">{% for o in others %}<li><a href="{{ url_for('pages.disease_detail', disease_id=o.id) }}">{{ o.name }}</a></li>{% endfor %}</ul>
+      </div>
+      <a class="btn btn-primary" href="{{ url_for('pages.analyze') }}">{{ icon('scan') }} Analyze a leaf</a>
+    </aside>
+  </div>
+</section>
+{% endblock %}

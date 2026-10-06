@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">{{ icon('leaf') }} Explainable computer vision</span>
+      <h1>AI-powered <em>cauliflower</em> disease detection</h1>
+      <p class="lead">Upload a leaf photo. A neural network screens it for three diseases, Grad-CAM shows what the model looked at, a colour analysis estimates the visibly affected area, and a visual search finds similar reference cases.</p>
+      <div class="row" style="margin-top:22px">
+        <a class="btn btn-primary" href="{{ url_for('pages.analyze') }}">{{ icon('scan') }} Analyze a Leaf</a>
+        <a class="btn btn-secondary" href="{{ url_for('pages.diseases') }}">{{ icon('book') }} Explore Diseases</a>
+      </div>
+      <div class="hero-trust">
+        <span>{{ icon('lock') }} Processed in memory, never stored</span>
+        <span>{{ icon('eye') }} Grad-CAM explanations</span>
+        <span>{{ icon('chart') }} Honest test-set metrics</span>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-art">
+        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="lf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6fb27c"/><stop offset="1" stop-color="#2c7348"/></linearGradient>
+            <linearGradient id="sc" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#9fe0b5" stop-opacity="0"/><stop offset=".85" stop-color="#9fe0b5" stop-opacity=".45"/><stop offset="1" stop-color="#e9fff1" stop-opacity=".95"/></linearGradient>
+            <clipPath id="leafclip"><path d="M200 360C110 340 62 260 70 180 80 95 150 40 200 30c50 10 120 65 130 150 8 80-40 160-130 180z"/></clipPath>
+          </defs>
+          <path d="M200 360C110 340 62 260 70 180 80 95 150 40 200 30c50 10 120 65 130 150 8 80-40 160-130 180z" fill="url(#lf)"/>
+          <path d="M200 350V50" stroke="#d6ecd3" stroke-width="5" stroke-linecap="round"/>
+          <g stroke="#d6ecd3" stroke-width="3" fill="none" stroke-linecap="round" opacity=".85">
+            <path d="M200 110c-30-5-60-25-80-45M200 160c-40-5-80-25-108-50M200 215c-45-2-88-20-118-45M200 270c-40 2-75-12-100-32"/>
+            <path d="M200 110c30-5 60-25 80-45M200 160c40-5 80-25 108-50M200 215c45-2 88-20 118-45M200 270c40 2 75-12 100-32"/>
+          </g>
+          <path d="M318 150l-58 40 50 22c8-20 10-42 8-62z" fill="#e7cf6a" opacity=".9"/>
+          <path d="M262 190l48 22M280 176l30 26" stroke="#3b3a36" stroke-width="3" opacity=".7"/>
+          <circle cx="132" cy="250" r="9" fill="#b98b4a" opacity=".85"/><circle cx="150" cy="268" r="5" fill="#b98b4a" opacity=".8"/>
+          <rect class="detect-box" x="248" y="138" width="80" height="84" rx="10" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="8 6"/>
+          <g clip-path="url(#leafclip)"><rect class="scan-line" x="40" y="0" width="320" height="40" fill="url(#sc)"/></g>
+        </svg>
+      </div>
+      <div class="float-chip chip-a"><span class="tiny">Model prediction (example)</span><strong>Black Rot</strong><div class="chip-bar"><span style="width:82%"></span></div></div>
+      <div class="float-chip chip-b"><span class="tiny">Visual analysis</span><strong>Grad-CAM · affected area · similar cases</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section band">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What CauliCare does</span>
+      <h2>Detect, explain, compare, measure</h2>
+      <p class="muted">Every photo is checked first: only clear photos of cauliflower leaves reach the disease model. Anything else, from a cat to a screenshot, is refused instead of being forced into a disease class.</p>
+    </div>
+    <div class="steps">
+      <div class="card step"><div class="icon-tile">{{ icon('scan') }}</div><h3>Detect</h3><p class="muted small">Identify common cauliflower leaf conditions with a CNN, with an honest confidence level.</p></div>
+      <div class="card step"><div class="icon-tile">{{ icon('eye') }}</div><h3>Explain</h3><p class="muted small">See which image regions influenced the model's prediction (Grad-CAM).</p></div>
+      <div class="card step"><div class="icon-tile">{{ icon('compare') }}</div><h3>Compare</h3><p class="muted small">Find visually similar reference cases with image embeddings and vector search.</p></div>
+      <div class="card step"><div class="icon-tile">{{ icon('gauge') }}</div><h3>Measure</h3><p class="muted small">Estimate the visibly affected share of the leaf from symptom colours.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Supported conditions</span>
+      <h2>Four classes the model was trained on</h2>
+      <p class="muted">The classifier only knows these four classes. Other diseases, pests or crops are outside its scope.</p>
+    </div>
+    <div class="grid-4">
+      {% for d in diseases %}
+      <a class="card disease-card" href="{{ url_for('pages.disease_detail', disease_id=d.id) }}">
+        <h3><span class="swatch" style="background:{{ d.color }}"></span>{{ d.name }}</h3>
+        <p>{{ d.short_description|truncate(120) }}</p>
+        <span class="more">Learn more {{ icon('arrow') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">{{ icon('chart') }} Model performance</span>
+      <h2>Measured on a held-out test set</h2>
+      <p class="muted">The test set ({{ m.test_images }} images) was kept apart from training and model selection, with near-duplicate photos grouped into the same split.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card metric"><b>{{ '%.1f'|format(m.accuracy * 100) }}%</b><span>Test accuracy</span></div>
+      <div class="card metric"><b>{{ '%.3f'|format(m.macro_f1) }}</b><span>Macro F1 (test)</span></div>
+      <div class="card metric"><b>{{ m.test_images }}</b><span>Held-out test images</span></div>
+      <div class="card metric"><b>{{ m.dataset_images }}</b><span>Images in the dataset</span></div>
+    </div>
+    <p class="small muted" style="margin-top:16px">Most errors are confusions between Bacterial spot rot and Downy Mildew. <a href="{{ url_for('pages.about') }}">See the full evaluation</a>.</p>
+  </div>
+</section>
+
+<section class="section band">
+  <div class="container grid-2">
+    <div>
+      <span class="eyebrow">{{ icon('alert') }} Responsible use</span>
+      <h2>Limitations</h2>
+      <p class="muted">CauliCare is an image-based screening and learning tool. It does not replace inspection by an agronomist or a laboratory test.</p>
+    </div>
+    <ul class="checklist neg card">
+      <li>{{ icon('x') }}<span>Trained on {{ m.dataset_images }} photos from one public dataset; real field photos can differ.</span></li>
+      <li>{{ icon('x') }}<span>Only four classes. Other diseases or nutrient problems will be mapped to one of them.</span></li>
+      <li>{{ icon('x') }}<span>The cauliflower-leaf check was tested on public datasets, not on real uploads; leaves of close relatives such as cabbage or broccoli may be accepted.</span></li>
+      <li>{{ icon('x') }}<span>Bacterial spot rot and Downy Mildew are frequently confused.</span></li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

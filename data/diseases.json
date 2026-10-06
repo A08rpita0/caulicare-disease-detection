@@ -1,0 +1,177 @@
+{
+  "_meta": {
+    "description": "Curated knowledge records for the four classes the CauliCare model was trained on. Content is general extension-level guidance summarised from the sources listed per record. It intentionally contains no pesticide products or dosages.",
+    "last_reviewed": "2026-10-04",
+    "disclaimer": "General educational information only. Local conditions, regulations and registered products differ by region; confirm with a local agricultural extension officer or plant-health laboratory."
+  },
+  "sources": {
+    "cornell": {"title": "Cornell Vegetable MD Online - disease fact sheets (crucifers)", "url": "https://www.vegetables.cornell.edu/pest-management/disease-factsheets/"},
+    "ucipm": {"title": "UC IPM - Cole crops: pest management guidelines", "url": "https://ipm.ucanr.edu/agriculture/cole-crops/"},
+    "umass": {"title": "UMass Extension Vegetable Program - fact sheets", "url": "https://www.umass.edu/agriculture-food-environment/vegetable/fact-sheets"}
+  },
+  "diseases": [
+    {
+      "id": "black-rot",
+      "label": "Black Rot",
+      "name": "Black Rot",
+      "pathogen": "Xanthomonas campestris pv. campestris (bacterium)",
+      "severity": "high",
+      "color": "#3b3a36",
+      "short_description": "A bacterial disease of cabbage-family crops, widely regarded as one of the most important diseases of crucifers. It enters mainly through leaf margins and spreads through the plant's veins.",
+      "common_symptoms": [
+        "Yellow, V-shaped lesions starting at the leaf margin and pointing toward the midrib",
+        "Veins inside lesions turn dark brown to black",
+        "Lesions dry out and become brown and papery as they age",
+        "Severely infected leaves wilt and drop; plants may be stunted"
+      ],
+      "visual_signs": [
+        "The 'V' shape with its wide end at the leaf edge is the most characteristic sign",
+        "Blackened veins visible when an infected leaf or stem is cut or held to light"
+      ],
+      "possible_causes": [
+        "Infected or contaminated seed and transplants (a major source of introduction)",
+        "Bacteria surviving in infected crop debris and in cruciferous weeds",
+        "Spread by splashing rain, overhead irrigation, workers and tools moving through wet plants",
+        "Warm, humid weather favours infection and spread"
+      ],
+      "prevention": [
+        "Use certified disease-free or hot-water-treated seed and healthy transplants",
+        "Rotate away from all cabbage-family crops for at least 2-3 years",
+        "Control cruciferous weeds (e.g. wild mustard) that can host the bacterium",
+        "Prefer drip irrigation; avoid overhead watering and working in wet fields",
+        "Clean tools and equipment between fields"
+      ],
+      "general_management": [
+        "Remove and destroy badly infected plants and leaves; do not compost them in production areas",
+        "Incorporate or remove crop residue promptly after harvest so it breaks down",
+        "Work in infected areas last to avoid carrying bacteria to healthy plants",
+        "Chemical options for bacterial diseases are limited and region-specific - ask a local extension officer before using any product"
+      ],
+      "when_to_seek_expert_help": [
+        "Symptoms are spreading quickly across the field",
+        "You suspect the disease came in on seed or transplants",
+        "You need laboratory confirmation or locally registered control options"
+      ],
+      "source_keys": ["cornell", "ucipm", "umass"]
+    },
+    {
+      "id": "downy-mildew",
+      "label": "Downy Mildew",
+      "name": "Downy Mildew",
+      "pathogen": "Hyaloperonospora species (oomycete, a water-mould - not a true fungus)",
+      "severity": "moderate",
+      "color": "#6b7fa8",
+      "short_description": "A disease caused by a water-mould that thrives in cool, moist conditions. It affects seedlings and mature plants of cabbage-family crops.",
+      "common_symptoms": [
+        "Pale green to yellow, often angular patches on the upper leaf surface, limited by veins",
+        "White to greyish fluffy/downy growth on the underside of leaves beneath the patches",
+        "Patches later turn tan or brown and may merge",
+        "Seedlings can be severely damaged or killed"
+      ],
+      "visual_signs": [
+        "Check the leaf underside early in the morning: the downy growth is the key sign",
+        "Angular patches bounded by veins, rather than V-shaped lesions from the margin"
+      ],
+      "possible_causes": [
+        "Cool temperatures combined with long periods of leaf wetness (dew, fog, rain)",
+        "Spores spread by wind and water splash",
+        "Resting spores can survive in infected crop debris",
+        "Dense planting and poor air circulation"
+      ],
+      "prevention": [
+        "Space plants to improve airflow and allow leaves to dry quickly",
+        "Avoid overhead irrigation, or irrigate early so foliage dries during the day",
+        "Use resistant or tolerant varieties where available",
+        "Start with healthy transplants and rotate cabbage-family crops",
+        "Remove crop debris after harvest"
+      ],
+      "general_management": [
+        "Remove heavily infected leaves and seedlings",
+        "Improve ventilation in nurseries and greenhouses",
+        "Monitor closely during cool, wet spells when the disease spreads fastest",
+        "If fungicide use is being considered, follow locally registered recommendations from an extension service"
+      ],
+      "when_to_seek_expert_help": [
+        "Nursery seedlings are collapsing",
+        "Symptoms persist despite improving airflow and reducing leaf wetness",
+        "You need help choosing resistant varieties or registered control options"
+      ],
+      "source_keys": ["cornell", "ucipm", "umass"]
+    },
+    {
+      "id": "bacterial-spot-rot",
+      "label": "Bacterial spot rot",
+      "name": "Bacterial Spot Rot",
+      "pathogen": "Not specified by the dataset label. Bacterial leaf spot of crucifers is commonly associated with Pseudomonas syringae pv. maculicola, and soft rots with Pectobacterium species.",
+      "severity": "moderate",
+      "color": "#a8743b",
+      "short_description": "A broad category for bacterial leaf spots and rots. The exact bacterium is not identified, so treat it as a general 'bacterial spot / rot' finding rather than a single confirmed disease.",
+      "common_symptoms": [
+        "Small, water-soaked spots on leaves that turn brown, tan or dark",
+        "Spots may have a yellow halo and can merge into larger dead areas",
+        "In rot-type infections, tissue becomes soft, watery and may smell unpleasant",
+        "Damaged areas can become entry points for further decay"
+      ],
+      "visual_signs": [
+        "Water-soaked, greasy-looking margins around spots",
+        "Soft, collapsing tissue (rot) rather than the dry V-shaped lesions typical of black rot"
+      ],
+      "possible_causes": [
+        "Bacteria introduced on seed, transplants or debris",
+        "Spread by rain splash, overhead irrigation and handling wet plants",
+        "Wounds from insects, hail or tools that let bacteria enter",
+        "Warm, wet conditions and poor drainage favour rots"
+      ],
+      "prevention": [
+        "Use clean seed and healthy transplants",
+        "Avoid overhead irrigation and handling plants while wet",
+        "Improve drainage and avoid waterlogging",
+        "Minimise wounding during cultivation and harvest",
+        "Rotate crops and remove crop debris"
+      ],
+      "general_management": [
+        "Remove and dispose of affected leaves and rotting plants away from the field",
+        "Sanitise tools after working with infected plants",
+        "Harvest and store produce dry and cool to limit post-harvest rot",
+        "Because the exact pathogen is uncertain, a laboratory diagnosis is the best basis for any further treatment decision"
+      ],
+      "when_to_seek_expert_help": [
+        "You need to know which bacterium is involved (lab diagnosis)",
+        "Rot is spreading into heads (curds) or storage",
+        "Large parts of the crop are affected"
+      ],
+      "source_keys": ["cornell", "ucipm", "umass"]
+    },
+    {
+      "id": "no-disease",
+      "label": "No disease",
+      "name": "No Disease (Healthy)",
+      "pathogen": "None detected by the model",
+      "severity": "none",
+      "color": "#2f8f5b",
+      "short_description": "The model did not find patterns of the three diseases it was trained on. This does not rule out other diseases, pests or nutrient problems that the model was never trained to recognise.",
+      "common_symptoms": [
+        "Uniform green leaf colour without spots, lesions or downy growth"
+      ],
+      "visual_signs": [
+        "No V-shaped margin lesions, angular yellow patches, or water-soaked spots"
+      ],
+      "possible_causes": [],
+      "prevention": [
+        "Keep scouting regularly - early detection matters most",
+        "Maintain crop rotation, clean seed and good field hygiene",
+        "Water at the base of plants and allow foliage to dry",
+        "Keep cruciferous weeds under control"
+      ],
+      "general_management": [
+        "Continue routine monitoring, especially after rain or cool, wet periods",
+        "Re-check any plant that later shows unusual spots, wilting or discolouration"
+      ],
+      "when_to_seek_expert_help": [
+        "Plants show symptoms the app does not cover (pests, nutrient deficiency, other diseases)",
+        "The plant looks unhealthy despite a 'No disease' result"
+      ],
+      "source_keys": ["cornell", "umass"]
+    }
+  ]
+}

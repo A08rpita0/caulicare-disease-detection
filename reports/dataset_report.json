@@ -1,0 +1,1012 @@
+{
+  "dataset_dir": "data/raw/Original Dataset",
+  "total_images": 656,
+  "class_distribution": {
+    "Bacterial spot rot": 173,
+    "Black Rot": 100,
+    "Downy Mildew": 177,
+    "No disease": 206
+  },
+  "formats": {
+    "JPEG": 656
+  },
+  "color_modes": {
+    "RGB": 656
+  },
+  "image_dimensions": {
+    "4000x3000": 164,
+    "3000x4000": 145,
+    "4032x3024": 70,
+    "3024x4032": 31,
+    "1280x960": 19,
+    "960x1280": 11,
+    "768x576": 8,
+    "3004x3662": 7,
+    "2996x3881": 4,
+    "960x720": 3,
+    "750x499": 3,
+    "3662x3004": 3,
+    "1532x956": 3,
+    "504x339": 2,
+    "750x350": 2,
+    "1140x641": 2,
+    "768x512": 2,
+    "1103x768": 2,
+    "2148x1962": 1,
+    "2577x2199": 1,
+    "2271x1897": 1,
+    "2356x2209": 1,
+    "2263x2067": 1,
+    "2072x2072": 1,
+    "2340x2232": 1,
+    "3076x2504": 1,
+    "2329x2436": 1,
+    "2649x2767": 1,
+    "2440x2114": 1,
+    "1993x2159": 1,
+    "2453x2292": 1,
+    "2504x2058": 1,
+    "1860x2023": 1,
+    "1690x1840": 1,
+    "1591x1708": 1,
+    "1093x1124": 1,
+    "1814x1580": 1,
+    "2140x2174": 1,
+    "2237x2132": 1,
+    "2353x2404": 1,
+    "2359x2196": 1,
+    "2535x2334": 1,
+    "2430x2348": 1,
+    "2370x2473": 1,
+    "1965x1965": 1,
+    "1926x1839": 1,
+    "1222x1166": 1,
+    "2046x1958": 1,
+    "1956x1913": 1,
+    "3603x1687": 1,
+    "2007x3998": 1,
+    "2626x1293": 1,
+    "500x375": 1,
+    "700x525": 1,
+    "2816x2112": 1,
+    "750x750": 1,
+    "3613x1764": 1,
+    "900x675": 1,
+    "1775x3065": 1,
+    "2344x1845": 1,
+    "1905x1927": 1,
+    "1863x2801": 1,
+    "1958x2261": 1,
+    "1812x2014": 1,
+    "2060x1790": 1,
+    "2166x1949": 1,
+    "2265x2052": 1,
+    "2140x1884": 1,
+    "2452x2056": 1,
+    "2548x2086": 1,
+    "2510x2187": 1,
+    "2705x2395": 1,
+    "2622x2294": 1,
+    "2999x2156": 1,
+    "2642x2293": 1,
+    "2884x2467": 1,
+    "2341x1993": 1,
+    "2345x1948": 1,
+    "2033x2034": 1,
+    "2700x2676": 1,
+    "2416x2049": 1,
+    "2588x2261": 1,
+    "1105x1310": 1,
+    "1160x1221": 1,
+    "1119x1037": 1,
+    "2215x2064": 1,
+    "932x1009": 1,
+    "1419x1281": 1,
+    "2047x1913": 1,
+    "2073x1887": 1,
+    "1612x1695": 1,
+    "1975x2193": 1,
+    "2766x2171": 1,
+    "2000x1790": 1,
+    "1665x1320": 1,
+    "2097x1190": 1,
+    "2291x2213": 1,
+    "1982x1288": 1,
+    "1368x1835": 1,
+    "2012x1818": 1,
+    "1977x1801": 1,
+    "2423x1817": 1,
+    "2424x1818": 1,
+    "2591x2052": 1,
+    "2005x1634": 1,
+    "2517x2028": 1,
+    "1947x2113": 1,
+    "2802x2490": 1,
+    "2433x2348": 1,
+    "2130x1934": 1,
+    "1988x1783": 1,
+    "2045x1790": 1,
+    "1815x1701": 1,
+    "2986x1627": 1,
+    "2828x2484": 1,
+    "2365x2021": 1,
+    "2165x2259": 1,
+    "2152x2249": 1,
+    "2238x2168": 1,
+    "2283x2291": 1,
+    "1775x1723": 1,
+    "2120x1737": 1,
+    "2936x2647": 1,
+    "2307x1702": 1,
+    "2171x1847": 1,
+    "2101x1877": 1,
+    "2334x1697": 1,
+    "2294x2004": 1,
+    "1914x2119": 1,
+    "2023x1787": 1,
+    "1737x1915": 1,
+    "2580x1828": 1,
+    "2581x2034": 1,
+    "2985x3981": 1,
+    "1024x768": 1,
+    "335x250": 1,
+    "3529x1852": 1,
+    "2807x4032": 1,
+    "2642x3838": 1,
+    "900x619": 1,
+    "777x531": 1,
+    "779x523": 1,
+    "697x558": 1,
+    "1000x1000": 1,
+    "3855x3016": 1,
+    "450x415": 1,
+    "781x519": 1,
+    "777x513": 1,
+    "3416x3023": 1,
+    "2646x3556": 1,
+    "2951x3661": 1,
+    "2728x3506": 1,
+    "2055x4032": 1,
+    "2221x3983": 1,
+    "2485x4032": 1,
+    "2382x4024": 1,
+    "2447x3958": 1,
+    "2577x4032": 1,
+    "2361x4032": 1,
+    "2501x3810": 1,
+    "2142x4028": 1,
+    "2353x3811": 1,
+    "3000x3144": 1,
+    "3482x3019": 1,
+    "1895x3300": 1,
+    "3023x3694": 1,
+    "3023x3340": 1,
+    "2195x2926": 1,
+    "3730x2090": 1,
+    "3326x2950": 1,
+    "2933x3122": 1,
+    "2617x2000": 1,
+    "2435x1745": 1,
+    "2188x1658": 1,
+    "3621x2716": 1,
+    "3453x3004": 1,
+    "2791x2151": 1,
+    "4032x2357": 1,
+    "2315x2408": 1,
+    "2925x2606": 1,
+    "3442x3023": 1,
+    "2729x2723": 1,
+    "3668x3023": 1,
+    "3975x2853": 1,
+    "3941x2999": 1,
+    "3235x3023": 1,
+    "3525x3018": 1,
+    "2650x3000": 1,
+    "3726x3023": 1,
+    "2982x3225": 1,
+    "3638x3006": 1,
+    "3711x2999": 1,
+    "2966x3023": 1
+  },
+  "corrupted_images": [],
+  "exact_duplicate_groups": [
+    [
+      "Bacterial spot rot\\Bacterial Spot. (1).jpg",
+      "Bacterial spot rot\\Bacterial Spot. (87).jpg"
+    ],
+    [
+      "Bacterial spot rot\\Bacterial Spot. (170).jpg",
+      "Bacterial spot rot\\Bacterial Spot. (171).jpg",
+      "Bacterial spot rot\\Bacterial Spot. (172).jpg"
+    ],
+    [
+      "Bacterial spot rot\\Bacterial Spot. (67).jpg",
+      "Bacterial spot rot\\Bacterial Spot. (94).jpg"
+    ],
+    [
+      "Bacterial spot rot\\Bacterial Spot. (68).jpg",
+      "Bacterial spot rot\\Bacterial Spot. (95).jpg"
+    ],
+    [
+      "Downy Mildew\\Downy Mildew. (118).jpg",
+      "Downy Mildew\\Downy Mildew. (120).jpg"
+    ],
+    [
+      "Downy Mildew\\Downy Mildew. (119).jpg",
+      "Downy Mildew\\Downy Mildew. (122).jpg"
+    ],
+    [
+      "Downy Mildew\\Downy Mildew. (123).jpg",
+      "Downy Mildew\\Downy Mildew. (143).jpg"
+    ],
+    [
+      "Downy Mildew\\Downy Mildew. (124).jpg",
+      "Downy Mildew\\Downy Mildew. (144).jpg"
+    ],
+    [
+      "Downy Mildew\\Downy Mildew. (129).jpg",
+      "Downy Mildew\\Downy Mildew. (142).jpg"
+    ],
+    [
+      "Downy Mildew\\Downy Mildew. (134).jpg",
+      "Downy Mildew\\Downy Mildew. (136).jpg"
+    ],
+    [
+      "Downy Mildew\\Downy Mildew. (139).jpg",
+      "Downy Mildew\\Downy Mildew. (141).jpg",
+      "Downy Mildew\\Downy Mildew. (146).jpg"
+    ]
+  ],
+  "near_duplicate_pairs": [
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (1).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (87).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (125).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (126).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (125).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (73).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (126).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (127).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (128).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (129).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (170).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (171).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (170).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (172).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (171).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (172).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (22).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (23).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (22).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (24).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (23).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (24).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (25).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (26).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (25).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (27).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (26).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (27).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (66).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (91).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (67).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (94).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Bacterial spot rot\\Bacterial Spot. (68).jpg",
+      "b": "Bacterial spot rot\\Bacterial Spot. (95).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(10).jpeg",
+      "b": "Black Rot\\Black Rot(41).jpeg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(11).jpeg",
+      "b": "Black Rot\\Black Rot(38).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(11).jpeg",
+      "b": "Black Rot\\Black Rot(45).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(11).jpeg",
+      "b": "Black Rot\\Black Rot(8).jpeg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(12).jpeg",
+      "b": "Black Rot\\Black Rot(18).jpeg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(12).jpeg",
+      "b": "Black Rot\\Black Rot(37).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(13).jpeg",
+      "b": "Black Rot\\Black Rot(57).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(14).jpeg",
+      "b": "Black Rot\\Black Rot(32).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(16).jpeg",
+      "b": "Black Rot\\Black Rot(60).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(17).jpeg",
+      "b": "Black Rot\\Black Rot(48).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(17).jpeg",
+      "b": "Black Rot\\Black Rot(49).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(18).jpeg",
+      "b": "Black Rot\\Black Rot(37).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(19).jpeg",
+      "b": "Black Rot\\Black Rot(43).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(20).jpeg",
+      "b": "Black Rot\\Black Rot(33).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(20).jpeg",
+      "b": "Black Rot\\Black Rot(55).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(22).jpeg",
+      "b": "Black Rot\\Black Rot(34).jpeg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(23).jpeg",
+      "b": "Black Rot\\Black Rot(24).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(23).jpeg",
+      "b": "Black Rot\\Black Rot(25).jpeg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(23).jpeg",
+      "b": "Black Rot\\Black Rot(26).jpeg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(23).jpeg",
+      "b": "Black Rot\\Black Rot(28).jpeg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(25).jpeg",
+      "b": "Black Rot\\Black Rot(26).jpeg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(25).jpeg",
+      "b": "Black Rot\\Black Rot(28).jpeg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(26).jpeg",
+      "b": "Black Rot\\Black Rot(28).jpeg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(28).jpg",
+      "b": "Black Rot\\Black Rot(29).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(29).jpeg",
+      "b": "Black Rot\\Black Rot(4).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(29).jpeg",
+      "b": "Black Rot\\Black Rot(44).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(29).jpeg",
+      "b": "Black Rot\\Black Rot(5).jpeg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(29).jpeg",
+      "b": "Black Rot\\Black Rot(6).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(30).jpeg",
+      "b": "Black Rot\\Black Rot(53).jpeg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(31).jpeg",
+      "b": "Black Rot\\Black Rot(42).jpeg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(33).jpeg",
+      "b": "Black Rot\\Black Rot(55).jpeg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(36).jpeg",
+      "b": "Black Rot\\Black Rot(58).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(36).jpeg",
+      "b": "Black Rot\\Black Rot(7).jpeg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(38).jpeg",
+      "b": "Black Rot\\Black Rot(45).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(38).jpeg",
+      "b": "Black Rot\\Black Rot(8).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(4).jpeg",
+      "b": "Black Rot\\Black Rot(44).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(4).jpeg",
+      "b": "Black Rot\\Black Rot(5).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(40).jpeg",
+      "b": "Black Rot\\Black Rot(51).jpeg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(44).jpeg",
+      "b": "Black Rot\\Black Rot(5).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(45).jpeg",
+      "b": "Black Rot\\Black Rot(8).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(47).jpeg",
+      "b": "Black Rot\\Black Rot(59).jpeg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(48).jpeg",
+      "b": "Black Rot\\Black Rot(49).jpeg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(5).jpeg",
+      "b": "Black Rot\\Black Rot(6).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(52).jpeg",
+      "b": "Black Rot\\Black Rot(56).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(53).jpeg",
+      "b": "Black Rot\\Black Rot(54).jpeg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "Black Rot\\Black Rot(58).jpeg",
+      "b": "Black Rot\\Black Rot(7).jpeg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (112).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (113).jpg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (118).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (120).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (119).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (122).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (12).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (13).jpg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (123).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (143).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (124).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (144).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (129).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (142).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (134).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (136).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (139).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (141).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (139).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (146).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (141).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (146).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (16).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (17).jpg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (25).jpeg",
+      "b": "Downy Mildew\\Downy Mildew. (26).jpeg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (26).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (27).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (40).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (41).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (43).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (44).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (47).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (48).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (63).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (64).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (67).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (69).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (72).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (73).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (72).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (74).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (73).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (74).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "Downy Mildew\\Downy Mildew. (79).jpg",
+      "b": "Downy Mildew\\Downy Mildew. (80).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (105).jpg",
+      "b": "No disease\\No disease. (106).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (105).jpg",
+      "b": "No disease\\No disease. (107).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (105).jpg",
+      "b": "No disease\\No disease. (108).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (106).jpg",
+      "b": "No disease\\No disease. (107).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (106).jpg",
+      "b": "No disease\\No disease. (108).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (107).jpg",
+      "b": "No disease\\No disease. (108).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (109).jpg",
+      "b": "No disease\\No disease. (110).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (109).jpg",
+      "b": "No disease\\No disease. (111).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (11).jpg",
+      "b": "No disease\\No disease. (12).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (110).jpg",
+      "b": "No disease\\No disease. (111).jpg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (112).jpg",
+      "b": "No disease\\No disease. (113).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (126).jpg",
+      "b": "No disease\\No disease. (127).jpg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (129).jpg",
+      "b": "No disease\\No disease. (130).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (132).jpg",
+      "b": "No disease\\No disease. (133).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (138).jpg",
+      "b": "No disease\\No disease. (139).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (144).jpg",
+      "b": "No disease\\No disease. (145).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (146).jpg",
+      "b": "No disease\\No disease. (147).jpg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (154).jpg",
+      "b": "No disease\\No disease. (155).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (156).jpg",
+      "b": "No disease\\No disease. (157).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (170).jpg",
+      "b": "No disease\\No disease. (171).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (178).jpg",
+      "b": "No disease\\No disease. (179).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (183).jpg",
+      "b": "No disease\\No disease. (184).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (22).jpg",
+      "b": "No disease\\No disease. (23).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (3).jpg",
+      "b": "No disease\\No disease. (4).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (37).jpg",
+      "b": "No disease\\No disease. (38).jpg",
+      "distance": 1,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (55).jpg",
+      "b": "No disease\\No disease. (56).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (59).jpg",
+      "b": "No disease\\No disease. (60).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (64).jpg",
+      "b": "No disease\\No disease. (65).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (64).jpg",
+      "b": "No disease\\No disease. (66).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (65).jpg",
+      "b": "No disease\\No disease. (66).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (70).jpg",
+      "b": "No disease\\No disease. (71).jpg",
+      "distance": 2,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (72).jpg",
+      "b": "No disease\\No disease. (73).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (75).jpg",
+      "b": "No disease\\No disease. (76).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (87).jpg",
+      "b": "No disease\\No disease. (88).jpg",
+      "distance": 0,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (87).jpg",
+      "b": "No disease\\No disease. (89).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (88).jpg",
+      "b": "No disease\\No disease. (89).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (91).jpg",
+      "b": "No disease\\No disease. (92).jpg",
+      "distance": 4,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (94).jpg",
+      "b": "No disease\\No disease. (95).jpg",
+      "distance": 3,
+      "cross_class": false
+    },
+    {
+      "a": "No disease\\No disease. (96).jpg",
+      "b": "No disease\\No disease. (97).jpg",
+      "distance": 4,
+      "cross_class": false
+    }
+  ]
+}

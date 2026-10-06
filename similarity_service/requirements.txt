@@ -1,0 +1,10 @@
+# CauliCare Similarity service: no TensorFlow here.
+flask>=3.0,<4
+gunicorn>=22.0; platform_system != "Windows"
+waitress>=3.0; platform_system == "Windows"
+numpy>=1.26
+pillow>=10.3
+# DINOv2-small embeddings
+onnxruntime>=1.18,<2
+# Exact inner-product index. On Windows the service uses an identical NumPy search instead.
+faiss-cpu>=1.8,<2; platform_system != "Windows"

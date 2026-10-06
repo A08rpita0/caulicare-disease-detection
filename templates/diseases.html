@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Disease Library — CauliCare{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <span class="eyebrow">{{ icon('book') }} Disease Library</span>
+    <h1>Supported conditions</h1>
+    <p class="muted">The four classes the CauliCare model was trained on, with general guidance summarised from university extension sources. No pesticide products or dosages are given; confirm treatments with your local extension service.</p>
+  </div>
+</section>
+<section class="container" style="padding-bottom:40px">
+  <form class="search no-print" id="search-form" role="search" action="#">
+    <label class="sr-only" for="search-input">Search symptoms or keywords</label>
+    <input id="search-input" type="search" maxlength="200" placeholder="Search symptoms, e.g. yellow V-shaped lesions, white growth underside" autocomplete="off">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </form>
+  <div id="search-status" class="small muted" role="status" aria-live="polite" style="margin-top:10px"></div>
+  <ul class="search-results" id="search-results"></ul>
+
+  <div class="grid-2" style="margin-top:24px">
+    {% for d in diseases %}
+    {% set pc = m.per_class.get(d.label) %}
+    <a class="card disease-card" href="{{ url_for('pages.disease_detail', disease_id=d.id) }}">
+      <div class="row between"><h3 style="margin:0"><span class="swatch" style="background:{{ d.color }}"></span>{{ d.name }}</h3>
+        <span class="badge">{{ 'Healthy leaf' if d.id == 'no-disease' else d.severity|capitalize ~ ' impact' }}</span></div>
+      {% if d.pathogen %}<p class="tiny" style="margin:6px 0 0">{{ d.pathogen }}</p>{% endif %}
+      <p style="margin-top:10px">{{ d.short_description }}</p>
+      <div class="small" style="margin-bottom:12px"><b>Look for:</b> {{ d.visual_signs[0] if d.visual_signs else d.common_symptoms[0] }}</div>
+      {% if pc %}<div class="tiny" style="margin-bottom:12px">Model on held-out test images: precision {{ '%.2f'|format(pc.precision) }}, recall {{ '%.2f'|format(pc.recall) }} ({{ pc.support }} images)</div>{% endif %}
+      <span class="more">View details {{ icon('arrow') }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/diseases.js') }}"></script>{% endblock %}

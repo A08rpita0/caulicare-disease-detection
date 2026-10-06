@@ -1,0 +1,4 @@
+# Both services plus test tools, for running the whole test suite in one environment.
+-r requirements.txt
+-r similarity_service/requirements.txt
+pytest>=8

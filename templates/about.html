@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}About the model — CauliCare{% endblock %}
+{% set labels = m.confusion.labels %}
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <span class="eyebrow">{{ icon('info') }} About</span>
+    <h1>About CauliCare and its model</h1>
+    <p class="muted">CauliCare screens photos of cauliflower leaves for three diseases and healthy leaves, explains each prediction with Grad-CAM, and pairs it with curated disease information. It is a portfolio and learning project, not a certified diagnostic tool.</p>
+  </div>
+</section>
+<section class="container stack" style="padding-bottom:40px">
+  <div class="grid-4">
+    <div class="card metric"><b>{{ '%.1f'|format(m.accuracy * 100) }}%</b><span>Test accuracy ({{ (m.accuracy * m.test_images)|round|int }} / {{ m.test_images }} images)</span></div>
+    <div class="card metric"><b>{{ '%.3f'|format(m.macro_f1) }}</b><span>Macro F1 (test)</span></div>
+    <div class="card metric"><b>{{ '%.3f'|format(m.macro_precision) }} / {{ '%.3f'|format(m.macro_recall) }}</b><span>Macro precision / recall (test)</span></div>
+    <div class="card metric"><b>{{ '{:,}'.format(m.params) }}</b><span>Model parameters</span></div>
+  </div>
+
+  <div class="grid-2" style="align-items:start">
+    <div class="card">
+      <h3>Model architecture</h3>
+      <table class="stat-table">
+        <tr><th>Type</th><td>Custom convolutional neural network (Keras Sequential), trained from scratch</td></tr>
+        <tr><th>Input</th><td>RGB, {{ m.input_size[0] }} × {{ m.input_size[1] }} px, raw 0–255 values; the model rescales internally</td></tr>
+        <tr><th>Layers</th><td>6 × [Conv2D 3×3 + MaxPool 2×2] (32 then 64 filters) → Flatten → Dense(64) → Dense(4, softmax)</td></tr>
+        <tr><th>Augmentation</th><td>Random horizontal/vertical flip and rotation (training only)</td></tr>
+        <tr><th>Training</th><td>Adam (lr 0.001), sparse categorical cross-entropy, batch 32, seed 42</td></tr>
+        <tr><th>Preprocessing</th><td>Bilinear resize identical to TensorFlow's, verified pixel-for-pixel on all dataset images</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Dataset and evaluation</h3>
+      <table class="stat-table">
+        <tr><th>Source</th><td>Kaggle "cauliflower-dataset" (noamaanabdulazeem), <code>Original Dataset</code></td></tr>
+        <tr><th>Images</th><td>{{ m.dataset_images }} photos in four classes</td></tr>
+        <tr><th>Split</th><td>Train {{ m.split.train.total }} / validation {{ m.split.val.total }} / test {{ m.split.test.total }}, stratified by class; near-duplicate photos kept in the same split</td></tr>
+        <tr><th>Model selection</th><td>On validation only. A regularised variant scored lower (85.9% validation, 83.8% test) and was not used.</td></tr>
+        <tr><th>Test set</th><td>Used once, for the final numbers on this page</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2" style="align-items:start">
+    <div class="card">
+      <h3>Per-class results (test)</h3>
+      <div class="table-wrap"><table class="stat-table">
+        <tr><th>Class</th><th class="n">Precision</th><th class="n">Recall</th><th class="n">F1</th><th class="n">n</th></tr>
+        {% for name in labels %}{% set pc = m.per_class[name] %}
+        <tr><td>{{ name }}</td><td class="n">{{ '%.3f'|format(pc.precision) }}</td><td class="n">{{ '%.3f'|format(pc.recall) }}</td><td class="n">{{ '%.3f'|format(pc.f1) }}</td><td class="n">{{ pc.support }}</td></tr>
+        {% endfor %}
+      </table></div>
+    </div>
+    <div class="card">
+      <h3>Confusion matrix (test)</h3>
+      <div class="table-wrap"><table class="stat-table">
+        <tr><th>Actual ↓ / Predicted →</th>{% for name in labels %}<th class="n" title="{{ name }}">{{ name.split()|map('first')|join }}</th>{% endfor %}</tr>
+        {% for row in m.confusion.rows_true_cols_pred %}{% set i = loop.index0 %}
+        <tr><td>{{ labels[i] }}</td>{% for v in row %}<td class="n{% if loop.index0 == i %} diag{% endif %}">{{ v }}</td>{% endfor %}</tr>
+        {% endfor %}
+      </table></div>
+      <p class="tiny" style="margin:10px 0 0">Most errors are confusions between Bacterial spot rot and Downy Mildew.</p>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card"><div class="icon-tile">{{ icon('gauge') }}</div><h3 style="margin-top:12px">Uncertainty</h3><p class="small muted" style="margin:0">Results below 80% are labelled Uncertain (on validation, fewer than half of these were correct), 80–95% Moderate, and 95% or more High. Even High-confidence results can be wrong: the average top score on the test set was 96.8% while accuracy was {{ '%.1f'|format(m.accuracy * 100) }}%.</p></div>
+    <div class="card"><div class="icon-tile">{{ icon('eye') }}</div><h3 style="margin-top:12px">Grad-CAM</h3><p class="small muted" style="margin:0">Gradients of the predicted class score (taken before softmax, which otherwise saturates on confident predictions) flow back to the last convolution layer to weight its feature maps. That layer is a 4 × 4 grid, so the heatmap is coarse. The resulting heatmap shows which regions influenced the score. It is an interpretability aid, not proof of biological cause.</p></div>
+    <div class="card"><div class="icon-tile">{{ icon('shield') }}</div><h3 style="margin-top:12px">Image checks</h3><p class="small muted" style="margin:0">Before the disease model runs, images are checked for blur, darkness, overexposure and resolution (no dataset photo is refused), and a trained cauliflower-leaf validator (DINOv2 embedding + logistic regression) refuses anything that is not a cauliflower leaf. On a held-out test of 1,536 images it accepted none of 1,099 unrelated images and refused 2 of 437 cauliflower leaves.</p></div>
+  </div>
+
+  <div class="grid-2" style="align-items:start">
+    <div class="card">
+      <h3 class="card-title">{{ icon('compare') }} Visual similarity search</h3>
+      <p class="small muted">Each uploaded photo is also embedded with DINOv2-small, a general-purpose self-supervised vision model (run with ONNX Runtime), and compared by cosine similarity with an index of reference photos from the training and validation splits, using an exact FAISS inner-product index. Similarity measures visual closeness, not disease probability, and the embedding model was not trained on cauliflower diseases.</p>
+      <p class="small muted">On the 99 test images (not in the index), the most similar reference had the same label 96 times. This overstates real-world performance: many test photos have other photos of the same plant in the reference set.</p>
+      <p class="small muted" style="margin:0">The search runs in a separate lightweight service (ONNX Runtime and FAISS, no TensorFlow), so it never slows down or breaks the disease analysis.</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">{{ icon('gauge') }} Visual severity estimate</h3>
+      <p class="small muted">The dataset has no lesion masks, so no segmentation model could be trained or validated. Instead, a colour-based method finds the leaf region (green to blue-green tissue, with enclosed holes filled) and counts yellow, tan and brown pixels inside it. The 0-10 / 10-30 / 30-60 / 60%+ bands are a display convention, not validated severity classes.</p>
+      <p class="small muted" style="margin:0">As a sanity check on the test split, healthy leaves had a median estimate of 2.7% and Downy Mildew 18.9%, but Black Rot (5.4%) is underestimated and photos of the cauliflower head are not estimated.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Known limitations</h3>
+    <ul class="detail-list">
+      <li>The test set is small ({{ m.test_images }} images, only {{ m.per_class['Black Rot'].support }} Black Rot), so each figure carries several points of uncertainty.</li>
+      <li>Training accuracy ({{ '%.1f'|format(m.train_accuracy * 100) }}%) is above validation ({{ '%.1f'|format(m.val_accuracy * 100) }}%), indicating moderate overfitting.</li>
+      <li>All images come from one dataset. Accuracy on other farms, cameras and lighting conditions is unknown.</li>
+      <li>The split keeps near-identical files together, but different photos of the same plant can be in both training and test sets. The test accuracy is therefore likely optimistic for photos of new plants.</li>
+      <li>The model always chooses one of four classes. Other diseases, pests or nutrient problems will be mapped to one of them.</li>
+      <li>The leaf check cannot distinguish a cauliflower leaf from other green leaves.</li>
+    </ul>
+  </div>
+
+  <div class="card" id="attribution">
+    <h3>Data and model credits</h3>
+    <p class="small muted">The model was trained on, and the similar-image references are thumbnails from, the <strong>VegNet</strong> cauliflower disease dataset by Aditya Rajbongshi, Umme Sara, Rashiduzzaman Shakil, Bonna Akter and Mohammad Shorif Uddin (Mendeley Data, <a href="https://doi.org/10.17632/t5sssfgn2v.3" target="_blank" rel="noopener noreferrer">doi:10.17632/t5sssfgn2v.3</a>), licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. Reference images were resized to thumbnails; no other changes were made.</p>
+    <p class="small muted" style="margin:0">Image embeddings use <a href="https://huggingface.co/facebook/dinov2-small" target="_blank" rel="noopener noreferrer">DINOv2-small</a> by Meta AI, licensed under Apache-2.0.</p>
+  </div>
+
+  <div class="card">
+    <h3>Responsible use</h3>
+    <p class="muted" style="margin:0">CauliCare provides image-based screening and is not a definitive agricultural diagnosis. Use it to decide what to look at more closely, and confirm important decisions such as removing plants or applying treatments with a local agricultural extension officer or plant-health laboratory.</p>
+  </div>
+</section>
+{% endblock %}

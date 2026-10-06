@@ -1,0 +1,143 @@
+{
+ "model_type": "CNN (custom, trained from scratch; architecture from notebooks/Model.ipynb)",
+ "input_size": [
+  256,
+  256,
+  3
+ ],
+ "classes": [
+  "Bacterial spot rot",
+  "Black Rot",
+  "Downy Mildew",
+  "No disease"
+ ],
+ "parameters": 183812,
+ "preprocessing": "RGB, tf.image.resize bilinear 256x256, float32 0-255; Rescaling(1/255) inside model",
+ "dataset": "Kaggle noamaanabdulazeem/cauliflower-dataset, 'Original Dataset' (656 images)",
+ "split": {
+  "train": {
+   "Bacterial spot rot": 121,
+   "Black Rot": 70,
+   "Downy Mildew": 123,
+   "No disease": 144,
+   "total": 458
+  },
+  "val": {
+   "Bacterial spot rot": 26,
+   "Black Rot": 15,
+   "Downy Mildew": 27,
+   "No disease": 31,
+   "total": 99
+  },
+  "test": {
+   "Bacterial spot rot": 26,
+   "Black Rot": 15,
+   "Downy Mildew": 27,
+   "No disease": 31,
+   "total": 99
+  }
+ },
+ "split_method": "duplicate-aware (dHash<= 6 + MD5) class-stratified, seed 42",
+ "train_accuracy": 0.982532751091703,
+ "val_accuracy": 0.898989898989899,
+ "test_accuracy": 0.8787878787878788,
+ "test_loss": 0.5815172791481018,
+ "test_precision": 0.8933588761174969,
+ "test_recall": 0.8910486168550685,
+ "test_f1": 0.8912638768331126,
+ "metric_averaging": "macro",
+ "training": {
+  "variant": "improved",
+  "artifact": "model_improved.h5",
+  "params": 183812,
+  "epochs_run": 75,
+  "best_val_loss_epoch": 55,
+  "batch_size": 32,
+  "optimizer": "Adam(lr=1e-3)",
+  "loss": "sparse_categorical_crossentropy",
+  "class_weight": {
+   "0": 0.9462809917355371,
+   "1": 1.6357142857142857,
+   "2": 0.9308943089430894,
+   "3": 0.7951388888888888
+  },
+  "train_minutes": 19.5
+ },
+ "created": "2026-10-04",
+ "calibration": {
+  "fit_on": "validation",
+  "val_nll_before": 0.28542032837867737,
+  "val_nll_after": 0.24768954515457153,
+  "test_ece_before": 0.10199424172892718,
+  "test_ece_after": 0.10210978744005919,
+  "test_mean_conf_before": 0.967915415763855,
+  "test_mean_conf_after": 0.9326943159103394,
+  "test_accuracy": 0.8787878787878788,
+  "applied": false,
+  "note": "Temperature fitted on validation did not reduce test ECE (0.102 -> 0.102); raw softmax scores are served."
+ },
+ "test_evaluation": {
+  "source": "reports/eval_model1.json",
+  "images": 99,
+  "per_class": {
+   "Bacterial spot rot": {
+    "precision": 0.8148148148148148,
+    "recall": 0.8461538461538461,
+    "f1": 0.8301886792452831,
+    "support": 26
+   },
+   "Black Rot": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 15
+   },
+   "Downy Mildew": {
+    "precision": 0.7586206896551724,
+    "recall": 0.8148148148148148,
+    "f1": 0.7857142857142857,
+    "support": 27
+   },
+   "No disease": {
+    "precision": 1.0,
+    "recall": 0.9032258064516129,
+    "f1": 0.9491525423728814,
+    "support": 31
+   }
+  },
+  "confusion_matrix": {
+   "labels": [
+    "Bacterial spot rot",
+    "Black Rot",
+    "Downy Mildew",
+    "No disease"
+   ],
+   "rows_true_cols_pred": [
+    [
+     22,
+     0,
+     4,
+     0
+    ],
+    [
+     0,
+     15,
+     0,
+     0
+    ],
+    [
+     5,
+     0,
+     22,
+     0
+    ],
+    [
+     0,
+     0,
+     3,
+     28
+    ]
+   ]
+  }
+ }
+}

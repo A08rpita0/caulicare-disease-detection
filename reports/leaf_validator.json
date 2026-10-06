@@ -1,0 +1,574 @@
+{
+ "date": "2026-10-06",
+ "seed": 42,
+ "max_validation_frr": 0.01,
+ "split_sizes": {
+  "train": {
+   "beans": 157,
+   "coco": 540,
+   "durjoy_cauliflower": 291,
+   "flowers": 0,
+   "pets": 360,
+   "plantdoc": 562,
+   "synthetic_docs": 0,
+   "vegnet": 458
+  },
+  "val": {
+   "beans": 52,
+   "coco": 180,
+   "durjoy_cauliflower": 97,
+   "flowers": 0,
+   "pets": 120,
+   "plantdoc": 187,
+   "synthetic_docs": 0,
+   "vegnet": 99
+  },
+  "test": {
+   "beans": 52,
+   "coco": 180,
+   "durjoy_cauliflower": 338,
+   "flowers": 400,
+   "pets": 120,
+   "plantdoc": 187,
+   "synthetic_docs": 160,
+   "vegnet": 99
+  }
+ },
+ "model_selection": {
+  "logreg_C=0.1": {
+   "val_threshold": 0.5202,
+   "val_far": 0.0111
+  },
+  "logreg_C=0.3": {
+   "val_threshold": 0.5582,
+   "val_far": 0.0093
+  },
+  "logreg_C=1.0": {
+   "val_threshold": 0.6229,
+   "val_far": 0.0074
+  },
+  "logreg_C=3.0": {
+   "val_threshold": 0.7174,
+   "val_far": 0.0037
+  },
+  "logreg_C=10.0": {
+   "val_threshold": 0.8185,
+   "val_far": 0.0037
+  }
+ },
+ "deployed": {
+  "model": "logistic regression on DINOv2-small CLS embedding",
+  "C": 3.0,
+  "threshold": 0.717417,
+  "validation": {
+   "positives": 196,
+   "negatives": 539,
+   "true_accept": 195,
+   "false_reject": 1,
+   "false_accept": 2,
+   "true_reject": 537,
+   "accuracy": 0.9959,
+   "precision": 0.9898,
+   "recall": 0.9949,
+   "f1": 0.9924,
+   "false_acceptance_rate": 0.0037,
+   "false_rejection_rate": 0.0051
+  },
+  "test_all": {
+   "positives": 437,
+   "negatives": 1099,
+   "true_accept": 435,
+   "false_reject": 2,
+   "false_accept": 0,
+   "true_reject": 1099,
+   "accuracy": 0.9987,
+   "precision": 1.0,
+   "recall": 0.9954,
+   "f1": 0.9977,
+   "false_acceptance_rate": 0.0,
+   "false_rejection_rate": 0.0046
+  },
+  "test_seen_negative_types": {
+   "positives": 437,
+   "negatives": 539,
+   "true_accept": 435,
+   "false_reject": 2,
+   "false_accept": 0,
+   "true_reject": 539,
+   "accuracy": 0.998,
+   "precision": 1.0,
+   "recall": 0.9954,
+   "f1": 0.9977,
+   "false_acceptance_rate": 0.0,
+   "false_rejection_rate": 0.0046
+  },
+  "test_unseen_negative_types_only": {
+   "positives": 0,
+   "negatives": 560,
+   "true_accept": 0,
+   "false_reject": 0,
+   "false_accept": 0,
+   "true_reject": 560,
+   "accuracy": 1.0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "false_acceptance_rate": 0.0,
+   "false_rejection_rate": null
+  },
+  "test_by_source": {
+   "beans": {
+    "images": 52,
+    "accepted": 0,
+    "rejected": 52,
+    "label": "not cauliflower leaf"
+   },
+   "coco": {
+    "images": 180,
+    "accepted": 0,
+    "rejected": 180,
+    "label": "not cauliflower leaf"
+   },
+   "durjoy_cauliflower": {
+    "images": 338,
+    "accepted": 338,
+    "rejected": 0,
+    "label": "cauliflower leaf"
+   },
+   "flowers": {
+    "images": 400,
+    "accepted": 0,
+    "rejected": 400,
+    "label": "not cauliflower leaf"
+   },
+   "pets": {
+    "images": 120,
+    "accepted": 0,
+    "rejected": 120,
+    "label": "not cauliflower leaf"
+   },
+   "plantdoc": {
+    "images": 187,
+    "accepted": 0,
+    "rejected": 187,
+    "label": "not cauliflower leaf"
+   },
+   "synthetic_docs": {
+    "images": 160,
+    "accepted": 0,
+    "rejected": 160,
+    "label": "not cauliflower leaf"
+   },
+   "vegnet": {
+    "images": 99,
+    "accepted": 97,
+    "rejected": 2,
+    "label": "cauliflower leaf"
+   }
+  }
+ },
+ "compared": {
+  "nearest_neighbour_similarity": {
+   "threshold": 0.6739,
+   "validation": {
+    "positives": 196,
+    "negatives": 539,
+    "true_accept": 196,
+    "false_reject": 0,
+    "false_accept": 39,
+    "true_reject": 500,
+    "accuracy": 0.9469,
+    "precision": 0.834,
+    "recall": 1.0,
+    "f1": 0.9095,
+    "false_acceptance_rate": 0.0724,
+    "false_rejection_rate": 0.0
+   },
+   "test_all": {
+    "positives": 437,
+    "negatives": 1099,
+    "true_accept": 437,
+    "false_reject": 0,
+    "false_accept": 30,
+    "true_reject": 1069,
+    "accuracy": 0.9805,
+    "precision": 0.9358,
+    "recall": 1.0,
+    "f1": 0.9668,
+    "false_acceptance_rate": 0.0273,
+    "false_rejection_rate": 0.0
+   },
+   "test_seen_negative_types": {
+    "positives": 437,
+    "negatives": 539,
+    "true_accept": 437,
+    "false_reject": 0,
+    "false_accept": 30,
+    "true_reject": 509,
+    "accuracy": 0.9693,
+    "precision": 0.9358,
+    "recall": 1.0,
+    "f1": 0.9668,
+    "false_acceptance_rate": 0.0557,
+    "false_rejection_rate": 0.0
+   },
+   "test_unseen_negative_types_only": {
+    "positives": 0,
+    "negatives": 560,
+    "true_accept": 0,
+    "false_reject": 0,
+    "false_accept": 0,
+    "true_reject": 560,
+    "accuracy": 1.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "false_acceptance_rate": 0.0,
+    "false_rejection_rate": null
+   },
+   "test_by_source": {
+    "beans": {
+     "images": 52,
+     "accepted": 10,
+     "rejected": 42,
+     "label": "not cauliflower leaf"
+    },
+    "coco": {
+     "images": 180,
+     "accepted": 0,
+     "rejected": 180,
+     "label": "not cauliflower leaf"
+    },
+    "durjoy_cauliflower": {
+     "images": 338,
+     "accepted": 338,
+     "rejected": 0,
+     "label": "cauliflower leaf"
+    },
+    "flowers": {
+     "images": 400,
+     "accepted": 0,
+     "rejected": 400,
+     "label": "not cauliflower leaf"
+    },
+    "pets": {
+     "images": 120,
+     "accepted": 0,
+     "rejected": 120,
+     "label": "not cauliflower leaf"
+    },
+    "plantdoc": {
+     "images": 187,
+     "accepted": 20,
+     "rejected": 167,
+     "label": "not cauliflower leaf"
+    },
+    "synthetic_docs": {
+     "images": 160,
+     "accepted": 0,
+     "rejected": 160,
+     "label": "not cauliflower leaf"
+    },
+    "vegnet": {
+     "images": 99,
+     "accepted": 99,
+     "rejected": 0,
+     "label": "cauliflower leaf"
+    }
+   }
+  },
+  "colour_texture_heuristic": {
+   "validation": {
+    "positives": 196,
+    "negatives": 539,
+    "true_accept": 196,
+    "false_reject": 0,
+    "false_accept": 399,
+    "true_reject": 140,
+    "accuracy": 0.4571,
+    "precision": 0.3294,
+    "recall": 1.0,
+    "f1": 0.4956,
+    "false_acceptance_rate": 0.7403,
+    "false_rejection_rate": 0.0
+   },
+   "test_all": {
+    "positives": 437,
+    "negatives": 1099,
+    "true_accept": 433,
+    "false_reject": 4,
+    "false_accept": 831,
+    "true_reject": 268,
+    "accuracy": 0.4564,
+    "precision": 0.3426,
+    "recall": 0.9908,
+    "f1": 0.5091,
+    "false_acceptance_rate": 0.7561,
+    "false_rejection_rate": 0.0092
+   },
+   "test_seen_negative_types": {
+    "positives": 437,
+    "negatives": 539,
+    "true_accept": 433,
+    "false_reject": 4,
+    "false_accept": 421,
+    "true_reject": 118,
+    "accuracy": 0.5645,
+    "precision": 0.507,
+    "recall": 0.9908,
+    "f1": 0.6708,
+    "false_acceptance_rate": 0.7811,
+    "false_rejection_rate": 0.0092
+   },
+   "test_unseen_negative_types_only": {
+    "positives": 0,
+    "negatives": 560,
+    "true_accept": 0,
+    "false_reject": 0,
+    "false_accept": 410,
+    "true_reject": 150,
+    "accuracy": 0.2679,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "false_acceptance_rate": 0.7321,
+    "false_rejection_rate": null
+   },
+   "test_by_source": {
+    "beans": {
+     "images": 52,
+     "accepted": 52,
+     "rejected": 0,
+     "label": "not cauliflower leaf"
+    },
+    "coco": {
+     "images": 180,
+     "accepted": 116,
+     "rejected": 64,
+     "label": "not cauliflower leaf"
+    },
+    "durjoy_cauliflower": {
+     "images": 338,
+     "accepted": 334,
+     "rejected": 4,
+     "label": "cauliflower leaf"
+    },
+    "flowers": {
+     "images": 400,
+     "accepted": 383,
+     "rejected": 17,
+     "label": "not cauliflower leaf"
+    },
+    "pets": {
+     "images": 120,
+     "accepted": 68,
+     "rejected": 52,
+     "label": "not cauliflower leaf"
+    },
+    "plantdoc": {
+     "images": 187,
+     "accepted": 185,
+     "rejected": 2,
+     "label": "not cauliflower leaf"
+    },
+    "synthetic_docs": {
+     "images": 160,
+     "accepted": 27,
+     "rejected": 133,
+     "label": "not cauliflower leaf"
+    },
+    "vegnet": {
+     "images": 99,
+     "accepted": 99,
+     "rejected": 0,
+     "label": "cauliflower leaf"
+    }
+   }
+  },
+  "logreg_and_heuristic": {
+   "validation": {
+    "positives": 196,
+    "negatives": 539,
+    "true_accept": 195,
+    "false_reject": 1,
+    "false_accept": 2,
+    "true_reject": 537,
+    "accuracy": 0.9959,
+    "precision": 0.9898,
+    "recall": 0.9949,
+    "f1": 0.9924,
+    "false_acceptance_rate": 0.0037,
+    "false_rejection_rate": 0.0051
+   },
+   "test_all": {
+    "positives": 437,
+    "negatives": 1099,
+    "true_accept": 431,
+    "false_reject": 6,
+    "false_accept": 0,
+    "true_reject": 1099,
+    "accuracy": 0.9961,
+    "precision": 1.0,
+    "recall": 0.9863,
+    "f1": 0.9931,
+    "false_acceptance_rate": 0.0,
+    "false_rejection_rate": 0.0137
+   },
+   "test_seen_negative_types": {
+    "positives": 437,
+    "negatives": 539,
+    "true_accept": 431,
+    "false_reject": 6,
+    "false_accept": 0,
+    "true_reject": 539,
+    "accuracy": 0.9939,
+    "precision": 1.0,
+    "recall": 0.9863,
+    "f1": 0.9931,
+    "false_acceptance_rate": 0.0,
+    "false_rejection_rate": 0.0137
+   },
+   "test_unseen_negative_types_only": {
+    "positives": 0,
+    "negatives": 560,
+    "true_accept": 0,
+    "false_reject": 0,
+    "false_accept": 0,
+    "true_reject": 560,
+    "accuracy": 1.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "false_acceptance_rate": 0.0,
+    "false_rejection_rate": null
+   },
+   "test_by_source": {
+    "beans": {
+     "images": 52,
+     "accepted": 0,
+     "rejected": 52,
+     "label": "not cauliflower leaf"
+    },
+    "coco": {
+     "images": 180,
+     "accepted": 0,
+     "rejected": 180,
+     "label": "not cauliflower leaf"
+    },
+    "durjoy_cauliflower": {
+     "images": 338,
+     "accepted": 334,
+     "rejected": 4,
+     "label": "cauliflower leaf"
+    },
+    "flowers": {
+     "images": 400,
+     "accepted": 0,
+     "rejected": 400,
+     "label": "not cauliflower leaf"
+    },
+    "pets": {
+     "images": 120,
+     "accepted": 0,
+     "rejected": 120,
+     "label": "not cauliflower leaf"
+    },
+    "plantdoc": {
+     "images": 187,
+     "accepted": 0,
+     "rejected": 187,
+     "label": "not cauliflower leaf"
+    },
+    "synthetic_docs": {
+     "images": 160,
+     "accepted": 0,
+     "rejected": 160,
+     "label": "not cauliflower leaf"
+    },
+    "vegnet": {
+     "images": 99,
+     "accepted": 97,
+     "rejected": 2,
+     "label": "cauliflower leaf"
+    }
+   }
+  }
+ },
+ "test_errors": {
+  "false_accepts": [],
+  "false_rejects": [
+   {
+    "source": "vegnet",
+    "subclass": "Downy Mildew",
+    "score": 0.5949
+   },
+   {
+    "source": "vegnet",
+    "subclass": "Downy Mildew",
+    "score": 0.5949
+   }
+  ]
+ },
+ "robustness_test": {
+  "rotate_90": {
+   "positives": 437,
+   "false_rejection_rate": 0.0046,
+   "negatives_sampled": 275,
+   "false_acceptance_rate": 0.0
+  },
+  "rotate_180": {
+   "positives": 437,
+   "false_rejection_rate": 0.0046,
+   "negatives_sampled": 275,
+   "false_acceptance_rate": 0.0
+  },
+  "flip_horizontal": {
+   "positives": 437,
+   "false_rejection_rate": 0.0046,
+   "negatives_sampled": 275,
+   "false_acceptance_rate": 0.0
+  },
+  "darker_x0.6": {
+   "positives": 437,
+   "false_rejection_rate": 0.0046,
+   "negatives_sampled": 275,
+   "false_acceptance_rate": 0.0
+  },
+  "brighter_x1.4": {
+   "positives": 437,
+   "false_rejection_rate": 0.0046,
+   "negatives_sampled": 275,
+   "false_acceptance_rate": 0.0
+  },
+  "low_saturation_x0.5": {
+   "positives": 437,
+   "false_rejection_rate": 0.0046,
+   "negatives_sampled": 275,
+   "false_acceptance_rate": 0.0
+  },
+  "centre_crop_60%": {
+   "positives": 437,
+   "false_rejection_rate": 0.016,
+   "negatives_sampled": 275,
+   "false_acceptance_rate": 0.0
+  },
+  "zoomed_out_on_soil": {
+   "positives": 437,
+   "false_rejection_rate": 0.0892,
+   "negatives_sampled": 275,
+   "false_acceptance_rate": 0.0
+  },
+  "downscaled_to_224px": {
+   "positives": 437,
+   "false_rejection_rate": 0.0046,
+   "negatives_sampled": 275,
+   "false_acceptance_rate": 0.0
+  }
+ },
+ "ablation_vegnet_only_positives": {
+  "note": "Same recipe, but no Durjoy photos in training: measures acceptance of cauliflower leaves from a dataset the validator never saw.",
+  "durjoy_test_false_rejection_rate": 0.5503,
+  "durjoy_test_images": 338,
+  "test_false_acceptance_rate": 0.0
+ }
+}

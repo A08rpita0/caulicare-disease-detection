@@ -1,0 +1,2666 @@
+{
+ "seed": 42,
+ "group_bits": 6,
+ "class_names": [
+  "Bacterial spot rot",
+  "Black Rot",
+  "Downy Mildew",
+  "No disease"
+ ],
+ "counts": {
+  "train": {
+   "Bacterial spot rot": 121,
+   "Black Rot": 70,
+   "Downy Mildew": 123,
+   "No disease": 144,
+   "total": 458
+  },
+  "val": {
+   "Bacterial spot rot": 26,
+   "Black Rot": 15,
+   "Downy Mildew": 27,
+   "No disease": 31,
+   "total": 99
+  },
+  "test": {
+   "Bacterial spot rot": 26,
+   "Black Rot": 15,
+   "Downy Mildew": 27,
+   "No disease": 31,
+   "total": 99
+  }
+ },
+ "same_class_near_duplicates_across_splits": 0,
+ "splits": {
+  "train": [
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (10).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (102).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (103).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (104).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (105).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (106).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (107).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (108).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (109).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (11).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (110).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (111).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (113).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (114).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (118).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (119).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (12).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (120).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (121).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (122).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (123).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (125).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (126).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (127).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (128).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (129).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (130).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (132).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (133).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (134).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (135).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (136).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (138).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (139).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (14).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (141).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (142).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (143).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (144).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (145).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (146).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (148).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (149).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (151).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (152).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (153).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (154).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (155).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (156).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (158).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (159).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (162).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (163).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (164).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (165).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (166).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (167).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (168).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (169).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (170).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (171).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (172).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (173).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (18).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (2).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (20).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (21).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (25).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (26).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (27).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (28).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (29).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (30).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (31).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (32).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (33).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (35).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (36).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (39).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (40).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (41).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (42).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (45).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (46).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (47).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (48).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (5).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (50).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (51).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (52).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (53).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (55).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (56).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (58).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (6).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (60).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (61).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (62).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (63).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (64).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (7).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (70).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (71).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (72).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (73).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (74).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (76).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (78).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (79).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (80).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (81).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (82).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (83).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (85).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (86).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (88).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (90).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (92).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (97).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (98).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (99).jpg",
+    "label": 0
+   },
+   {
+    "path": "Black Rot/Black Rot(1).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(1).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(10).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(10).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(11).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(12).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(12).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(13).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(14).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(14).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(15).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(15).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(16).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(17).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(18).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(19).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(2).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(20).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(21).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(22).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(23).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(24).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(25).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(26).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(27).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(27).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(28).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(28).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(29).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(29).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(3).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(3).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(30).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(31).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(31).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(32).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(33).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(33).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(34).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(36).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(37).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(38).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(38).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(39).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(4).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(4).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(40).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(41).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(42).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(43).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(44).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(45).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(46).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(47).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(5).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(5).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(50).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(51).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(53).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(54).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(55).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(58).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(59).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(6).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(6).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(60).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(7).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(8).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(9).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(9).jpg",
+    "label": 1
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (1).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (1).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (10).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (101).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (102).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (103).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (104).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (105).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (106).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (107).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (108).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (109).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (11).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (110).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (111).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (112).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (113).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (114).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (115).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (116).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (118).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (119).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (120).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (121).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (122).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (125).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (126).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (127).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (128).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (129).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (13).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (130).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (131).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (138).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (14).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (140).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (142).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (145).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (15).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (16).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (16).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (17).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (18).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (18).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (19).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (19).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (2).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (2).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (20).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (20).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (21).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (23).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (24).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (24).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (25).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (25).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (26).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (28).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (29).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (3).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (3).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (30).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (31).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (31).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (32).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (34).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (39).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (4).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (40).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (41).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (45).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (46).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (49).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (5).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (5).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (50).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (51).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (53).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (54).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (55).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (56).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (57).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (59).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (6).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (6).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (60).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (61).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (62).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (63).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (64).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (65).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (66).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (67).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (68).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (69).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (7).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (70).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (72).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (73).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (74).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (75).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (76).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (77).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (78).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (8).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (8).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (81).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (82).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (83).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (84).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (85).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (86).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (88).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (89).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (9).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (90).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (92).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (93).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (94).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (95).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (96).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (97).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (98).jpg",
+    "label": 2
+   },
+   {
+    "path": "No disease/No disease. (1).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (1).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (10).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (10).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (100).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (101).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (103).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (104).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (105).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (106).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (107).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (108).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (11).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (112).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (113).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (114).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (116).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (117).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (118).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (119).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (12).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (120).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (121).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (122).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (123).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (124).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (125).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (126).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (127).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (128).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (129).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (13).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (13).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (130).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (131).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (132).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (133).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (134).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (135).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (136).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (137).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (140).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (141).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (142).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (143).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (144).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (145).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (146).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (147).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (148).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (149).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (15).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (15).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (150).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (151).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (153).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (154).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (155).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (156).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (157).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (158).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (159).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (160).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (162).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (163).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (166).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (169).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (17).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (170).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (171).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (172).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (173).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (175).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (176).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (177).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (178).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (179).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (18).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (181).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (185).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (186).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (187).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (188).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (19).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (2).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (2).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (20).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (24).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (25).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (28).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (29).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (3).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (3).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (31).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (33).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (35).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (36).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (37).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (38).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (39).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (4).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (41).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (42).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (43).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (44).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (45).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (46).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (47).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (48).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (5).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (5).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (52).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (53).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (54).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (57).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (58).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (59).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (6).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (6).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (60).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (62).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (64).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (65).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (66).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (67).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (68).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (7).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (72).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (73).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (75).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (76).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (77).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (78).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (79).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (8).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (80).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (81).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (83).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (84).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (85).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (86).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (9).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (9).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (93).jpg",
+    "label": 3
+   }
+  ],
+  "val": [
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (100).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (101).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (112).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (117).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (124).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (131).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (140).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (15).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (150).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (157).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (16).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (19).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (34).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (37).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (38).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (4).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (44).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (57).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (66).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (68).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (69).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (77).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (84).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (91).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (95).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (96).jpg",
+    "label": 0
+   },
+   {
+    "path": "Black Rot/Black Rot(11).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(13).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(16).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(18).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(19).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(20).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(22).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(24).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(25).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(26).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(30).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(36).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(39).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(40).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(57).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (10).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (100).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (117).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (12).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (12).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (124).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (13).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (132).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (133).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (134).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (135).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (136).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (14).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (144).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (17).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (22).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (23).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (26).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (27).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (27).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (30).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (33).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (38).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (71).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (87).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (9).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (91).jpg",
+    "label": 2
+   },
+   {
+    "path": "No disease/No disease. (102).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (11).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (12).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (14).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (14).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (152).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (16).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (16).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (161).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (164).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (167).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (180).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (183).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (184).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (26).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (27).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (30).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (34).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (49).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (61).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (63).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (69).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (7).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (74).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (82).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (87).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (88).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (89).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (90).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (91).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (92).jpg",
+    "label": 3
+   }
+  ],
+  "test": [
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (1).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (115).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (116).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (13).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (137).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (147).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (160).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (161).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (17).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (22).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (23).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (24).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (3).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (43).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (49).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (54).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (59).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (65).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (67).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (75).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (8).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (87).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (89).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (9).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (93).jpg",
+    "label": 0
+   },
+   {
+    "path": "Bacterial spot rot/Bacterial Spot. (94).jpg",
+    "label": 0
+   },
+   {
+    "path": "Black Rot/Black Rot(17).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(2).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(21).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(23).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(32).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(34).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(35).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(35).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(37).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(48).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(49).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(52).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(56).jpeg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(7).jpg",
+    "label": 1
+   },
+   {
+    "path": "Black Rot/Black Rot(8).jpg",
+    "label": 1
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (11).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (123).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (137).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (139).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (141).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (143).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (146).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (15).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (21).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (22).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (28).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (29).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (35).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (36).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (37).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (4).jpeg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (42).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (43).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (44).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (47).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (48).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (52).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (58).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (7).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (79).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (80).jpg",
+    "label": 2
+   },
+   {
+    "path": "Downy Mildew/Downy Mildew. (99).jpg",
+    "label": 2
+   },
+   {
+    "path": "No disease/No disease. (109).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (110).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (111).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (115).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (138).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (139).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (165).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (168).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (17).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (174).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (18).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (182).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (21).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (22).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (23).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (32).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (4).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (40).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (50).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (51).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (55).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (56).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (70).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (71).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (8).jpeg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (94).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (95).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (96).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (97).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (98).jpg",
+    "label": 3
+   },
+   {
+    "path": "No disease/No disease. (99).jpg",
+    "label": 3
+   }
+  ]
+ }
+}

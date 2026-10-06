@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ code }} — CauliCare{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container empty-state" style="max-width:560px">
+    <div class="icon-tile">{{ icon('leaf') }}</div>
+    <h1 style="font-size:2.2rem">{{ 'Page not found' if code == 404 else 'Something went wrong' }}</h1>
+    <p class="muted">{{ "We couldn't find that page." if code == 404 else message }}</p>
+    <a class="btn btn-primary" href="{{ url_for('pages.home') }}">Back to home</a>
+  </div>
+</section>
+{% endblock %}

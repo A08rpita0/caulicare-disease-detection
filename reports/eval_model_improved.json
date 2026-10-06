@@ -1,0 +1,225 @@
+{
+ "model": "model_improved.h5",
+ "params": 183812,
+ "input_shape": [
+  256,
+  256,
+  3
+ ],
+ "output_shape": [
+  4
+ ],
+ "train_accuracy": 0.8777292576419214,
+ "train_loss": 0.29460617899894714,
+ "val_accuracy": 0.8585858585858586,
+ "val_loss": 0.3835153579711914,
+ "test_accuracy": 0.8383838383838383,
+ "test_loss": 0.40970754623413086,
+ "test_precision_macro": 0.8599537037037037,
+ "test_recall_macro": 0.8587905523389394,
+ "test_f1_macro": 0.8541051498302084,
+ "test_precision_weighted": 0.8566685372240929,
+ "test_recall_weighted": 0.8383838383838383,
+ "test_f1_weighted": 0.8413249835103016,
+ "per_class": {
+  "Bacterial spot rot": {
+   "precision": 0.8148148148148148,
+   "recall": 0.8461538461538461,
+   "f1": 0.8301886792452831,
+   "support": 26
+  },
+  "Black Rot": {
+   "precision": 0.9375,
+   "recall": 1.0,
+   "f1": 0.967741935483871,
+   "support": 15
+  },
+  "Downy Mildew": {
+   "precision": 0.6875,
+   "recall": 0.8148148148148148,
+   "f1": 0.7457627118644068,
+   "support": 27
+  },
+  "No disease": {
+   "precision": 1.0,
+   "recall": 0.7741935483870968,
+   "f1": 0.8727272727272727,
+   "support": 31
+  }
+ },
+ "confusion_matrix": {
+  "labels": [
+   "Bacterial spot rot",
+   "Black Rot",
+   "Downy Mildew",
+   "No disease"
+  ],
+  "rows_true_cols_pred": [
+   [
+    22,
+    0,
+    4,
+    0
+   ],
+   [
+    0,
+    15,
+    0,
+    0
+   ],
+   [
+    5,
+    0,
+    22,
+    0
+   ],
+   [
+    0,
+    1,
+    6,
+    24
+   ]
+  ]
+ },
+ "test_prediction_counts": {
+  "Bacterial spot rot": 27,
+  "Black Rot": 16,
+  "Downy Mildew": 32,
+  "No disease": 24
+ },
+ "mean_top_probability_test": 0.8606234192848206,
+ "sample_predictions": [
+  {
+   "file": "Bacterial spot rot/Bacterial Spot. (1).jpg",
+   "actual": "Bacterial spot rot",
+   "predicted": "Downy Mildew",
+   "probabilities": {
+    "Bacterial spot rot": 0.1071,
+    "Black Rot": 0.0,
+    "Downy Mildew": 0.8929,
+    "No disease": 0.0
+   }
+  },
+  {
+   "file": "Bacterial spot rot/Bacterial Spot. (115).jpg",
+   "actual": "Bacterial spot rot",
+   "predicted": "Bacterial spot rot",
+   "probabilities": {
+    "Bacterial spot rot": 0.9391,
+    "Black Rot": 0.0,
+    "Downy Mildew": 0.0609,
+    "No disease": 0.0
+   }
+  },
+  {
+   "file": "Bacterial spot rot/Bacterial Spot. (116).jpg",
+   "actual": "Bacterial spot rot",
+   "predicted": "Bacterial spot rot",
+   "probabilities": {
+    "Bacterial spot rot": 0.9178,
+    "Black Rot": 0.0,
+    "Downy Mildew": 0.0822,
+    "No disease": 0.0
+   }
+  },
+  {
+   "file": "Black Rot/Black Rot(17).jpeg",
+   "actual": "Black Rot",
+   "predicted": "Black Rot",
+   "probabilities": {
+    "Bacterial spot rot": 0.0198,
+    "Black Rot": 0.8989,
+    "Downy Mildew": 0.0631,
+    "No disease": 0.0182
+   }
+  },
+  {
+   "file": "Black Rot/Black Rot(2).jpeg",
+   "actual": "Black Rot",
+   "predicted": "Black Rot",
+   "probabilities": {
+    "Bacterial spot rot": 0.0007,
+    "Black Rot": 0.9406,
+    "Downy Mildew": 0.0546,
+    "No disease": 0.0041
+   }
+  },
+  {
+   "file": "Black Rot/Black Rot(21).jpeg",
+   "actual": "Black Rot",
+   "predicted": "Black Rot",
+   "probabilities": {
+    "Bacterial spot rot": 0.0211,
+    "Black Rot": 0.7633,
+    "Downy Mildew": 0.1588,
+    "No disease": 0.0567
+   }
+  },
+  {
+   "file": "Downy Mildew/Downy Mildew. (11).jpeg",
+   "actual": "Downy Mildew",
+   "predicted": "Downy Mildew",
+   "probabilities": {
+    "Bacterial spot rot": 0.0964,
+    "Black Rot": 0.3199,
+    "Downy Mildew": 0.5488,
+    "No disease": 0.0349
+   }
+  },
+  {
+   "file": "Downy Mildew/Downy Mildew. (123).jpg",
+   "actual": "Downy Mildew",
+   "predicted": "Downy Mildew",
+   "probabilities": {
+    "Bacterial spot rot": 0.1376,
+    "Black Rot": 0.0,
+    "Downy Mildew": 0.8542,
+    "No disease": 0.0081
+   }
+  },
+  {
+   "file": "Downy Mildew/Downy Mildew. (137).jpg",
+   "actual": "Downy Mildew",
+   "predicted": "Downy Mildew",
+   "probabilities": {
+    "Bacterial spot rot": 0.2129,
+    "Black Rot": 0.3094,
+    "Downy Mildew": 0.4698,
+    "No disease": 0.0079
+   }
+  },
+  {
+   "file": "No disease/No disease. (109).jpg",
+   "actual": "No disease",
+   "predicted": "Downy Mildew",
+   "probabilities": {
+    "Bacterial spot rot": 0.0098,
+    "Black Rot": 0.0,
+    "Downy Mildew": 0.9628,
+    "No disease": 0.0274
+   }
+  },
+  {
+   "file": "No disease/No disease. (110).jpg",
+   "actual": "No disease",
+   "predicted": "Downy Mildew",
+   "probabilities": {
+    "Bacterial spot rot": 0.0098,
+    "Black Rot": 0.0,
+    "Downy Mildew": 0.9107,
+    "No disease": 0.0795
+   }
+  },
+  {
+   "file": "No disease/No disease. (111).jpg",
+   "actual": "No disease",
+   "predicted": "Downy Mildew",
+   "probabilities": {
+    "Bacterial spot rot": 0.0111,
+    "Black Rot": 0.0,
+    "Downy Mildew": 0.7937,
+    "No disease": 0.1953
+   }
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+ "test_images": 99,
+ "reference_images": 557,
+ "index_backend": "numpy",
+ "similarity": {
+  "top1_label_agreement": 0.9697,
+  "top1_correct": 96,
+  "top5_majority_label_agreement": 0.9798,
+  "per_class_top1": {
+   "Bacterial spot rot": "26/26",
+   "Black Rot": "15/15",
+   "Downy Mildew": "24/27",
+   "No disease": "31/31"
+  },
+  "top1_similarity_median": 0.948,
+  "caveat": "Many test photos have other photos of the same plant in the reference set, so label agreement overstates performance on new plants."
+ },
+ "severity_estimate": {
+  "Bacterial spot rot": {
+   "estimated": 24,
+   "not_estimated": {
+    "cauliflower head": 2
+   },
+   "median_percent": 10.9,
+   "iqr_percent": [
+    3.5,
+    22.2
+   ],
+   "bands": {
+    "Moderate": 11,
+    "Low": 12,
+    "High": 1
+   }
+  },
+  "Black Rot": {
+   "estimated": 15,
+   "not_estimated": {},
+   "median_percent": 5.4,
+   "iqr_percent": [
+    3.7,
+    6.6
+   ],
+   "bands": {
+    "Low": 15
+   }
+  },
+  "Downy Mildew": {
+   "estimated": 20,
+   "not_estimated": {
+    "cauliflower head": 7
+   },
+   "median_percent": 18.9,
+   "iqr_percent": [
+    5.7,
+    28.4
+   ],
+   "bands": {
+    "Low": 7,
+    "Moderate": 10,
+    "High": 3
+   }
+  },
+  "No disease": {
+   "estimated": 14,
+   "not_estimated": {
+    "cauliflower head": 17
+   },
+   "median_percent": 2.7,
+   "iqr_percent": [
+    0.7,
+    4.0
+   ],
+   "bands": {
+    "Low": 12,
+    "Moderate": 2
+   }
+  }
+ },
+ "latency_ms_median": {
+  "embedding": 230.8,
+  "vector_search": 0.14,
+  "severity": 154.8
+ }
+}

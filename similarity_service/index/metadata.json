@@ -1,0 +1,3363 @@
+{
+ "info": {
+  "model": "DINOv2-small (onnx-community/dinov2-small, ONNX)",
+  "embedding": "[CLS] token of last_hidden_state, L2-normalised; inner product = cosine similarity",
+  "splits": [
+   "train",
+   "val"
+  ],
+  "count": 557,
+  "per_class": {
+   "Bacterial spot rot": 147,
+   "Black Rot": 85,
+   "Downy Mildew": 150,
+   "No disease": 175
+  },
+  "built": "2026-10-05",
+  "index": "faiss IndexFlatIP (faiss.index written from embeddings.npy in the Linux container)"
+ },
+ "items": [
+  {
+   "id": "bacterial-spot-rot-001",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (10).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-002",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (102).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-003",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (103).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-004",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (104).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-005",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (105).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-006",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (106).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-007",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (107).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-008",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (108).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-009",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (109).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-010",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (11).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-011",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (110).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-012",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (111).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-013",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (113).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-014",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (114).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-015",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (118).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-016",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (119).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-017",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (12).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-018",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (120).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-019",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (121).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-020",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (122).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-021",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (123).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-022",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (125).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-023",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (126).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-024",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (127).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-025",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (128).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-026",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (129).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-027",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (130).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-028",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (132).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-029",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (133).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-030",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (134).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-031",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (135).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-032",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (136).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-033",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (138).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-034",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (139).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-035",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (14).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-036",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (141).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-037",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (142).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-038",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (143).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-039",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (144).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-040",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (145).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-041",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (146).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-042",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (148).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-043",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (149).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-044",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (151).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-045",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (152).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-046",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (153).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-047",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (154).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-048",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (155).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-049",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (156).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-050",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (158).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-051",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (159).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-052",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (162).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-053",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (163).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-054",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (164).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-055",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (165).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-056",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (166).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-057",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (167).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-058",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (168).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-059",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (169).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-060",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (170).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-061",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (171).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-062",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (172).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-063",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (173).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-064",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (18).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-065",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (2).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-066",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (20).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-067",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (21).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-068",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (25).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-069",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (26).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-070",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (27).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-071",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (28).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-072",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (29).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-073",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (30).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-074",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (31).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-075",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (32).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-076",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (33).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-077",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (35).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-078",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (36).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-079",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (39).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-080",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (40).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-081",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (41).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-082",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (42).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-083",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (45).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-084",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (46).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-085",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (47).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-086",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (48).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-087",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (5).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-088",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (50).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-089",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (51).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-090",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (52).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-091",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (53).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-092",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (55).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-093",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (56).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-094",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (58).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-095",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (6).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-096",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (60).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-097",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (61).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-098",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (62).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-099",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (63).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-100",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (64).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-101",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (7).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-102",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (70).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-103",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (71).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-104",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (72).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-105",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (73).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-106",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (74).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-107",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (76).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-108",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (78).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-109",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (79).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-110",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (80).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-111",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (81).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-112",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (82).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-113",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (83).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-114",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (85).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-115",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (86).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-116",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (88).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-117",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (90).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-118",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (92).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-119",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (97).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-120",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (98).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-121",
+   "label": "Bacterial spot rot",
+   "split": "train",
+   "source": "Bacterial spot rot/Bacterial Spot. (99).jpg"
+  },
+  {
+   "id": "black-rot-001",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(1).jpeg"
+  },
+  {
+   "id": "black-rot-002",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(1).jpg"
+  },
+  {
+   "id": "black-rot-003",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(10).jpeg"
+  },
+  {
+   "id": "black-rot-004",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(10).jpg"
+  },
+  {
+   "id": "black-rot-005",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(11).jpeg"
+  },
+  {
+   "id": "black-rot-006",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(12).jpeg"
+  },
+  {
+   "id": "black-rot-007",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(12).jpg"
+  },
+  {
+   "id": "black-rot-008",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(13).jpg"
+  },
+  {
+   "id": "black-rot-009",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(14).jpeg"
+  },
+  {
+   "id": "black-rot-010",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(14).jpg"
+  },
+  {
+   "id": "black-rot-011",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(15).jpeg"
+  },
+  {
+   "id": "black-rot-012",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(15).jpg"
+  },
+  {
+   "id": "black-rot-013",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(16).jpeg"
+  },
+  {
+   "id": "black-rot-014",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(17).jpg"
+  },
+  {
+   "id": "black-rot-015",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(18).jpeg"
+  },
+  {
+   "id": "black-rot-016",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(19).jpeg"
+  },
+  {
+   "id": "black-rot-017",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(2).jpg"
+  },
+  {
+   "id": "black-rot-018",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(20).jpeg"
+  },
+  {
+   "id": "black-rot-019",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(21).jpg"
+  },
+  {
+   "id": "black-rot-020",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(22).jpeg"
+  },
+  {
+   "id": "black-rot-021",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(23).jpeg"
+  },
+  {
+   "id": "black-rot-022",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(24).jpeg"
+  },
+  {
+   "id": "black-rot-023",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(25).jpeg"
+  },
+  {
+   "id": "black-rot-024",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(26).jpeg"
+  },
+  {
+   "id": "black-rot-025",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(27).jpeg"
+  },
+  {
+   "id": "black-rot-026",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(27).jpg"
+  },
+  {
+   "id": "black-rot-027",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(28).jpeg"
+  },
+  {
+   "id": "black-rot-028",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(28).jpg"
+  },
+  {
+   "id": "black-rot-029",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(29).jpeg"
+  },
+  {
+   "id": "black-rot-030",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(29).jpg"
+  },
+  {
+   "id": "black-rot-031",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(3).jpeg"
+  },
+  {
+   "id": "black-rot-032",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(3).jpg"
+  },
+  {
+   "id": "black-rot-033",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(30).jpeg"
+  },
+  {
+   "id": "black-rot-034",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(31).jpeg"
+  },
+  {
+   "id": "black-rot-035",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(31).jpg"
+  },
+  {
+   "id": "black-rot-036",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(32).jpeg"
+  },
+  {
+   "id": "black-rot-037",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(33).jpeg"
+  },
+  {
+   "id": "black-rot-038",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(33).jpg"
+  },
+  {
+   "id": "black-rot-039",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(34).jpeg"
+  },
+  {
+   "id": "black-rot-040",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(36).jpeg"
+  },
+  {
+   "id": "black-rot-041",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(37).jpeg"
+  },
+  {
+   "id": "black-rot-042",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(38).jpeg"
+  },
+  {
+   "id": "black-rot-043",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(38).jpg"
+  },
+  {
+   "id": "black-rot-044",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(39).jpeg"
+  },
+  {
+   "id": "black-rot-045",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(4).jpeg"
+  },
+  {
+   "id": "black-rot-046",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(4).jpg"
+  },
+  {
+   "id": "black-rot-047",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(40).jpeg"
+  },
+  {
+   "id": "black-rot-048",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(41).jpeg"
+  },
+  {
+   "id": "black-rot-049",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(42).jpeg"
+  },
+  {
+   "id": "black-rot-050",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(43).jpeg"
+  },
+  {
+   "id": "black-rot-051",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(44).jpeg"
+  },
+  {
+   "id": "black-rot-052",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(45).jpeg"
+  },
+  {
+   "id": "black-rot-053",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(46).jpeg"
+  },
+  {
+   "id": "black-rot-054",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(47).jpeg"
+  },
+  {
+   "id": "black-rot-055",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(5).jpeg"
+  },
+  {
+   "id": "black-rot-056",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(5).jpg"
+  },
+  {
+   "id": "black-rot-057",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(50).jpeg"
+  },
+  {
+   "id": "black-rot-058",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(51).jpeg"
+  },
+  {
+   "id": "black-rot-059",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(53).jpeg"
+  },
+  {
+   "id": "black-rot-060",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(54).jpeg"
+  },
+  {
+   "id": "black-rot-061",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(55).jpeg"
+  },
+  {
+   "id": "black-rot-062",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(58).jpeg"
+  },
+  {
+   "id": "black-rot-063",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(59).jpeg"
+  },
+  {
+   "id": "black-rot-064",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(6).jpeg"
+  },
+  {
+   "id": "black-rot-065",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(6).jpg"
+  },
+  {
+   "id": "black-rot-066",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(60).jpeg"
+  },
+  {
+   "id": "black-rot-067",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(7).jpeg"
+  },
+  {
+   "id": "black-rot-068",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(8).jpeg"
+  },
+  {
+   "id": "black-rot-069",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(9).jpeg"
+  },
+  {
+   "id": "black-rot-070",
+   "label": "Black Rot",
+   "split": "train",
+   "source": "Black Rot/Black Rot(9).jpg"
+  },
+  {
+   "id": "downy-mildew-001",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (1).jpeg"
+  },
+  {
+   "id": "downy-mildew-002",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (1).jpg"
+  },
+  {
+   "id": "downy-mildew-003",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (10).jpg"
+  },
+  {
+   "id": "downy-mildew-004",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (101).jpg"
+  },
+  {
+   "id": "downy-mildew-005",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (102).jpg"
+  },
+  {
+   "id": "downy-mildew-006",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (103).jpg"
+  },
+  {
+   "id": "downy-mildew-007",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (104).jpg"
+  },
+  {
+   "id": "downy-mildew-008",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (105).jpg"
+  },
+  {
+   "id": "downy-mildew-009",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (106).jpg"
+  },
+  {
+   "id": "downy-mildew-010",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (107).jpg"
+  },
+  {
+   "id": "downy-mildew-011",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (108).jpg"
+  },
+  {
+   "id": "downy-mildew-012",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (109).jpg"
+  },
+  {
+   "id": "downy-mildew-013",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (11).jpg"
+  },
+  {
+   "id": "downy-mildew-014",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (110).jpg"
+  },
+  {
+   "id": "downy-mildew-015",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (111).jpg"
+  },
+  {
+   "id": "downy-mildew-016",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (112).jpg"
+  },
+  {
+   "id": "downy-mildew-017",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (113).jpg"
+  },
+  {
+   "id": "downy-mildew-018",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (114).jpg"
+  },
+  {
+   "id": "downy-mildew-019",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (115).jpg"
+  },
+  {
+   "id": "downy-mildew-020",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (116).jpg"
+  },
+  {
+   "id": "downy-mildew-021",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (118).jpg"
+  },
+  {
+   "id": "downy-mildew-022",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (119).jpg"
+  },
+  {
+   "id": "downy-mildew-023",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (120).jpg"
+  },
+  {
+   "id": "downy-mildew-024",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (121).jpg"
+  },
+  {
+   "id": "downy-mildew-025",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (122).jpg"
+  },
+  {
+   "id": "downy-mildew-026",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (125).jpg"
+  },
+  {
+   "id": "downy-mildew-027",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (126).jpg"
+  },
+  {
+   "id": "downy-mildew-028",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (127).jpg"
+  },
+  {
+   "id": "downy-mildew-029",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (128).jpg"
+  },
+  {
+   "id": "downy-mildew-030",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (129).jpg"
+  },
+  {
+   "id": "downy-mildew-031",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (13).jpeg"
+  },
+  {
+   "id": "downy-mildew-032",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (130).jpg"
+  },
+  {
+   "id": "downy-mildew-033",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (131).jpg"
+  },
+  {
+   "id": "downy-mildew-034",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (138).jpg"
+  },
+  {
+   "id": "downy-mildew-035",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (14).jpeg"
+  },
+  {
+   "id": "downy-mildew-036",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (140).jpg"
+  },
+  {
+   "id": "downy-mildew-037",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (142).jpg"
+  },
+  {
+   "id": "downy-mildew-038",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (145).jpg"
+  },
+  {
+   "id": "downy-mildew-039",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (15).jpeg"
+  },
+  {
+   "id": "downy-mildew-040",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (16).jpeg"
+  },
+  {
+   "id": "downy-mildew-041",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (16).jpg"
+  },
+  {
+   "id": "downy-mildew-042",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (17).jpg"
+  },
+  {
+   "id": "downy-mildew-043",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (18).jpeg"
+  },
+  {
+   "id": "downy-mildew-044",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (18).jpg"
+  },
+  {
+   "id": "downy-mildew-045",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (19).jpeg"
+  },
+  {
+   "id": "downy-mildew-046",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (19).jpg"
+  },
+  {
+   "id": "downy-mildew-047",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (2).jpeg"
+  },
+  {
+   "id": "downy-mildew-048",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (2).jpg"
+  },
+  {
+   "id": "downy-mildew-049",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (20).jpeg"
+  },
+  {
+   "id": "downy-mildew-050",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (20).jpg"
+  },
+  {
+   "id": "downy-mildew-051",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (21).jpeg"
+  },
+  {
+   "id": "downy-mildew-052",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (23).jpg"
+  },
+  {
+   "id": "downy-mildew-053",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (24).jpeg"
+  },
+  {
+   "id": "downy-mildew-054",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (24).jpg"
+  },
+  {
+   "id": "downy-mildew-055",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (25).jpeg"
+  },
+  {
+   "id": "downy-mildew-056",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (25).jpg"
+  },
+  {
+   "id": "downy-mildew-057",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (26).jpeg"
+  },
+  {
+   "id": "downy-mildew-058",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (28).jpeg"
+  },
+  {
+   "id": "downy-mildew-059",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (29).jpg"
+  },
+  {
+   "id": "downy-mildew-060",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (3).jpeg"
+  },
+  {
+   "id": "downy-mildew-061",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (3).jpg"
+  },
+  {
+   "id": "downy-mildew-062",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (30).jpeg"
+  },
+  {
+   "id": "downy-mildew-063",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (31).jpeg"
+  },
+  {
+   "id": "downy-mildew-064",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (31).jpg"
+  },
+  {
+   "id": "downy-mildew-065",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (32).jpg"
+  },
+  {
+   "id": "downy-mildew-066",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (34).jpg"
+  },
+  {
+   "id": "downy-mildew-067",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (39).jpg"
+  },
+  {
+   "id": "downy-mildew-068",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (4).jpg"
+  },
+  {
+   "id": "downy-mildew-069",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (40).jpg"
+  },
+  {
+   "id": "downy-mildew-070",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (41).jpg"
+  },
+  {
+   "id": "downy-mildew-071",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (45).jpg"
+  },
+  {
+   "id": "downy-mildew-072",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (46).jpg"
+  },
+  {
+   "id": "downy-mildew-073",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (49).jpg"
+  },
+  {
+   "id": "downy-mildew-074",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (5).jpeg"
+  },
+  {
+   "id": "downy-mildew-075",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (5).jpg"
+  },
+  {
+   "id": "downy-mildew-076",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (50).jpg"
+  },
+  {
+   "id": "downy-mildew-077",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (51).jpg"
+  },
+  {
+   "id": "downy-mildew-078",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (53).jpg"
+  },
+  {
+   "id": "downy-mildew-079",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (54).jpg"
+  },
+  {
+   "id": "downy-mildew-080",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (55).jpg"
+  },
+  {
+   "id": "downy-mildew-081",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (56).jpg"
+  },
+  {
+   "id": "downy-mildew-082",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (57).jpg"
+  },
+  {
+   "id": "downy-mildew-083",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (59).jpg"
+  },
+  {
+   "id": "downy-mildew-084",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (6).jpeg"
+  },
+  {
+   "id": "downy-mildew-085",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (6).jpg"
+  },
+  {
+   "id": "downy-mildew-086",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (60).jpg"
+  },
+  {
+   "id": "downy-mildew-087",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (61).jpg"
+  },
+  {
+   "id": "downy-mildew-088",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (62).jpg"
+  },
+  {
+   "id": "downy-mildew-089",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (63).jpg"
+  },
+  {
+   "id": "downy-mildew-090",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (64).jpg"
+  },
+  {
+   "id": "downy-mildew-091",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (65).jpg"
+  },
+  {
+   "id": "downy-mildew-092",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (66).jpg"
+  },
+  {
+   "id": "downy-mildew-093",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (67).jpg"
+  },
+  {
+   "id": "downy-mildew-094",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (68).jpg"
+  },
+  {
+   "id": "downy-mildew-095",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (69).jpg"
+  },
+  {
+   "id": "downy-mildew-096",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (7).jpeg"
+  },
+  {
+   "id": "downy-mildew-097",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (70).jpg"
+  },
+  {
+   "id": "downy-mildew-098",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (72).jpg"
+  },
+  {
+   "id": "downy-mildew-099",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (73).jpg"
+  },
+  {
+   "id": "downy-mildew-100",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (74).jpg"
+  },
+  {
+   "id": "downy-mildew-101",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (75).jpg"
+  },
+  {
+   "id": "downy-mildew-102",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (76).jpg"
+  },
+  {
+   "id": "downy-mildew-103",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (77).jpg"
+  },
+  {
+   "id": "downy-mildew-104",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (78).jpg"
+  },
+  {
+   "id": "downy-mildew-105",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (8).jpeg"
+  },
+  {
+   "id": "downy-mildew-106",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (8).jpg"
+  },
+  {
+   "id": "downy-mildew-107",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (81).jpg"
+  },
+  {
+   "id": "downy-mildew-108",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (82).jpg"
+  },
+  {
+   "id": "downy-mildew-109",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (83).jpg"
+  },
+  {
+   "id": "downy-mildew-110",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (84).jpg"
+  },
+  {
+   "id": "downy-mildew-111",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (85).jpg"
+  },
+  {
+   "id": "downy-mildew-112",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (86).jpg"
+  },
+  {
+   "id": "downy-mildew-113",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (88).jpg"
+  },
+  {
+   "id": "downy-mildew-114",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (89).jpg"
+  },
+  {
+   "id": "downy-mildew-115",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (9).jpg"
+  },
+  {
+   "id": "downy-mildew-116",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (90).jpg"
+  },
+  {
+   "id": "downy-mildew-117",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (92).jpg"
+  },
+  {
+   "id": "downy-mildew-118",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (93).jpg"
+  },
+  {
+   "id": "downy-mildew-119",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (94).jpg"
+  },
+  {
+   "id": "downy-mildew-120",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (95).jpg"
+  },
+  {
+   "id": "downy-mildew-121",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (96).jpg"
+  },
+  {
+   "id": "downy-mildew-122",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (97).jpg"
+  },
+  {
+   "id": "downy-mildew-123",
+   "label": "Downy Mildew",
+   "split": "train",
+   "source": "Downy Mildew/Downy Mildew. (98).jpg"
+  },
+  {
+   "id": "no-disease-001",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (1).jpeg"
+  },
+  {
+   "id": "no-disease-002",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (1).jpg"
+  },
+  {
+   "id": "no-disease-003",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (10).jpeg"
+  },
+  {
+   "id": "no-disease-004",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (10).jpg"
+  },
+  {
+   "id": "no-disease-005",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (100).jpg"
+  },
+  {
+   "id": "no-disease-006",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (101).jpg"
+  },
+  {
+   "id": "no-disease-007",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (103).jpg"
+  },
+  {
+   "id": "no-disease-008",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (104).jpg"
+  },
+  {
+   "id": "no-disease-009",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (105).jpg"
+  },
+  {
+   "id": "no-disease-010",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (106).jpg"
+  },
+  {
+   "id": "no-disease-011",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (107).jpg"
+  },
+  {
+   "id": "no-disease-012",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (108).jpg"
+  },
+  {
+   "id": "no-disease-013",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (11).jpeg"
+  },
+  {
+   "id": "no-disease-014",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (112).jpg"
+  },
+  {
+   "id": "no-disease-015",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (113).jpg"
+  },
+  {
+   "id": "no-disease-016",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (114).jpg"
+  },
+  {
+   "id": "no-disease-017",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (116).jpg"
+  },
+  {
+   "id": "no-disease-018",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (117).jpg"
+  },
+  {
+   "id": "no-disease-019",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (118).jpg"
+  },
+  {
+   "id": "no-disease-020",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (119).jpg"
+  },
+  {
+   "id": "no-disease-021",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (12).jpeg"
+  },
+  {
+   "id": "no-disease-022",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (120).jpg"
+  },
+  {
+   "id": "no-disease-023",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (121).jpg"
+  },
+  {
+   "id": "no-disease-024",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (122).jpg"
+  },
+  {
+   "id": "no-disease-025",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (123).jpg"
+  },
+  {
+   "id": "no-disease-026",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (124).jpg"
+  },
+  {
+   "id": "no-disease-027",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (125).jpg"
+  },
+  {
+   "id": "no-disease-028",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (126).jpg"
+  },
+  {
+   "id": "no-disease-029",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (127).jpg"
+  },
+  {
+   "id": "no-disease-030",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (128).jpg"
+  },
+  {
+   "id": "no-disease-031",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (129).jpg"
+  },
+  {
+   "id": "no-disease-032",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (13).jpeg"
+  },
+  {
+   "id": "no-disease-033",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (13).jpg"
+  },
+  {
+   "id": "no-disease-034",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (130).jpg"
+  },
+  {
+   "id": "no-disease-035",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (131).jpg"
+  },
+  {
+   "id": "no-disease-036",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (132).jpg"
+  },
+  {
+   "id": "no-disease-037",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (133).jpg"
+  },
+  {
+   "id": "no-disease-038",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (134).jpg"
+  },
+  {
+   "id": "no-disease-039",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (135).jpg"
+  },
+  {
+   "id": "no-disease-040",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (136).jpg"
+  },
+  {
+   "id": "no-disease-041",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (137).jpg"
+  },
+  {
+   "id": "no-disease-042",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (140).jpg"
+  },
+  {
+   "id": "no-disease-043",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (141).jpg"
+  },
+  {
+   "id": "no-disease-044",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (142).jpg"
+  },
+  {
+   "id": "no-disease-045",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (143).jpg"
+  },
+  {
+   "id": "no-disease-046",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (144).jpg"
+  },
+  {
+   "id": "no-disease-047",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (145).jpg"
+  },
+  {
+   "id": "no-disease-048",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (146).jpg"
+  },
+  {
+   "id": "no-disease-049",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (147).jpg"
+  },
+  {
+   "id": "no-disease-050",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (148).jpg"
+  },
+  {
+   "id": "no-disease-051",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (149).jpg"
+  },
+  {
+   "id": "no-disease-052",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (15).jpeg"
+  },
+  {
+   "id": "no-disease-053",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (15).jpg"
+  },
+  {
+   "id": "no-disease-054",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (150).jpg"
+  },
+  {
+   "id": "no-disease-055",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (151).jpg"
+  },
+  {
+   "id": "no-disease-056",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (153).jpg"
+  },
+  {
+   "id": "no-disease-057",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (154).jpg"
+  },
+  {
+   "id": "no-disease-058",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (155).jpg"
+  },
+  {
+   "id": "no-disease-059",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (156).jpg"
+  },
+  {
+   "id": "no-disease-060",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (157).jpg"
+  },
+  {
+   "id": "no-disease-061",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (158).jpg"
+  },
+  {
+   "id": "no-disease-062",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (159).jpg"
+  },
+  {
+   "id": "no-disease-063",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (160).jpg"
+  },
+  {
+   "id": "no-disease-064",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (162).jpg"
+  },
+  {
+   "id": "no-disease-065",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (163).jpg"
+  },
+  {
+   "id": "no-disease-066",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (166).jpg"
+  },
+  {
+   "id": "no-disease-067",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (169).jpg"
+  },
+  {
+   "id": "no-disease-068",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (17).jpg"
+  },
+  {
+   "id": "no-disease-069",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (170).jpg"
+  },
+  {
+   "id": "no-disease-070",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (171).jpg"
+  },
+  {
+   "id": "no-disease-071",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (172).jpg"
+  },
+  {
+   "id": "no-disease-072",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (173).jpg"
+  },
+  {
+   "id": "no-disease-073",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (175).jpg"
+  },
+  {
+   "id": "no-disease-074",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (176).jpg"
+  },
+  {
+   "id": "no-disease-075",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (177).jpg"
+  },
+  {
+   "id": "no-disease-076",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (178).jpg"
+  },
+  {
+   "id": "no-disease-077",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (179).jpg"
+  },
+  {
+   "id": "no-disease-078",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (18).jpg"
+  },
+  {
+   "id": "no-disease-079",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (181).jpg"
+  },
+  {
+   "id": "no-disease-080",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (185).jpg"
+  },
+  {
+   "id": "no-disease-081",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (186).jpg"
+  },
+  {
+   "id": "no-disease-082",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (187).jpg"
+  },
+  {
+   "id": "no-disease-083",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (188).jpg"
+  },
+  {
+   "id": "no-disease-084",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (19).jpg"
+  },
+  {
+   "id": "no-disease-085",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (2).jpeg"
+  },
+  {
+   "id": "no-disease-086",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (2).jpg"
+  },
+  {
+   "id": "no-disease-087",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (20).jpg"
+  },
+  {
+   "id": "no-disease-088",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (24).jpg"
+  },
+  {
+   "id": "no-disease-089",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (25).jpg"
+  },
+  {
+   "id": "no-disease-090",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (28).jpg"
+  },
+  {
+   "id": "no-disease-091",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (29).jpg"
+  },
+  {
+   "id": "no-disease-092",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (3).jpeg"
+  },
+  {
+   "id": "no-disease-093",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (3).jpg"
+  },
+  {
+   "id": "no-disease-094",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (31).jpg"
+  },
+  {
+   "id": "no-disease-095",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (33).jpg"
+  },
+  {
+   "id": "no-disease-096",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (35).jpg"
+  },
+  {
+   "id": "no-disease-097",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (36).jpg"
+  },
+  {
+   "id": "no-disease-098",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (37).jpg"
+  },
+  {
+   "id": "no-disease-099",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (38).jpg"
+  },
+  {
+   "id": "no-disease-100",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (39).jpg"
+  },
+  {
+   "id": "no-disease-101",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (4).jpg"
+  },
+  {
+   "id": "no-disease-102",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (41).jpg"
+  },
+  {
+   "id": "no-disease-103",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (42).jpg"
+  },
+  {
+   "id": "no-disease-104",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (43).jpg"
+  },
+  {
+   "id": "no-disease-105",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (44).jpg"
+  },
+  {
+   "id": "no-disease-106",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (45).jpg"
+  },
+  {
+   "id": "no-disease-107",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (46).jpg"
+  },
+  {
+   "id": "no-disease-108",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (47).jpg"
+  },
+  {
+   "id": "no-disease-109",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (48).jpg"
+  },
+  {
+   "id": "no-disease-110",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (5).jpeg"
+  },
+  {
+   "id": "no-disease-111",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (5).jpg"
+  },
+  {
+   "id": "no-disease-112",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (52).jpg"
+  },
+  {
+   "id": "no-disease-113",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (53).jpg"
+  },
+  {
+   "id": "no-disease-114",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (54).jpg"
+  },
+  {
+   "id": "no-disease-115",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (57).jpg"
+  },
+  {
+   "id": "no-disease-116",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (58).jpg"
+  },
+  {
+   "id": "no-disease-117",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (59).jpg"
+  },
+  {
+   "id": "no-disease-118",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (6).jpeg"
+  },
+  {
+   "id": "no-disease-119",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (6).jpg"
+  },
+  {
+   "id": "no-disease-120",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (60).jpg"
+  },
+  {
+   "id": "no-disease-121",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (62).jpg"
+  },
+  {
+   "id": "no-disease-122",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (64).jpg"
+  },
+  {
+   "id": "no-disease-123",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (65).jpg"
+  },
+  {
+   "id": "no-disease-124",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (66).jpg"
+  },
+  {
+   "id": "no-disease-125",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (67).jpg"
+  },
+  {
+   "id": "no-disease-126",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (68).jpg"
+  },
+  {
+   "id": "no-disease-127",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (7).jpeg"
+  },
+  {
+   "id": "no-disease-128",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (72).jpg"
+  },
+  {
+   "id": "no-disease-129",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (73).jpg"
+  },
+  {
+   "id": "no-disease-130",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (75).jpg"
+  },
+  {
+   "id": "no-disease-131",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (76).jpg"
+  },
+  {
+   "id": "no-disease-132",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (77).jpg"
+  },
+  {
+   "id": "no-disease-133",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (78).jpg"
+  },
+  {
+   "id": "no-disease-134",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (79).jpg"
+  },
+  {
+   "id": "no-disease-135",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (8).jpg"
+  },
+  {
+   "id": "no-disease-136",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (80).jpg"
+  },
+  {
+   "id": "no-disease-137",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (81).jpg"
+  },
+  {
+   "id": "no-disease-138",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (83).jpg"
+  },
+  {
+   "id": "no-disease-139",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (84).jpg"
+  },
+  {
+   "id": "no-disease-140",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (85).jpg"
+  },
+  {
+   "id": "no-disease-141",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (86).jpg"
+  },
+  {
+   "id": "no-disease-142",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (9).jpeg"
+  },
+  {
+   "id": "no-disease-143",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (9).jpg"
+  },
+  {
+   "id": "no-disease-144",
+   "label": "No disease",
+   "split": "train",
+   "source": "No disease/No disease. (93).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-122",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (100).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-123",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (101).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-124",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (112).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-125",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (117).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-126",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (124).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-127",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (131).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-128",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (140).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-129",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (15).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-130",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (150).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-131",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (157).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-132",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (16).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-133",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (19).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-134",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (34).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-135",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (37).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-136",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (38).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-137",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (4).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-138",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (44).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-139",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (57).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-140",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (66).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-141",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (68).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-142",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (69).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-143",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (77).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-144",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (84).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-145",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (91).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-146",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (95).jpg"
+  },
+  {
+   "id": "bacterial-spot-rot-147",
+   "label": "Bacterial spot rot",
+   "split": "val",
+   "source": "Bacterial spot rot/Bacterial Spot. (96).jpg"
+  },
+  {
+   "id": "black-rot-071",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(11).jpg"
+  },
+  {
+   "id": "black-rot-072",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(13).jpeg"
+  },
+  {
+   "id": "black-rot-073",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(16).jpg"
+  },
+  {
+   "id": "black-rot-074",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(18).jpg"
+  },
+  {
+   "id": "black-rot-075",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(19).jpg"
+  },
+  {
+   "id": "black-rot-076",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(20).jpg"
+  },
+  {
+   "id": "black-rot-077",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(22).jpg"
+  },
+  {
+   "id": "black-rot-078",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(24).jpg"
+  },
+  {
+   "id": "black-rot-079",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(25).jpg"
+  },
+  {
+   "id": "black-rot-080",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(26).jpg"
+  },
+  {
+   "id": "black-rot-081",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(30).jpg"
+  },
+  {
+   "id": "black-rot-082",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(36).jpg"
+  },
+  {
+   "id": "black-rot-083",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(39).jpg"
+  },
+  {
+   "id": "black-rot-084",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(40).jpg"
+  },
+  {
+   "id": "black-rot-085",
+   "label": "Black Rot",
+   "split": "val",
+   "source": "Black Rot/Black Rot(57).jpeg"
+  },
+  {
+   "id": "downy-mildew-124",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (10).jpeg"
+  },
+  {
+   "id": "downy-mildew-125",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (100).jpg"
+  },
+  {
+   "id": "downy-mildew-126",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (117).jpg"
+  },
+  {
+   "id": "downy-mildew-127",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (12).jpeg"
+  },
+  {
+   "id": "downy-mildew-128",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (12).jpg"
+  },
+  {
+   "id": "downy-mildew-129",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (124).jpg"
+  },
+  {
+   "id": "downy-mildew-130",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (13).jpg"
+  },
+  {
+   "id": "downy-mildew-131",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (132).jpg"
+  },
+  {
+   "id": "downy-mildew-132",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (133).jpg"
+  },
+  {
+   "id": "downy-mildew-133",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (134).jpg"
+  },
+  {
+   "id": "downy-mildew-134",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (135).jpg"
+  },
+  {
+   "id": "downy-mildew-135",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (136).jpg"
+  },
+  {
+   "id": "downy-mildew-136",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (14).jpg"
+  },
+  {
+   "id": "downy-mildew-137",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (144).jpg"
+  },
+  {
+   "id": "downy-mildew-138",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (17).jpeg"
+  },
+  {
+   "id": "downy-mildew-139",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (22).jpeg"
+  },
+  {
+   "id": "downy-mildew-140",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (23).jpeg"
+  },
+  {
+   "id": "downy-mildew-141",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (26).jpg"
+  },
+  {
+   "id": "downy-mildew-142",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (27).jpeg"
+  },
+  {
+   "id": "downy-mildew-143",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (27).jpg"
+  },
+  {
+   "id": "downy-mildew-144",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (30).jpg"
+  },
+  {
+   "id": "downy-mildew-145",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (33).jpg"
+  },
+  {
+   "id": "downy-mildew-146",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (38).jpg"
+  },
+  {
+   "id": "downy-mildew-147",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (71).jpg"
+  },
+  {
+   "id": "downy-mildew-148",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (87).jpg"
+  },
+  {
+   "id": "downy-mildew-149",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (9).jpeg"
+  },
+  {
+   "id": "downy-mildew-150",
+   "label": "Downy Mildew",
+   "split": "val",
+   "source": "Downy Mildew/Downy Mildew. (91).jpg"
+  },
+  {
+   "id": "no-disease-145",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (102).jpg"
+  },
+  {
+   "id": "no-disease-146",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (11).jpg"
+  },
+  {
+   "id": "no-disease-147",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (12).jpg"
+  },
+  {
+   "id": "no-disease-148",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (14).jpeg"
+  },
+  {
+   "id": "no-disease-149",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (14).jpg"
+  },
+  {
+   "id": "no-disease-150",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (152).jpg"
+  },
+  {
+   "id": "no-disease-151",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (16).jpeg"
+  },
+  {
+   "id": "no-disease-152",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (16).jpg"
+  },
+  {
+   "id": "no-disease-153",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (161).jpg"
+  },
+  {
+   "id": "no-disease-154",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (164).jpg"
+  },
+  {
+   "id": "no-disease-155",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (167).jpg"
+  },
+  {
+   "id": "no-disease-156",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (180).jpg"
+  },
+  {
+   "id": "no-disease-157",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (183).jpg"
+  },
+  {
+   "id": "no-disease-158",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (184).jpg"
+  },
+  {
+   "id": "no-disease-159",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (26).jpg"
+  },
+  {
+   "id": "no-disease-160",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (27).jpg"
+  },
+  {
+   "id": "no-disease-161",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (30).jpg"
+  },
+  {
+   "id": "no-disease-162",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (34).jpg"
+  },
+  {
+   "id": "no-disease-163",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (49).jpg"
+  },
+  {
+   "id": "no-disease-164",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (61).jpg"
+  },
+  {
+   "id": "no-disease-165",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (63).jpg"
+  },
+  {
+   "id": "no-disease-166",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (69).jpg"
+  },
+  {
+   "id": "no-disease-167",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (7).jpg"
+  },
+  {
+   "id": "no-disease-168",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (74).jpg"
+  },
+  {
+   "id": "no-disease-169",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (82).jpg"
+  },
+  {
+   "id": "no-disease-170",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (87).jpg"
+  },
+  {
+   "id": "no-disease-171",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (88).jpg"
+  },
+  {
+   "id": "no-disease-172",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (89).jpg"
+  },
+  {
+   "id": "no-disease-173",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (90).jpg"
+  },
+  {
+   "id": "no-disease-174",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (91).jpg"
+  },
+  {
+   "id": "no-disease-175",
+   "label": "No disease",
+   "split": "val",
+   "source": "No disease/No disease. (92).jpg"
+  }
+ ]
+}

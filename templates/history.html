@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}History — CauliCare{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <span class="eyebrow">{{ icon('clock') }} History</span>
+    <h1>Your analyses</h1>
+    <p class="muted">Saved only in this browser (local storage). Nothing is uploaded or kept on the server, and clearing your browser data removes it. Up to 12 recent results are kept.</p>
+  </div>
+</section>
+<section class="container" style="padding-bottom:40px">
+  <div class="row between" style="margin-bottom:14px">
+    <span class="small muted" id="history-count" role="status" aria-live="polite"></span>
+    <button class="btn btn-danger btn-sm hidden" id="clear-btn" type="button">{{ icon('trash') }} Clear history</button>
+  </div>
+  <ul class="history-list" id="history-list"></ul>
+  <div class="card empty-state hidden" id="history-empty">
+    <div class="icon-tile">{{ icon('clock') }}</div>
+    <h3>No analyses yet</h3>
+    <p class="muted small">Results you analyze will appear here.</p>
+    <a class="btn btn-primary" href="{{ url_for('pages.analyze') }}">{{ icon('scan') }} Analyze a leaf</a>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/history.js') }}"></script>{% endblock %}
