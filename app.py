@@ -16,10 +16,12 @@ from config import BASE_DIR, Config
 # execute under `X-Content-Type-Options: nosniff`. Pin the correct types.
 for _ext, _type in {".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml", ".webp": "image/webp"}.items():
     mimetypes.add_type(_type, _ext)
+from services.cache import ResultCache
 from services.knowledge_base import KnowledgeBase
 from services.predictor import CLASS_NAMES, ModelUnavailableError, Predictor
 from services.security import apply_security_headers
 from services.similarity_client import SimilarityClient
+from services.telemetry import current_request_id, init_telemetry
 
 
 def create_app(config_object=Config, predictor: Predictor | None = None,
@@ -35,12 +37,17 @@ def create_app(config_object=Config, predictor: Predictor | None = None,
 
     kb = KnowledgeBase(BASE_DIR / "data" / "diseases.json")
     predictor = predictor or Predictor(app.config["MODEL_PATH"], app.config["MODEL_URL"],
-                                       app.config["MAX_CONCURRENT_PREDICTIONS"])
+                                       app.config["MAX_CONCURRENT_PREDICTIONS"],
+                                       onnx_path=app.config.get("ONNX_MODEL_PATH"),
+                                       onnx_threads=app.config.get("ONNX_THREADS", 1),
+                                       backend=app.config.get("INFERENCE_BACKEND", "auto"))
     similarity = similarity or SimilarityClient(
         app.config["SIMILARITY_SERVICE_URL"], app.config["SIMILARITY_TIMEOUT"],
         app.config["SIMILARITY_SERVICE_TOKEN"], app.config["SIMILAR_RESULTS"], CLASS_NAMES,
         app.config["LEAF_CHECK_TIMEOUT"])
-    app.extensions["caulicare"] = {"kb": kb, "predictor": predictor, "similarity": similarity}
+    cache = ResultCache(app.config.get("PREDICTION_CACHE_SIZE", 0))
+    app.extensions["caulicare"] = {"kb": kb, "predictor": predictor, "similarity": similarity, "cache": cache}
+    init_telemetry(app)
 
     app.extensions["rate_ns"] = uuid.uuid4().hex  # isolates rate-limit buckets per app instance
 
@@ -69,13 +76,15 @@ def create_app(config_object=Config, predictor: Predictor | None = None,
     def too_large(_):
         message = f"The image is too large. Please upload an image under {app.config['MAX_UPLOAD_MB']:g} MB."
         if wants_json():
-            return jsonify(success=False, error=message, code="file_too_large"), 413
+            return jsonify(success=False, error=message, code="file_too_large", decision="rejected",
+                           request_id=current_request_id()), 413
         return render_template("error.html", code=413, message=message), 413
 
     @app.errorhandler(HTTPException)
     def http_error(exc):
         if wants_json():
-            return jsonify(success=False, error=exc.description, code=exc.name.lower().replace(" ", "_")), exc.code
+            return jsonify(success=False, error=exc.description, code=exc.name.lower().replace(" ", "_"),
+                           request_id=current_request_id()), exc.code
         return render_template("error.html", code=exc.code, message=exc.description), exc.code
 
     @app.errorhandler(Exception)
@@ -83,7 +92,7 @@ def create_app(config_object=Config, predictor: Predictor | None = None,
         app.logger.exception("Unhandled error: %s", exc)
         if wants_json():
             return jsonify(success=False, error="Something went wrong on our side. Please try again.",
-                           code="internal_error"), 500
+                           code="internal_error", decision="error", request_id=current_request_id()), 500
         return render_template("error.html", code=500, message="Something went wrong on our side."), 500
 
     return app

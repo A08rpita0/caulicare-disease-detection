@@ -1,0 +1,29 @@
+# CauliCare main service without TensorFlow: the CNN and Grad-CAM run on ONNX Runtime.
+# Build:  docker build -f Dockerfile.onnx -t caulicare-onnx .
+# Same behaviour and API as the TensorFlow image (Dockerfile), with a much smaller image and
+# memory footprint. models/model1.onnx and models/model1.gradcam.npz must match models/model1.h5
+# (python scripts/export_onnx.py); otherwise the model is reported unavailable.
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    INFERENCE_BACKEND=onnx \
+    PORT=8080 \
+    MALLOC_ARENA_MAX=2 \
+    OMP_NUM_THREADS=1
+
+WORKDIR /app
+COPY requirements-onnx.txt .
+RUN pip install -r requirements-onnx.txt
+
+RUN useradd --create-home --uid 1000 app
+COPY --chown=app:app . .
+USER app
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+  CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:%s/api/health' % os.environ.get('PORT', '8080'), timeout=4)" || exit 1
+
+EXPOSE 8080
+CMD ["sh", "-c", "exec gunicorn app:app --bind 0.0.0.0:${PORT} --workers 1 --threads 4 --timeout 300 --graceful-timeout 30 --keep-alive 5"]

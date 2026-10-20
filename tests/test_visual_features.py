@@ -136,3 +136,102 @@ def test_health_reports_similarity_configuration():
 
 def test_old_thumbnail_route_is_gone(make_client):
     assert make_client().get("/reference/black-rot-001.jpg").status_code == 404
+
+
+# ---------------------------------------------- speed-ups must not change the estimate
+def _pillow_close(mask, size):
+    """The original implementation: Pillow's rank filters."""
+    from PIL import ImageFilter
+
+    img = Image.fromarray(mask.astype(np.uint8) * 255, "L").filter(ImageFilter.MaxFilter(size)).filter(ImageFilter.MinFilter(size))
+    return np.asarray(img) > 127
+
+
+def _brute_force_extreme(a, size, use_max):
+    """Definition of the filter: the max/min over each window, clipped where it leaves the image."""
+    r, (h, w) = size // 2, a.shape
+    out = np.empty_like(a)
+    for y in range(h):
+        for x in range(w):
+            win = a[max(0, y - r):y + r + 1, max(0, x - r):x + r + 1]
+            out[y, x] = win.max() if use_max else win.min()
+    return out
+
+
+@pytest.mark.parametrize("shape", [(30, 41), (7, 7), (5, 12), (12, 5), (1, 9), (20, 20)])
+@pytest.mark.parametrize("size", [3, 7, 15])
+@pytest.mark.parametrize("use_max", [True, False])
+def test_window_extreme_matches_its_definition(shape, size, use_max):
+    from services.severity import _window_extreme
+
+    a = (np.random.default_rng(shape[0] * 31 + size).random(shape) < 0.4).astype(np.uint8) * 255
+    assert np.array_equal(_window_extreme(a, size, use_max), _brute_force_extreme(a, size, use_max))
+
+
+@pytest.mark.parametrize("shape", [(288, 384), (384, 288), (101, 77), (15, 15), (14, 40), (40, 14)])
+@pytest.mark.parametrize("size", [7, 15, 21])
+@pytest.mark.parametrize("density", [0.05, 0.5, 0.95])
+def test_fast_closing_equals_pillows_rank_filters(shape, size, density):
+    from services.severity import _close
+
+    mask = np.random.default_rng(shape[0] * 7 + shape[1] + size).random(shape) < density
+    fast, reference = _close(mask, size), _pillow_close(mask, size)
+    r = size // 2
+    # Away from the border every Pillow version agrees; at the border only versions that clip the window do.
+    assert np.array_equal(fast[r:-r, r:-r], reference[r:-r, r:-r])
+    if _pillow_clips_at_the_border():
+        assert np.array_equal(fast, reference)
+
+
+def _pillow_clips_at_the_border():
+    from PIL import ImageFilter
+
+    probe = np.zeros((9, 9), dtype=np.uint8)
+    probe[0, 0] = 255
+    out = np.asarray(Image.fromarray(probe, "L").filter(ImageFilter.MaxFilter(5)))
+    return bool(out[2, 2] == 255 and out[0, 2] == 255)  # a corner pixel spreads to the window around it
+
+
+def test_fast_closing_equals_pillow_on_structured_masks():
+    from services.severity import _close
+
+    mask = np.zeros((288, 384), dtype=bool)
+    mask[40:200, 60:300] = True      # a leaf-like blob
+    mask[90:110, 120:140] = False    # a hole
+    mask[0:5, :] = True              # touching the border
+    mask[:, 380:] = True
+    for size in (7, 15):
+        fast, reference = _close(mask, size), _pillow_close(mask, size)
+        r = size // 2
+        assert np.array_equal(fast[r:-r, r:-r], reference[r:-r, r:-r])
+        if _pillow_clips_at_the_border():
+            assert np.array_equal(fast, reference)
+
+
+def test_estimate_is_unchanged_by_the_faster_implementation(monkeypatch):
+    import services.severity as sv
+
+    rng = np.random.default_rng(5)
+    arr = np.zeros((420, 560, 3), dtype=np.float32)
+    arr[:] = (70, 140, 80)
+    arr[100:200, 150:300] = (200, 190, 60)  # yellow patch
+    arr[250:300, 350:450] = (130, 90, 50)   # brown patch
+    arr += rng.normal(0, 6, arr.shape)
+    img = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
+    fast = sv.estimate(img)
+    monkeypatch.setattr(sv, "_close", _pillow_close)
+    slow = sv.estimate(img)
+    assert fast.band == slow.band and fast.affected_percent > 5
+    if _pillow_clips_at_the_border():
+        assert fast.affected_percent == slow.affected_percent and fast.leaf_fraction == slow.leaf_fraction
+
+
+def test_severity_png_is_lossless():
+    import base64
+
+    import services.severity as sv
+
+    img = Image.fromarray(np.random.default_rng(2).integers(0, 255, (60, 80, 3), dtype=np.uint8))
+    uri = sv._encode(img, "PNG")
+    decoded = Image.open(io.BytesIO(base64.b64decode(uri.split(",", 1)[1])))
+    assert np.array_equal(np.asarray(decoded), np.asarray(img))

@@ -10,5 +10,7 @@ python-dotenv>=1.0
 # ML (Keras 3; the notebook model was trained with TF 2.16+ / Keras 3)
 tensorflow-cpu>=2.16,<2.21; platform_system == "Linux"
 tensorflow>=2.16,<2.21; platform_system != "Linux"
+# Optional fast path for plain predictions (models/model1.onnx); Keras is used if it is missing
+onnxruntime>=1.18,<2
 numpy>=1.26
 pillow>=10.3

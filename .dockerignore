@@ -12,7 +12,7 @@ env
 .mypy_cache
 .ruff_cache
 notebooks
-docs
+docs/screenshots
 tests
 scripts
 # Separate service with its own image (similarity_service/Dockerfile)
@@ -26,5 +26,6 @@ data/splits.json
 requirements-dev.txt
 models/model_original_baseline.h5
 models/model_improved.h5
+models/*.int8.onnx
 *.md
 !README.md

@@ -1,7 +1,7 @@
 """Server-rendered pages."""
 import json
 
-from flask import Blueprint, abort, current_app, render_template
+from flask import Blueprint, abort, current_app, render_template, request
 
 from config import BASE_DIR
 
@@ -84,6 +84,15 @@ def history():
 @bp.get("/report")
 def report():
     return render_template("report.html", active="history")
+
+
+@bp.get("/developers")
+def developers():
+    from services.predictor import HIGH_SCORE_THRESHOLD, LOW_SCORE_THRESHOLD
+
+    return render_template("developers.html", base_url=request.host_url.rstrip("/"), low=LOW_SCORE_THRESHOLD,
+                           high=HIGH_SCORE_THRESHOLD, batch_max=current_app.config["BATCH_MAX_IMAGES"],
+                           active="developers")
 
 
 @bp.get("/about")

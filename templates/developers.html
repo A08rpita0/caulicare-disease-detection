@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}API for developers — CauliCare{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <span class="eyebrow">{{ icon('info') }} API</span>
+    <h1>Use CauliCare as an inference service</h1>
+    <p class="muted">Send a leaf photo, get the predicted class, a confidence score and a machine-readable decision. Every request is validated, timed and logged with a request id. The full contract is in the <a href="{{ url_for('api.openapi') }}">OpenAPI specification</a>.</p>
+  </div>
+</section>
+<section class="container stack" style="padding-bottom:40px">
+
+  <div class="grid-2" style="align-items:start">
+    <div class="card">
+      <h3 class="card-title">{{ icon('gauge') }} Classify one image</h3>
+      <p class="small muted">Small response, fastest path (no Grad-CAM, no similarity search):</p>
+      <pre class="code-block"><code>curl -X POST "{{ base_url }}/api/predict?compact=1" \
+  -H "X-Request-ID: my-trace-0001" \
+  -F "image=@leaf.jpg"</code></pre>
+      <pre class="code-block"><code>{
+  "success": true,
+  "decision": "accepted",
+  "decision_reason": "The top class has 98.7% probability (high confidence).",
+  "result": {
+    "label": "Black Rot",
+    "confidence": 0.9871,
+    "confidence_percent": 98.7,
+    "confidence_level": "high",
+    "reliable": true,
+    "top_k": [{"label": "Black Rot", "confidence": 0.9871, "percent": 98.7}, ...]
+  },
+  "inference": {"backend": "onnxruntime", "model": "model1.h5"},
+  "timing_ms": {"quality_gate": 38.5, "leaf_check": 412.0,
+                "preprocess": 9.8, "inference": 3.1, "total": 489.6},
+  "cached": false,
+  "request_id": "my-trace-0001"
+}</code></pre>
+      <p class="tiny" style="margin:0">Without <code>compact=1</code> the response also contains all class probabilities, Grad-CAM images, the affected-area estimate, similar reference images and disease information.</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">{{ icon('compare') }} Classify up to {{ batch_max }} images at once</h3>
+      <pre class="code-block"><code>curl -X POST "{{ base_url }}/api/predict/batch" \
+  -F "images=@leaf1.jpg" -F "images=@leaf2.jpg" -F "images=@notes.pdf"</code></pre>
+      <p class="small muted">Each image is checked on its own; a bad file is reported in its entry and does not stop the others. The accepted images share one batched forward pass through the model. A batch of N images counts as N requests against the rate limit.</p>
+      <pre class="code-block"><code>{
+  "count": 3, "accepted": 2, "uncertain": 0, "rejected": 1,
+  "results": [
+    {"index": 0, "success": true, "decision": "accepted", "result": {...}},
+    {"index": 1, "success": true, "decision": "accepted", "result": {...}},
+    {"index": 2, "success": false, "decision": "rejected",
+     "code": "unsupported_extension", "http_status": 415}
+  ]
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="grid-2" style="align-items:start">
+    <div class="card">
+      <h3>The <code>decision</code> field</h3>
+      <div class="table-wrap"><table class="stat-table">
+        <tr><th>Value</th><th>Meaning</th></tr>
+        <tr><td><code>accepted</code></td><td>Top class probability is at least {{ '%.2f'|format(low) }}. Moderate (below {{ '%.2f'|format(high) }}) or high confidence.</td></tr>
+        <tr><td><code>uncertain</code></td><td>A prediction is returned, but its probability is below {{ '%.2f'|format(low) }}. Do not act on it automatically.</td></tr>
+        <tr><td><code>rejected</code></td><td>Refused before classification: unsupported or corrupted file, too large, poor quality, or not a cauliflower leaf.</td></tr>
+        <tr><td><code>error</code></td><td>A valid request the service could not complete (model unavailable, rate limit, internal error).</td></tr>
+      </table></div>
+      <p class="tiny" style="margin:10px 0 0">Scores are over-confident (mean top score 96.8% against 87.9% test accuracy), so even <code>accepted</code> results can be wrong.</p>
+    </div>
+    <div class="card">
+      <h3>Status codes</h3>
+      <div class="table-wrap"><table class="stat-table">
+        <tr><th>Status</th><th><code>code</code></th></tr>
+        <tr><td>200</td><td>classified (<code>accepted</code> or <code>uncertain</code>)</td></tr>
+        <tr><td>400</td><td><code>no_file</code>, <code>empty_file</code>, <code>too_many_images</code>, <code>invalid_parameter</code></td></tr>
+        <tr><td>413</td><td><code>file_too_large</code> (over {{ max_upload_mb|int }} MB)</td></tr>
+        <tr><td>415</td><td><code>unsupported_extension</code>, <code>unsupported_mimetype</code>, <code>unsupported_format</code></td></tr>
+        <tr><td>422</td><td><code>corrupt_image</code>, <code>too_many_pixels</code>, <code>low_quality</code>, <code>not_cauliflower_leaf</code></td></tr>
+        <tr><td>429</td><td><code>rate_limited</code></td></tr>
+        <tr><td>503</td><td><code>model_unavailable</code>, <code>leaf_check_unavailable</code> (nothing is analysed unverified)</td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title">{{ icon('gauge') }} Live service statistics</h3>
+    <p class="small muted">Read from <code>GET /api/stats</code> and <code>GET /api/model</code> in your browser. Counts and latency are per server process since it started; health checks are not counted.</p>
+    <div id="live-stats" class="grid-4" aria-live="polite">
+      <div class="card metric"><b id="st-requests">–</b><span>Requests</span></div>
+      <div class="card metric"><b id="st-p50">–</b><span>Median <code>/api/predict</code> latency</span></div>
+      <div class="card metric"><b id="st-p95">–</b><span>95th percentile latency</span></div>
+      <div class="card metric"><b id="st-backend">–</b><span>Backend for plain predictions</span></div>
+    </div>
+    <p class="tiny" id="st-detail" style="margin:12px 0 0"></p>
+  </div>
+
+  <div class="card">
+    <h3>What makes it fast and reliable</h3>
+    <ul class="detail-list">
+      <li><strong>ONNX Runtime.</strong> The CNN is also exported to ONNX, and Grad-CAM is computed from its activations. The ONNX model is compared with the Keras model when the server starts and is not used if they differ. It can also run without TensorFlow at all (<code>INFERENCE_BACKEND=onnx</code>), which needs a fraction of the memory.</li>
+      <li><strong>Result cache.</strong> An identical upload (same bytes) is answered from memory. Only a hash and the finished result are kept, never the image.</li>
+      <li><strong>No wasted work.</strong> <code>compact=1</code> and the batch endpoint skip Grad-CAM, the affected-area estimate and the similarity search, and decode each image once.</li>
+      <li><strong>Per-stage timings</strong> in every response (<code>timing_ms</code>), and one structured log line per request with the request id, status, latency and decision, never the file name or image.</li>
+      <li><strong>Fail closed.</strong> If the cauliflower-leaf check cannot be made, the upload is refused with 503 rather than analysed unverified.</li>
+    </ul>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/developers.js') }}"></script>{% endblock %}

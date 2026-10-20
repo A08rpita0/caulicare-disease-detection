@@ -6,7 +6,7 @@ import time
 from collections import defaultdict, deque
 from functools import wraps
 
-from flask import current_app, jsonify, request
+from flask import current_app, g, jsonify, request
 
 _UNITS = {"second": 1, "minute": 60, "hour": 3600}
 
@@ -54,12 +54,22 @@ def rate_limited(config_key: str):
             header = current_app.config.get("CLIENT_IP_HEADER")
             ip = (request.headers.get(header, "").strip() if header else "") or request.remote_addr or "?"
             if not limiter.hit(f"{current_app.extensions['rate_ns']}:{fn.__name__}:{ip}", current_app.config[config_key]):
-                return jsonify(success=False, error="Too many requests. Please wait a moment and try again."), 429
+                return jsonify(success=False, error="Too many requests. Please wait a moment and try again.",
+                               code="rate_limited", decision="error", request_id=getattr(g, "request_id", None)), 429
             return fn(*args, **kwargs)
 
         return wrapper
 
     return deco
+
+
+def consume_rate_limit(config_key: str, extra_hits: int) -> bool:
+    """Count `extra_hits` more requests against the caller's limit (a batch of N images costs N).
+    Returns False when the limit is exceeded."""
+    header = current_app.config.get("CLIENT_IP_HEADER")
+    ip = (request.headers.get(header, "").strip() if header else "") or request.remote_addr or "?"
+    key = f"{current_app.extensions['rate_ns']}:{request.endpoint.rsplit('.', 1)[-1]}:{ip}"
+    return all(limiter.hit(key, current_app.config[config_key]) for _ in range(max(0, extra_hits)))
 
 
 CSP = (

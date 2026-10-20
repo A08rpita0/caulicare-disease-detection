@@ -51,6 +51,11 @@ services:
         value: "2"
       - key: MAX_CONCURRENT_PREDICTIONS
         value: "1"
+      # Keras only, exactly as before. Loading ONNX Runtime next to TensorFlow adds 60-100 MB (measured),
+      # which this 512 MB instance cannot spare. For a TensorFlow-free service (about a fifth of the
+      # memory) deploy Dockerfile.onnx or set INFERENCE_BACKEND=onnx with requirements-onnx.txt.
+      - key: INFERENCE_BACKEND
+        value: tensorflow
 
   - type: web
     name: caulicare-similarity

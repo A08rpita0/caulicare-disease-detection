@@ -2,3 +2,6 @@
 -r requirements.txt
 -r similarity_service/requirements.txt
 pytest>=8
+# ONNX export (scripts/export_onnx.py, tests) and the benchmark's memory probe
+onnx>=1.16
+psutil>=5.9

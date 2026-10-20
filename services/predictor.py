@@ -23,13 +23,21 @@ import base64
 import io
 import logging
 import threading
+import time
 import urllib.request
 from pathlib import Path
 
 import numpy as np
 from PIL import Image
 
+from services.gradcam_onnx import cam_from_features, load_sidecar, sidecar_path
+from services.onnx_export import sha256_file
+
 log = logging.getLogger(__name__)
+
+# The ONNX copy must reproduce the Keras probabilities to this tolerance on a fixed probe
+# batch at start-up; otherwise (for example after retraining only the .h5) it is not used.
+ONNX_PARITY_TOLERANCE = 1e-3
 
 # Order is the alphabetical folder order used by image_dataset_from_directory,
 # confirmed by the notebook output: dataset.class_names.
@@ -63,10 +71,33 @@ class ModelUnavailableError(RuntimeError):
     """The trained model artifact is missing or failed to load."""
 
 
+BACKENDS = ("auto", "onnx", "tensorflow")
+
+
 class Predictor:
-    def __init__(self, model_path: Path, model_url: str = "", max_concurrent: int = 1):
+    """The CNN, served by Keras, by ONNX Runtime, or both.
+
+    backend="tensorflow"  Keras only (Grad-CAM through TensorFlow's autodiff).
+    backend="auto"        Keras, plus the ONNX model when it reproduces the Keras model. Verified
+                          ONNX is used for every request: plain predictions, batches and Grad-CAM.
+    backend="onnx"        ONNX Runtime only. TensorFlow is never imported: a few hundred MB less
+                          memory and sub-second start-up. The ONNX file must record the SHA-256 of
+                          the model file it was exported from; a mismatch makes the model unavailable
+                          instead of silently serving a stale network.
+    """
+
+    def __init__(self, model_path: Path, model_url: str = "", max_concurrent: int = 1,
+                 onnx_path: Path | str | None = None, onnx_threads: int = 1, backend: str = "auto"):
+        if backend not in BACKENDS:
+            raise ValueError(f"backend must be one of {BACKENDS}, not {backend!r}")
+        self.mode = backend
         self.model_path = Path(model_path)
         self.model_url = model_url
+        self.onnx_path = Path(onnx_path) if onnx_path and backend != "tensorflow" else None
+        self.onnx_threads = max(1, int(onnx_threads))
+        self.onnx_status = "disabled" if self.onnx_path is None else "not loaded"
+        self._onnx = None
+        self._gradcam = None
         self._model = None
         self._last_conv_index = None
         self._lock = threading.Lock()
@@ -83,7 +114,23 @@ class Predictor:
     # ------------------------------------------------------------------ loading
     @property
     def is_loaded(self) -> bool:
-        return self._model is not None
+        return self._model is not None or (self.mode == "onnx" and self._onnx is not None)
+
+    @property
+    def artifact_present(self) -> bool:
+        path = self.onnx_path if self.mode == "onnx" else self.model_path
+        return path is not None and Path(path).exists()
+
+    @property
+    def backend(self) -> str:
+        """Backend used for plain (no Grad-CAM) predictions."""
+        return "onnxruntime" if self._onnx is not None else "tensorflow"
+
+    @property
+    def gradcam_backend(self) -> str:
+        if self._onnx is not None and self._gradcam is not None:
+            return "onnxruntime"
+        return "tensorflow" if self._model is not None else "none"
 
     def _download(self) -> None:
         log.info("Downloading model from MODEL_URL")
@@ -94,33 +141,126 @@ class Predictor:
                 fh.write(chunk)
         tmp.replace(self.model_path)
 
+    def _runtime(self):
+        return self._model if self._model is not None else self._onnx
+
     def load(self):
         """Load the model once (thread-safe) and cache it for all requests."""
-        if self._model is not None:
-            return self._model
+        if self.is_loaded:
+            return self._runtime()
         with self._lock:
-            if self._model is not None:
-                return self._model
+            if self.is_loaded:
+                return self._runtime()
             try:
-                if not self.model_path.exists() and self.model_url:
-                    self._download()
-                if not self.model_path.exists():
-                    raise FileNotFoundError(
-                        f"Model file not found at '{self.model_path}'. "
-                        "Export it from notebooks/Model.ipynb and place it there, or set MODEL_URL."
-                    )
-                import tensorflow as tf  # imported lazily: keeps app start fast & tests light
-
-                model = tf.keras.models.load_model(self.model_path, compile=False)
-                self._validate(model)
-                self._model = model
+                if self.mode == "onnx":
+                    self._load_onnx_only()
+                else:
+                    self._load_keras()
                 self.load_error = None
-                log.info("Model loaded from %s", self.model_path)
             except Exception as exc:  # noqa: BLE001 - surfaced as a clean 503
                 self.load_error = str(exc)
                 log.error("Model failed to load: %s", exc)
                 raise ModelUnavailableError(self.load_error) from exc
-        return self._model
+            if self.mode == "auto":
+                self.load_onnx()
+        return self._runtime()
+
+    def _load_keras(self) -> None:
+        if not self.model_path.exists() and self.model_url:
+            self._download()
+        if not self.model_path.exists():
+            raise FileNotFoundError(
+                f"Model file not found at '{self.model_path}'. "
+                "Export it from notebooks/Model.ipynb and place it there, or set MODEL_URL."
+            )
+        import tensorflow as tf  # imported lazily: keeps app start fast & tests light
+
+        model = tf.keras.models.load_model(self.model_path, compile=False)
+        self._validate(model)
+        self._model = model
+        log.info("Model loaded from %s", self.model_path)
+
+    def _session(self):
+        import onnxruntime as ort
+
+        opts = ort.SessionOptions()
+        opts.intra_op_num_threads = self.onnx_threads
+        opts.inter_op_num_threads = 1
+        return ort.InferenceSession(str(self.onnx_path), sess_options=opts, providers=["CPUExecutionProvider"])
+
+    def _read_gradcam(self, session) -> dict | None:
+        """Grad-CAM parameters next to the ONNX model, if they belong to it."""
+        side = sidecar_path(self.onnx_path)
+        if not side.exists():
+            return None
+        try:
+            params = load_sidecar(side)
+        except Exception as exc:  # noqa: BLE001 - Grad-CAM is optional
+            log.warning("Grad-CAM parameters unreadable: %s", exc)
+            return None
+        recorded = session.get_modelmeta().custom_metadata_map.get("source_sha256", "")
+        outputs = {o.name for o in session.get_outputs()}
+        if params["source_sha256"] != recorded or not {"conv_features", "hidden"} <= outputs:
+            log.warning("Grad-CAM parameters do not belong to %s; ignored", self.onnx_path.name)
+            return None
+        return params
+
+    def _load_onnx_only(self) -> None:
+        if self.onnx_path is None or not self.onnx_path.exists():
+            raise FileNotFoundError(f"ONNX model not found at '{self.onnx_path}'. Run scripts/export_onnx.py.")
+        session = self._session()
+        note = "source model file absent, not verified"
+        if self.model_path.exists():
+            recorded = session.get_modelmeta().custom_metadata_map.get("source_sha256", "")
+            if not recorded or recorded != sha256_file(self.model_path):
+                raise ValueError(f"{self.onnx_path.name} was not exported from {self.model_path.name}; "
+                                 "run scripts/export_onnx.py")
+            note = "matches the model file"
+        out = session.get_outputs()[0].shape
+        if out[-1] != len(CLASS_NAMES):
+            raise ValueError(f"Model outputs {out[-1]} classes, expected {len(CLASS_NAMES)}.")
+        self._gradcam = self._read_gradcam(session)
+        self._onnx = session
+        self.onnx_status = (f"active, TensorFlow not used ({note}; Grad-CAM "
+                            f"{'from ONNX activations' if self._gradcam else 'unavailable'})")
+        log.info("ONNX Runtime model loaded: %s", self.onnx_path)
+
+    def load_onnx(self) -> bool:
+        """Use the ONNX model next to the Keras one if it reproduces it.
+
+        Never raises: any problem leaves the Keras model in charge and is reported in
+        `onnx_status`. Requires the Keras model to be loaded (it is the reference)."""
+        if self.onnx_path is None or self._model is None:
+            return False
+        try:
+            if not self.onnx_path.exists():
+                self.onnx_status = "file not found; using TensorFlow"
+                return False
+            session = self._session()
+            probe = np.random.default_rng(0).uniform(0, 255, (2, IMAGE_SIZE, IMAGE_SIZE, 3)).astype(np.float32)
+            reference = self._model(probe, training=False).numpy()
+            candidate = session.run(["probabilities"], {"image": probe})[0]
+            diff = float(np.abs(reference - candidate).max())
+            if diff > ONNX_PARITY_TOLERANCE:
+                self.onnx_status = f"rejected: differs from the Keras model by {diff:.1e}; using TensorFlow"
+                log.warning("ONNX model ignored: %s", self.onnx_status)
+                return False
+            gradcam, cam_note = self._read_gradcam(session), "Grad-CAM on Keras"
+            if gradcam is not None:
+                _, expected = self._forward(self._model, probe[:1], True)
+                got = self._cam(session, gradcam, probe[:1])[1]
+                if expected is not None and float(np.abs(expected - got).max()) <= ONNX_PARITY_TOLERANCE:
+                    cam_note = "Grad-CAM on ONNX"
+                else:
+                    gradcam = None
+            self._onnx, self._gradcam = session, gradcam
+            self.onnx_status = f"active (max difference from Keras {diff:.1e}; {cam_note})"
+            log.info("ONNX Runtime enabled: %s", self.onnx_path)
+            return True
+        except Exception as exc:  # noqa: BLE001 - the fast path is optional
+            self.onnx_status = f"unavailable ({exc.__class__.__name__}); using TensorFlow"
+            log.warning("ONNX unavailable: %s", exc)
+            return False
 
     def _validate(self, model) -> None:
         out = model.output_shape
@@ -136,6 +276,7 @@ class Predictor:
         """Inject an in-memory model (used by the test-suite only)."""
         self._validate(model)
         self._model = model
+        self.load_onnx()
 
     # ------------------------------------------------------------- inference
     @staticmethod
@@ -143,20 +284,90 @@ class Predictor:
         return preprocess_image(img)
 
     def predict(self, img: Image.Image, explain: bool = True) -> dict:
-        model = self.load()
+        """Class, probabilities and confidence for one image.
+
+        Besides the prediction, the result carries `backend` ("onnxruntime" or "tensorflow")
+        and `timing_ms` ({"preprocess", "inference", "explanation_render"}); the API moves both
+        out of the prediction into its own response fields."""
+        self.load()
+        t0 = time.perf_counter()
         batch = self.preprocess(img)
-        probs, heatmap = self._forward(model, batch, explain)
+        t1 = time.perf_counter()
+        heatmap = layer = None
+        if self._onnx is not None and (not explain or self._gradcam is not None or self._model is None):
+            backend = "onnxruntime"
+            if explain and self._gradcam is not None:
+                try:
+                    probs, heatmap = self._cam(self._onnx, self._gradcam, batch)
+                    layer = self._gradcam["layer"]
+                except Exception as exc:  # noqa: BLE001 - explanation is optional
+                    log.warning("Grad-CAM failed, returning prediction only: %s", exc)
+                    probs, heatmap = self._onnx_forward(batch)[0], None
+            else:
+                probs = self._onnx_forward(batch)[0]
+        else:
+            backend = "tensorflow"
+            probs, heatmap = self._forward(self._model, batch, explain)
+            if heatmap is not None:
+                layer = self._model.layers[self._last_conv_index].name
+        t2 = time.perf_counter()
 
         result = summarize(probs)
         if heatmap is not None:
             orient = img.info.get("exif_orientation", 1)
             result["explanation"] = {
                 "method": "Grad-CAM",
-                "layer": model.layers[self._last_conv_index].name,
+                "layer": layer,
                 "heatmap": _to_data_url(_orient(_colorize(heatmap, (IMAGE_SIZE, IMAGE_SIZE)), orient)),
                 "overlay": _to_data_url(_orient(_overlay(img, heatmap), orient)),
             }
+        t3 = time.perf_counter()
+        result["backend"] = backend
+        result["timing_ms"] = {"preprocess": round((t1 - t0) * 1000, 1), "inference": round((t2 - t1) * 1000, 1),
+                               "explanation_render": round((t3 - t2) * 1000, 1)}
         return result
+
+    def predict_array(self, batch: np.ndarray) -> dict:
+        """Plain prediction (no Grad-CAM) from an already preprocessed (1, 256, 256, 3) array.
+        Same result and extra fields as `predict(img, explain=False)`, minus preprocessing."""
+        self.load()
+        t0 = time.perf_counter()
+        if self._onnx is not None:
+            probs, backend = self._onnx_forward(batch)[0], "onnxruntime"
+        else:
+            probs, backend = self._forward(self._model, batch, False)[0], "tensorflow"
+        result = summarize(probs)
+        result["backend"] = backend
+        result["timing_ms"] = {"inference": round((time.perf_counter() - t0) * 1000, 1)}
+        return result
+
+    def predict_batch(self, batches: list[np.ndarray]) -> tuple[list[dict], dict]:
+        """Classify several preprocessed images (each shape (1, 256, 256, 3)) in ONE forward pass.
+
+        Returns (predictions, info) where info has the backend and the pass's timing."""
+        self.load()
+        x = np.concatenate(batches, axis=0)
+        t0 = time.perf_counter()
+        if self._onnx is not None:
+            probs, backend = self._onnx_forward(x), "onnxruntime"
+        else:
+            import tensorflow as tf
+
+            probs, backend = self._model(tf.convert_to_tensor(x), training=False).numpy(), "tensorflow"
+        ms = round((time.perf_counter() - t0) * 1000, 1)
+        return [summarize(p) for p in probs], {"backend": backend, "inference_ms": ms, "images": len(batches)}
+
+    def _onnx_forward(self, batch: np.ndarray) -> np.ndarray:
+        return self._onnx.run(["probabilities"], {"image": np.ascontiguousarray(batch, dtype=np.float32)})[0]
+
+    @staticmethod
+    def _cam(session, params: dict, batch: np.ndarray):
+        """(probabilities, Grad-CAM heat-map) for a one-image batch, computed from ONNX activations."""
+        probs, conv, hidden = session.run(["probabilities", "conv_features", "hidden"],
+                                          {"image": np.ascontiguousarray(batch, dtype=np.float32)})
+        cam = cam_from_features(conv[0], hidden[0], int(np.argmax(probs[0])), params["w_hidden"],
+                                params["w_out"], params["pool"])
+        return probs[0], cam
 
     def _forward(self, model, batch: np.ndarray, explain: bool):
         import tensorflow as tf
@@ -206,6 +417,7 @@ def summarize(probs) -> dict:
     return {
         "disease": CLASS_NAMES[top],
         "confidence": round(score, 4),
+        "confidence_percent": round(score * 100, 1),
         "confidence_level": tier,
         "confidence_label": label,
         "confidence_message": message,
@@ -213,6 +425,7 @@ def summarize(probs) -> dict:
         "margin": round(score - runner, 4),
         "confusable_close_call": pair and runner >= CLOSE_CALL_MIN_RUNNER_UP,
         "all_predictions": {CLASS_NAMES[i]: round(float(probs[i]), 4) for i in order},
+        "all_predictions_percent": {CLASS_NAMES[i]: round(float(probs[i]) * 100, 1) for i in order},
     }
 
 

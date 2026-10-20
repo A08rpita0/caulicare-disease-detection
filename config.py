@@ -25,6 +25,17 @@ class Config:
     MODEL_URL = os.getenv("MODEL_URL", "")
     # Load the model at boot (True) or on the first prediction (False).
     PRELOAD_MODEL = _bool("PRELOAD_MODEL", True)
+    # How the CNN is served (see services/predictor.py):
+    #   auto        Keras, plus the ONNX copy (scripts/export_onnx.py) when it reproduces the Keras model;
+    #               verified ONNX then serves every request, Grad-CAM included.
+    #   onnx        ONNX Runtime only; TensorFlow is never imported (about 5x less memory, sub-second start-up).
+    #   tensorflow  Keras only.
+    INFERENCE_BACKEND = os.getenv("INFERENCE_BACKEND", "auto").strip().lower()
+    _onnx = os.getenv("ONNX_MODEL_PATH", "models/model1.onnx").strip()
+    ONNX_MODEL_PATH = BASE_DIR / _onnx if _onnx else None
+    ONNX_THREADS = int(os.getenv("ONNX_THREADS", "1"))
+    # Finished analyses kept in memory by the SHA-256 of the image (0 = off).
+    PREDICTION_CACHE_SIZE = int(os.getenv("PREDICTION_CACHE_SIZE", "32"))
 
     # --- Similarity service (separate service, see similarity_service/) ------
     # It runs the cauliflower-leaf validator and visual similarity search.
@@ -43,7 +54,12 @@ class Config:
 
     # --- Uploads -----------------------------------------------------------
     MAX_UPLOAD_MB = float(os.getenv("MAX_UPLOAD_MB", "8"))
-    MAX_CONTENT_LENGTH = int(MAX_UPLOAD_MB * 1024 * 1024)
+    MAX_UPLOAD_BYTES = int(MAX_UPLOAD_MB * 1024 * 1024)  # one image
+    # Most images accepted by POST /api/predict/batch.
+    BATCH_MAX_IMAGES = int(os.getenv("BATCH_MAX_IMAGES", "8"))
+    # Whole request, so a full batch fits. The single-image routes hold their request to
+    # MAX_UPLOAD_BYTES themselves (routes/api.py), so this is not a larger single-upload limit.
+    MAX_CONTENT_LENGTH = MAX_UPLOAD_BYTES * BATCH_MAX_IMAGES + 64 * 1024
     ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp"}
     ALLOWED_FORMATS = {"JPEG", "PNG", "WEBP"}  # verified from file bytes, not the name
     MAX_IMAGE_PIXELS = 40_000_000  # decompression-bomb guard
@@ -71,6 +87,8 @@ class Config:
 class TestConfig(Config):
     TESTING = True
     PRELOAD_MODEL = False
+    ONNX_MODEL_PATH = None
+    PREDICTION_CACHE_SIZE = 0
     SIMILARITY_SERVICE_URL = ""
     RATE_LIMIT_PREDICT = "1000/minute"
     RATE_LIMIT_SEARCH = "1000/minute"

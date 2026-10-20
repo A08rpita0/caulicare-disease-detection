@@ -19,7 +19,7 @@
       <a class="logo" href="{{ url_for('pages.home') }}">{{ logo() }} CauliCare</a>
       <button class="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">{{ icon('menu') }}</button>
       <ul class="nav-links" id="nav-links">
-        {% for key, label, endpoint in [('home','Home','pages.home'),('analyze','Analyze','pages.analyze'),('diseases','Disease Library','pages.diseases'),('guide','Photo Guide','pages.photo_guide'),('history','History','pages.history'),('about','About','pages.about')] %}
+        {% for key, label, endpoint in [('home','Home','pages.home'),('analyze','Analyze','pages.analyze'),('diseases','Disease Library','pages.diseases'),('guide','Photo Guide','pages.photo_guide'),('history','History','pages.history'),('developers','API','pages.developers'),('about','About','pages.about')] %}
         <li><a href="{{ url_for(endpoint) }}" {% if active == key %}aria-current="page"{% endif %}>{{ label }}</a></li>
         {% endfor %}
       </ul>
@@ -38,6 +38,7 @@
         <a href="{{ url_for('pages.analyze') }}">Analyze a leaf</a>
         <a href="{{ url_for('pages.diseases') }}">Disease Library</a>
         <a href="{{ url_for('pages.photo_guide') }}">Photo Guide</a>
+        <a href="{{ url_for('pages.developers') }}">API</a>
         <a href="{{ url_for('pages.about') }}">About the model</a>
       </nav>
     </div>

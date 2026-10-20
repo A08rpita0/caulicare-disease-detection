@@ -24,8 +24,10 @@
   const section = (name, title) => `<div class="section-label"><h2><span class="sec-icon">${icon(name)}</span>${esc(title)}</h2></div>`;
   const figure = (src, alt, caption, cls = "") => `<figure><img ${cls ? `class="${cls}" ` : ""}src="${esc(src)}" alt="${esc(alt)}"><figcaption>${esc(caption)}</figcaption></figure>`;
 
-  function header(entry, p, q) {
-    const warnings = (q.warnings || []).map((w) => `<div class="notice warn">${esc(w.message)}</div>`).join("");
+  function header(entry, p, q, data) {
+    const disagree = Boolean(data && data.second_opinion && data.second_opinion.agrees === false);
+    const warnings = (disagree ? [`<div class="notice error">${icon("alert")}<div><b>Second opinion disagrees.</b> ${esc(data.decision_reason)}</div></div>`] : [])
+      .concat((q.warnings || []).map((w) => `<div class="notice warn">${esc(w.message)}</div>`)).join("");
     return `
       <div class="card result-card">
         <span class="eyebrow" style="margin:0 0 12px">${icon("leaf")} Analysis result</span>
@@ -37,9 +39,9 @@
             <div class="confidence-line">
               <span class="confidence-value">${CC.pct(p.confidence)}</span>
               <span class="small muted">confidence</span>
-              <span class="badge ${esc(p.confidence_level)}">${esc(p.confidence_label)}</span>
+              <span class="badge ${disagree ? "uncertain" : esc(p.confidence_level)}">${disagree ? "Unreliable: second opinion disagrees" : esc(p.confidence_label)}</span>
             </div>
-            <div class="meter" aria-hidden="true"><span class="${esc(p.confidence_level)}" style="width:${Math.max(p.confidence * 100, 2).toFixed(1)}%"></span></div>
+            <div class="meter" aria-hidden="true"><span class="${disagree ? "uncertain" : esc(p.confidence_level)}" style="width:${Math.max(p.confidence * 100, 2).toFixed(1)}%"></span></div>
             ${p.confidence_level !== "high" ? `<p class="small" style="margin:10px 0 0">${esc(p.confidence_message)}</p>` : ""}
           </div>
         </div>
@@ -137,7 +139,7 @@
     const data = entry.data, p = data.prediction;
     const expanded = !opts.actions; // the printable report shows everything
     container.innerHTML = [
-      header(entry, p, data.quality || {}),
+      header(entry, p, data.quality || {}, data),
       breakdown(p),
       affected(entry, data.severity),
       gradcam(entry, p),

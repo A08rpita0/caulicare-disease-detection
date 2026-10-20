@@ -43,6 +43,8 @@ models/*
 !models/.gitkeep
 !models/README.md
 !models/model1.h5
+!models/model1.onnx
+!models/model1.gradcam.npz
 !models/model_metadata.json
 
 # Similarity service: the DINOv2 model (88.5 MB) is downloaded at build time by

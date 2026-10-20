@@ -8,6 +8,8 @@ CauliCare screens a photo of a cauliflower leaf for three common diseases. Every
 
 **Stack:** Python 3.11 · Flask · TensorFlow / Keras · ONNX Runtime · DINOv2 · FAISS · NumPy · Pillow · vanilla HTML / CSS / JavaScript · Docker · Render
 
+CauliCare is also a complete **image classification and inference service**: validated uploads, per-class confidence scores, a machine-readable accept / uncertain / reject decision, held-out evaluation metrics, an OpenAPI-described JSON API, and measured inference optimisation. See [Project Requirements Coverage](#project-requirements-coverage) and [Inference Service](#inference-service).
+
 ## Overview
 
 Leaf diseases such as Black Rot and Downy Mildew spread quickly in a cauliflower crop, and their early signs are easy to miss or confuse. CauliCare gives a fast, explained first opinion from a single photo:
@@ -31,7 +33,27 @@ Photos that are not cauliflower leaves (people, animals, other plants, objects, 
 - **Image checks:** file type and decoded format, size, blur, darkness, exposure and resolution.
 - **History and reports:** past results are kept in the browser only; any result can be printed or saved as a self-contained HTML report.
 - **Responsive UI** for phones, tablets and desktops.
+- **Inference API:** a machine-readable `decision` (`accepted` / `uncertain` / `rejected`), ranked top-k classes, a compact response mode, a batch endpoint, request IDs, per-stage timings and an [OpenAPI specification](docs/openapi.yaml) (also at `/developers` and `/api/openapi.yaml`).
+- **Fast inference:** the CNN and Grad-CAM also run on ONNX Runtime (about 3x faster than Keras), identical uploads are served from a cache, and the whole service can run **without TensorFlow** (about a fifth of the memory).
 - **Security:** uploads processed in memory and never stored, per-client rate limiting, security headers (including a Content Security Policy), and error messages that never expose internals.
+
+## Project Requirements Coverage
+
+The project brief is an *AI image classification and inference service*: classify uploaded images, validate them, return classes with confidence scores, handle corrupted / unsupported / uncertain inputs, report evaluation metrics, and offer a simple interface or API. This is how each requirement is met.
+
+| Requirement | How CauliCare meets it | Where |
+|---|---|---|
+| Classify plant diseases from uploaded images | Four-class cauliflower CNN: Bacterial spot rot, Black Rot, Downy Mildew, No disease | `models/model1.h5`, `services/predictor.py` |
+| Validate uploaded images | Extension, MIME type, real format read from the bytes, size limit, decompression-bomb limit, corruption check, image-quality gate and a trained cauliflower-leaf validator that fails closed | `services/image_validation.py`, `routes/api.py` |
+| Predicted class with confidence | `result.label` and `result.confidence`, ranked `top_k`, and the probability of every class | `POST /api/predict` |
+| Corrupted and unsupported inputs | 22 hostile inputs answered with the right status and error code, no internals exposed ([results](#reliability-and-error-handling)) | `scripts/robustness_report.py` |
+| Uncertain predictions | `decision: "uncertain"` below 0.80 (threshold chosen on the validation split) plus High / Moderate / Uncertain levels | `services/analysis.py` |
+| Model evaluation metrics | Accuracy, macro precision / recall / F1, per-class table, confusion matrix, calibration; served by `GET /api/model`, the About page and `reports/` | [Model Evaluation](#model-evaluation) |
+| Simple interface or API | Web UI plus a documented JSON API (single, compact and batch) | [`docs/openapi.yaml`](docs/openapi.yaml), `/developers` |
+| Image preprocessing | NumPy resize pixel-identical to the training pipeline, EXIF handling, transparency flattened on white | `services/predictor.py` |
+| Prediction reliability | Confidence levels, decision field, calibration study, fail-closed leaf validator, ONNX model verified against Keras at start-up | [Reliability](#reliability-and-error-handling) |
+| Error handling | One JSON error shape with `code`, `decision` and `request_id`; rate limiting; clean 5xx messages | `routes/api.py`, `app.py` |
+| Inference optimisation | ONNX Runtime backend, TensorFlow-free serving, result cache, compact and batch modes, a 4.7x faster affected-area estimate, per-stage timings, a reproducible benchmark | [Inference Optimisation](#inference-optimisation) |
 
 ## Screenshots
 
@@ -131,7 +153,7 @@ flowchart LR
 |---|---|---|
 | Code | `app.py`, `routes/`, `services/` | `similarity_service/` |
 | Responsibilities | Pages, upload checks, CNN, Grad-CAM, affected region, disease information, rate limiting | DINOv2 embedding, cauliflower-leaf validator, FAISS search, reference metadata and thumbnails |
-| Dependencies | Flask, TensorFlow, NumPy, Pillow | Flask, ONNX Runtime, FAISS, NumPy, Pillow (no TensorFlow) |
+| Dependencies | Flask, TensorFlow (or ONNX Runtime alone, see [Serving without TensorFlow](#serving-without-tensorflow)), NumPy, Pillow | Flask, ONNX Runtime, FAISS, NumPy, Pillow (no TensorFlow) |
 | Health check | `GET /api/health` | `GET /health` |
 
 How the services talk:
@@ -144,16 +166,150 @@ How the services talk:
 
 ### API
 
+The full contract is in [`docs/openapi.yaml`](docs/openapi.yaml) (served at `/api/openapi.yaml`) and summarised for humans at `/developers`.
+
 | Method | Endpoint | Description |
 |---|---|---|
-| `POST` | `/api/predict` | Multipart field `image`. **200** `status: ok` with the leaf check, prediction, probabilities, Grad-CAM, affected-region estimate, similar images and disease information. **422** `status: not_cauliflower_leaf` or `low_quality` (nothing analysed). **503** `code: leaf_check_unavailable` when the leaf check cannot be made |
+| `POST` | `/api/predict` | Multipart field `image`. Query: `compact=1` (small response, no Grad-CAM / affected area / similarity), `explain=0` (skip Grad-CAM), `top_k=1..4`. **200** `status: ok` with `decision` (`accepted` or `uncertain`), `result`, the leaf check, prediction, probabilities, Grad-CAM, affected-area estimate, similar images and disease information. **422** `status: not_cauliflower_leaf` or `low_quality` (nothing analysed). **503** `code: leaf_check_unavailable` when the leaf check cannot be made |
+| `POST` | `/api/predict/batch` | Multipart field `images` (up to 8 files). Each image is checked on its own, accepted ones share one batched forward pass. **200** with one entry per image; a bad file is reported in its entry (`success: false`, `code`, `http_status`) without failing the rest |
 | `POST` | `/api/verify` | Same upload checks and cauliflower-leaf check only, without the disease model: **200** `status: cauliflower_leaf`, or the same 422 / 503 refusals |
+| `GET` | `/api/model` | Model description, held-out evaluation (accuracy, macro P / R / F1, per-class, confusion matrix), calibration, reliability thresholds and which backend serves requests |
+| `GET` | `/api/stats` | Request counts, decisions, status codes, cache hit rate and p50 / p95 latency per endpoint since the process started |
+| `GET` | `/api/health` | Model status, inference backend and similarity-service configuration (used by the hosting platform) |
+| `GET` | `/api/openapi.yaml` | The OpenAPI 3 specification |
 | `GET` | `/api/diseases`, `/api/diseases/<id>` | Disease records |
 | `GET` | `/api/search?q=...` | Symptom search over the knowledge base |
-| `GET` | `/api/health` | Model status and similarity-service configuration |
 | `POST` | `/verify` *(similarity service)* | Multipart `image`; returns `is_cauliflower_leaf`, `score` and `threshold` |
 | `POST` | `/search` *(similarity service)* | Multipart `image` and optional `k` (1–10); returns the top-K reference images |
 | `GET` | `/health` *(similarity service)* | `{"status": "ok", "model_loaded": true, "index_loaded": true, "validator_loaded": true, ...}` |
+
+Scores come both as a fraction (`confidence`, 0-1) and as a percentage (`confidence_percent`, `percent`, `all_predictions_percent`, one decimal).
+
+Every JSON response carries `request_id` (also sent as the `X-Request-ID` header; send your own, 8-64 characters of `A-Za-z0-9._-`, to correlate calls with the logs).
+
+```bash
+curl -X POST "http://localhost:5000/api/predict?compact=1" -F "image=@leaf.jpg"
+```
+
+```json
+{
+  "success": true, "status": "ok",
+  "decision": "accepted",
+  "decision_reason": "The top class has 98.7% probability (high confidence).",
+  "result": {"label": "Black Rot", "confidence": 0.9871, "confidence_percent": 98.7, "confidence_level": "high", "reliable": true,
+             "top_k": [{"label": "Black Rot", "confidence": 0.9871, "percent": 98.7}, {"label": "Downy Mildew", "confidence": 0.0102, "percent": 1.0}, ...]},
+  "inference": {"backend": "onnxruntime", "model": "model1.h5"},
+  "timing_ms": {"read_upload": 1.0, "quality_gate": 11.7, "leaf_check": 0.0, "preprocess": 5.2, "inference": 9.7, "total": 28.1},
+  "cached": false, "request_id": "4f2a9c1e7b3d5a60"
+}
+```
+
+## Inference Service
+
+### Decisions and confidence
+
+Each classified image gets a `decision`, so a client does not have to interpret probabilities itself:
+
+| `decision` | Meaning |
+|---|---|
+| `accepted` | The top class has probability of at least 0.80 (moderate 0.80-0.95, or high 0.95 and above) |
+| `uncertain` | A prediction is returned but its probability is below 0.80. Fewer than half of such validation predictions were correct, so it should not be acted on automatically |
+| `rejected` | Refused before classification: unsupported or corrupted file, too large, poor quality, or not a cauliflower leaf |
+| `error` | A valid request the service could not complete (model unavailable, rate limit, internal error) |
+
+**Second opinion.** In the full response the similarity search acts as an independent check (a different model, DINOv2, not trained on these diseases). If at least 80% of the most similar reference photos share a label that differs from the CNN's, the decision becomes `uncertain` and the page shows a warning (`second_opinion.agrees: false`). The label itself is never changed. Example: a photo of a harvested cauliflower head on a table was classified as Downy Mildew at over 99.9% while all five nearest reference photos were "No disease". The rule is a safeguard, not a validated classifier: its thresholds have not been tuned on the dataset, and it only flags; it cannot make the CNN right.
+
+The 0.80 / 0.95 thresholds were chosen on the validation split. Scores are over-confident (mean top score 96.8% against 87.9% test accuracy), so even `accepted` results can be wrong; see [Limitations](#limitations).
+
+### Reliability and error handling
+
+`python scripts/robustness_report.py` sends 22 hostile or unusual inputs to `/api/predict` (real CNN, stubbed leaf check) and checks the status and error code of each. Result: **22 / 22 answered as specified, 0 responses exposed internals** (full table in `reports/robustness.json`).
+
+| Input | Status | `code` |
+|---|---|---|
+| Valid JPEG / PNG / WEBP, or a browser that sends no content type | 200 | `accepted` / `uncertain` |
+| No file, wrong form field name | 400 | `no_file` |
+| Empty file | 400 | `empty_file` |
+| Text renamed `.jpg`, truncated or half-downloaded JPEG | 422 | `corrupt_image` |
+| PDF, GIF | 415 | `unsupported_extension` |
+| GIF renamed `.png` | 415 | `unsupported_format` |
+| PNG sent as `application/pdf` | 415 | `unsupported_mimetype` |
+| Larger than 8 MB | 413 | `file_too_large` |
+| 96-megapixel decompression bomb | 422 | `too_many_pixels` |
+| Tiny, blank, almost black or very blurry image | 422 | `low_quality` |
+| Not a cauliflower leaf | 422 | `not_cauliflower_leaf` |
+| Leaf check cannot be made (service down) | 503 | `leaf_check_unavailable` (fails closed: nothing is analysed unverified) |
+| Too many requests (a batch of N images counts as N) | 429 | `rate_limited` |
+
+A model that is missing or fails to load gives a clean `503 model_unavailable`; unexpected exceptions give `500` with a generic message and the details only in the server log.
+
+### Inference optimisation
+
+Reproduce everything below with `python scripts/export_onnx.py` and `python scripts/benchmark_inference.py` (results in `reports/benchmark.json`). Measured on one Windows laptop (Python 3.11.9, TensorFlow 2.20.0, ONNX Runtime 1.20.1), 1 CPU thread as in the Docker / Render configuration, median of the quietest of 5 blocks of 40 runs. Compare the rows with each other, not with other machines; differences under about 20% are noise.
+
+**What was done**
+
+1. **ONNX Runtime backend.** `scripts/export_onnx.py` builds an ONNX copy of the CNN directly from the Keras weights (720 KB against 2236 KB) and checks it against Keras. At start-up the app compares the two again and ignores the ONNX file if they differ, so a retrained `.h5` can never be served through a stale `.onnx`.
+2. **Grad-CAM from ONNX activations**, which removes the last reason to keep TensorFlow in the serving path ([below](#serving-without-tensorflow)).
+3. **Profiling-driven fix of the affected-area estimate.** The per-stage timings showed it taking about 120 ms, far more than the CNN (10 ms). Pillow's 15 x 15 rank filter (61 ms) became an equivalent two-pass maximum / minimum (0.5 ms) and the PNG encoder setting was changed (38 ms to 4 ms): **122 ms to 26 ms with identical output** (the new code is tested against Pillow's filters and against the filter's definition).
+4. **Compact mode** (`compact=1`) skips Grad-CAM, the affected-area estimate and the similarity search, and decodes the image once instead of twice.
+5. **Result cache** keyed by the SHA-256 of the uploaded bytes (32 entries, `PREDICTION_CACHE_SIZE`). Only the hash and the finished result are kept, never the image; a temporary similarity-service failure is never cached.
+6. **Batch endpoint** with one batched forward pass for all accepted images.
+7. **Per-stage timings** (`timing_ms`) in every response, plus `/api/stats` percentiles, so the next bottleneck is visible.
+
+**Results**
+
+| Model forward pass, one 256 x 256 image | median | p95 |
+|---|---|---|
+| Keras (TensorFlow 2.20.0) | 34.9 ms | 41.5 ms |
+| **ONNX Runtime, float32 (used)** | **10.3 ms** | 11.4 ms |
+| ONNX Runtime, dynamic int8 (not used) | 11.2 ms | 12.7 ms |
+
+Probabilities from the ONNX model differ from Keras by at most 9e-09 and the top class agrees on 32/32 images; the Grad-CAM heat-maps differ by at most 3e-07. Dynamic int8 quantisation (`export_onnx.py --quantize`) shrinks the file to 190 KB but is slightly *slower* here and changes probabilities by 3e-4, so it is not used.
+
+| Throughput (images per second) | batch 1 | batch 4 | batch 8 | batch 16 |
+|---|---|---|---|---|
+| Keras | 30 | 55 | 62 | 67 |
+| ONNX Runtime | 94 | 96 | 100 | 96 |
+
+| One decoded photo to a prediction (median) | Keras | ONNX Runtime |
+|---|---|---|
+| With Grad-CAM heat-map and overlay | 99.7 ms | **32.6 ms** |
+| Without Grad-CAM | 37.3 ms | **16.2 ms** |
+
+| `POST /api/predict`, 1024 x 768 JPEG (median, network calls stubbed) | latency |
+|---|---|
+| Full analysis (Grad-CAM, affected area), Keras | 154 ms |
+| Full analysis, ONNX Runtime | **83.7 ms** |
+| `explain=0` (no Grad-CAM), ONNX Runtime | 63.4 ms |
+| `compact=1`, ONNX Runtime | **31.8 ms** |
+| Same image uploaded again (cache hit) | **1.7 ms** |
+| 8 images, one `/api/predict/batch` request | 262 ms |
+| 8 images, eight `compact=1` requests | 256 ms |
+
+The last two rows show what batching buys: decoding and the quality gate dominate the CPU time per image, so a batch saves HTTP round trips and shares one forward pass, not processing time. The leaf check and similarity search are stubbed above; in production the leaf check adds one network round trip to the similarity service.
+
+### Serving without TensorFlow
+
+Set `INFERENCE_BACKEND=onnx` (and install `requirements-onnx.txt`, or build `Dockerfile.onnx`) and the main service never imports TensorFlow:
+
+| Whole application, fresh process, 12 full analyses with Grad-CAM | TensorFlow | ONNX Runtime only |
+|---|---|---|
+| Start-up until the model is loaded | 8.4 s | **0.8 s** |
+| Resident memory | 515 MB | **99 MB** |
+| Median full request | 158 ms | **77.1 ms** |
+
+`Dockerfile.onnx` was built and run: **432 MB image against 2.1 GB** for the TensorFlow image; started under a 512 MB limit next to a stub of the similarity service it used 62 MiB idle and 129 MiB after 26 requests (single, compact and batch; Docker's figure includes file cache), without being killed. In this mode:
+
+- `models/model1.onnx` records the SHA-256 of the `.h5` it was exported from. If they differ (the model was retrained without re-exporting), the model is reported unavailable (`503`) instead of silently serving a stale network. Re-run `python scripts/export_onnx.py` after changing the model.
+- TensorFlow is still needed for training, the tests and `scripts/export_onnx.py`.
+- The hosted demo keeps `INFERENCE_BACKEND=tensorflow` (see [Deployment](#deployment)): loading ONNX Runtime *next to* TensorFlow costs another 60-100 MB, which a 512 MB instance cannot spare. The TensorFlow-free build was verified locally and in Docker, not on Render.
+
+### Observability
+
+- Every request gets an id (`X-Request-ID`); `/api/*` calls write one JSON log line with the id, route, status, latency, decision, predicted class, confidence level, backend and cache status. It never contains a file name, an address or image data.
+- `GET /api/stats` reports request counts, decisions, status codes, cache hit rate and p50 / p95 latency per endpoint (in memory, per process).
+- `GET /api/model` reports the evaluation figures and the serving backend; `GET /api/health` is the platform health check.
 
 ## Machine Learning
 
@@ -167,7 +323,7 @@ How the services talk:
 | Input | RGB, 256 × 256, raw 0–255 values; `Resizing` and `Rescaling(1/255)` layers are part of the model |
 | Augmentation (training only) | Random horizontal/vertical flip and random rotation |
 | Training | Adam (learning rate 0.001), sparse categorical cross-entropy, batch size 32, seed 42 |
-| Files | `models/model1.h5` (2.3 MB) and `models/model_metadata.json` |
+| Files | `models/model1.h5` (2.3 MB), its ONNX export `models/model1.onnx` (0.7 MB, with `model1.gradcam.npz`) and `models/model_metadata.json` |
 
 | Class | Description |
 |---|---|
@@ -263,6 +419,8 @@ The heuristic is therefore no longer used to refuse images. **Why the second cau
 
 The gradient of the predicted class score (taken before softmax, which otherwise saturates on confident predictions) with respect to the last convolution layer weights its feature maps; their weighted sum gives the heatmap. That layer is a 4 × 4 grid, so the map is coarse. It shows where the model's evidence came from, not proof that a highlighted area contains the disease. It is not used as a segmentation mask.
 
+Grad-CAM is computed in TensorFlow (`GradientTape`) or, without TensorFlow, from the ONNX model's activations: for this network the gradient has a closed form (see `services/gradcam_onnx.py`), and the two heat-maps agree to 3e-7.
+
 ## Visual Affected-Area Analysis
 
 The dataset has image-level labels only, with no lesion masks, so no segmentation model could be trained or validated. `services/severity.py` uses colour thresholds instead: it finds the leaf (green to blue-green tissue, enclosed holes filled) and counts yellow, tan and brown pixels inside it. Affected pixels are drawn in red on a dimmed copy of the photo. The percentage is shown with a display band (0–10% Low, 10–30% Moderate, 30–60% High, above 60% Very high), which is a convention, not a validated severity scale. On the test split, healthy leaves had a median estimate of 2.7%, Bacterial spot rot 10.9% and Downy Mildew 18.9%, while Black Rot is underestimated (5.4%). Details: `reports/visual_features.json`.
@@ -339,13 +497,15 @@ Settings can also go in a `.env` file: copy `.env.example` to `.env` (never comm
 python -m pytest
 ```
 
-**Result on Windows, Python 3.11: 165 passed, 5 skipped.**
+**Result on Windows, Python 3.11: 306 passed, 8 skipped** (4 need the dataset, 1 needs FAISS, 3 need the DINOv2 model download).
 
 What the suite covers:
 - API, upload and quality checks, and security behaviour (rate limiting, proxy handling).
 - **Cauliflower-leaf gate:** a rejected image never reaches the disease model or similarity search; an unreachable, misconfigured or malformed leaf check refuses the upload (fail closed); `/api/verify`; the service's `/verify` endpoint, token, embedding reuse and a missing or malformed validator file; with the real DINOv2 model, the committed validator accepts dataset leaves and rejects a document and an abstract image.
 - Preprocessing (pixel-exact agreement with TensorFlow's resize), prediction output and Grad-CAM.
-- The affected-region estimate.
+- **Inference service:** decisions and `top_k`; request IDs (a hostile `X-Request-ID` is replaced); per-stage timings; compact and batch modes (mixed good and bad files, per-image rate-limit cost, single uploads still limited to one image); the result cache (LRU, mode-separated, never caches refusals or a temporary similarity failure); `/api/model`, `/api/stats` and the structured log (no file names); every API route is documented in the OpenAPI file.
+- **ONNX:** the exported model reproduces Keras; Grad-CAM from ONNX activations matches Keras and a hand-checked case; a stale, missing, broken or unsourced ONNX file is detected; **a subprocess in which `import tensorflow` fails serves full analyses with Grad-CAM**.
+- The affected-area estimate, including proofs that the faster filter equals Pillow's and its own definition.
 - **Similarity service:**
   - health, model and index loading, and search results;
   - invalid and malformed images, the token, and validation of the index metadata;
@@ -354,13 +514,13 @@ What the suite covers:
   - timeouts, a service that is down, error statuses and invalid responses;
   - an end-to-end flow through real HTTP: main app → similarity service → result.
 
-Most CNN tests use an untrained network with the real architecture, so no dataset is needed. Of the 5 skips, 4 need the dataset and 1 needs FAISS, which is blocked on some Windows machines and runs in Docker. With the dataset, the real-model tests also check that exactly 87 of 99 held-out test images are classified correctly:
+Most CNN tests use an untrained network with the real architecture, so no dataset is needed. With the dataset, the real-model tests also check that exactly 87 of 99 held-out test images are classified correctly:
 
 ```powershell
 $env:CAULICARE_DATASET_DIR = "C:\path\to\Original Dataset"; python -m pytest
 ```
 
-Result: **169 passed, 1 skipped** (FAISS on Windows).
+Two scripts exercise the whole service and double as regression checks: `python scripts/robustness_report.py` (22 hostile inputs, exits 1 on any difference) and `python scripts/benchmark_inference.py`.
 
 ## Docker
 
@@ -372,6 +532,7 @@ docker build -t caulicare-similarity similarity_service
 ```
 
 - **Main image:** Python 3.11 slim, TensorFlow CPU and gunicorn, about 2.1 GB.
+- **Main image without TensorFlow:** `docker build -f Dockerfile.onnx -t caulicare-onnx .` serves the same API from ONNX Runtime (`INFERENCE_BACKEND=onnx`), about 0.4 GB; see [Serving without TensorFlow](#serving-without-tensorflow).
 - **Similarity image:** ONNX Runtime and FAISS with no TensorFlow, about 0.7 GB. The DINOv2 model is downloaded and checksum-verified during the build.
 - Both images run as a non-root user and define a `HEALTHCHECK`.
 
@@ -401,7 +562,7 @@ Steps:
 2. Render creates both services. `SERVICE_TOKEN` is generated for the similarity service and copied into the main service as `SIMILARITY_SERVICE_TOKEN`.
 3. When the Blueprint asks for `SIMILARITY_SERVICE_URL`, enter the similarity service's public URL, for example `https://caulicare-similarity.onrender.com`. You can also set it later under the main service's **Environment** tab.
 
-Memory settings for the 512 MB instances (`MALLOC_ARENA_MAX`, single-threaded math libraries, one analysis at a time) are part of the Blueprint. Free services sleep after 15 minutes without traffic, so cold starts are slow; see [Limitations](#limitations).
+Memory settings for the 512 MB instances (`MALLOC_ARENA_MAX`, single-threaded math libraries, one analysis at a time, `INFERENCE_BACKEND=tensorflow`) are part of the Blueprint. Free services sleep after 15 minutes without traffic, so cold starts are slow; see [Limitations](#limitations).
 
 ## Project Structure
 
@@ -413,11 +574,15 @@ caulicare/
 │   ├── api.py                 # JSON API (/api/predict runs the CNN and calls the similarity service)
 │   └── pages.py               # Home, Analyze, Disease Library, Photo Guide, History, Report, About
 ├── services/
-│   ├── predictor.py           # Model loading, preprocessing, inference, confidence, Grad-CAM
+│   ├── predictor.py           # Model loading (Keras / ONNX / both), preprocessing, inference, confidence, Grad-CAM
 │   ├── image_validation.py    # Upload checks and the image-quality gate
 │   ├── severity.py            # Affected-region estimate and its visualisation
 │   ├── similarity_client.py   # Validated, fail-safe client for the similarity service
-│   ├── analysis.py            # Combines checks, prediction and disease information
+│   ├── analysis.py            # Combines checks, prediction and disease information; decision field
+│   ├── cache.py               # SHA-256-keyed LRU result cache
+│   ├── telemetry.py           # Request IDs, stage timings, structured logs, statistics
+│   ├── onnx_export.py         # Keras -> ONNX exporter (no tf2onnx)
+│   ├── gradcam_onnx.py        # Grad-CAM from ONNX activations (NumPy)
 │   ├── knowledge_base.py      # Disease records and symptom search
 │   └── security.py            # Rate limiting and security headers
 ├── similarity_service/        # Separate service: DINOv2 + FAISS (no TensorFlow)
@@ -433,18 +598,23 @@ caulicare/
 │   └── Dockerfile
 ├── templates/                 # Jinja pages
 ├── static/                    # CSS, JavaScript, favicon
-├── models/                    # model1.h5 and model_metadata.json
+├── models/                    # model1.h5, model1.onnx (+ .gradcam.npz), model_metadata.json
 ├── data/                      # diseases.json (knowledge base), splits.json (train/val/test)
 ├── training/                  # Reproducible dataset report, split, training, evaluation
 ├── scripts/                   # build_image_index.py, evaluate_visual_features.py,
-│                              # fetch_validator_data.py, train_leaf_validator.py
+│                              # fetch_validator_data.py, train_leaf_validator.py,
+│                              # export_onnx.py, benchmark_inference.py, robustness_report.py
 ├── reports/                   # Evaluation and training reports, learning curves
 ├── notebooks/Model.ipynb      # Original training notebook
 ├── tests/                     # pytest suite (both services)
-├── docs/screenshots/          # README screenshots
-├── Dockerfile                 # Main service image
+├── docs/
+│   ├── openapi.yaml           # API specification (also served at /api/openapi.yaml)
+│   └── screenshots/           # README screenshots
+├── Dockerfile                 # Main service image (TensorFlow)
+├── Dockerfile.onnx            # Main service image without TensorFlow
 ├── render.yaml                # Render Blueprint (two services)
 ├── requirements.txt           # Main service
+├── requirements-onnx.txt      # Main service without TensorFlow
 ├── requirements-dev.txt       # Both services + pytest
 ├── .env.example
 └── ATTRIBUTION.md
@@ -477,6 +647,10 @@ Full details are in [`ATTRIBUTION.md`](ATTRIBUTION.md).
 - **Visual similarity** measures general visual closeness from a model that was not trained on these diseases.
 - **Free hosting:** each service has 512 MB of memory and a small CPU share, so an analysis takes several seconds. Services sleep when idle and a cold start takes a minute or more. If the similarity service is still waking, that section shows "temporarily unavailable" while the rest of the result is complete.
 - **History** is stored per browser and is lost when browser data is cleared.
+- **Statistics and the result cache** live in memory, per process: they reset on restart and are not shared between workers.
+- **Benchmarks** come from one laptop with the network calls stubbed. Use them to compare rows, not as absolute numbers; real-image accuracy of the ONNX model was not re-measured because the dataset is not in this repository (on random inputs its probabilities match Keras to 1e-8, and the test suite checks the real-model accuracy when the dataset is present).
+- **ONNX next to TensorFlow costs memory:** the hosted 512 MB demo therefore keeps TensorFlow only; the TensorFlow-free build is not deployed there.
+- **Batching** reduces round trips and shares one forward pass, but each image still gets its own quality gate and leaf check, so it does not reduce CPU time per image.
 
 ## Future Improvements
 
@@ -485,6 +659,7 @@ Full details are in [`ATTRIBUTION.md`](ATTRIBUTION.md).
 - Test the leaf validator on real users' photos and on cabbage, broccoli and kale leaves, and add them to its training data.
 - Collect field photos from more locations and devices, and evaluate on a larger independent test set.
 - Fine-tune a pretrained backbone (for example EfficientNet) and compare on the same held-out split.
+- Deploy the TensorFlow-free image to the hosted demo and measure it under Render's CPU and memory limits.
 - Improve calibration: temperature scaling fitted on the validation split did not reduce test calibration error (ECE 0.102 → 0.102), so raw scores are served; a larger validation set or other methods may help.
 
 ## Disclaimer

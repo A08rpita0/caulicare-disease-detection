@@ -1,0 +1,249 @@
+{
+ "cases": [
+  {
+   "case": "Valid JPEG photo",
+   "expected_status": 200,
+   "expected_code": null,
+   "status": 200,
+   "code": null,
+   "decision": "accepted",
+   "result": "Downy Mildew",
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Valid PNG photo",
+   "expected_status": 200,
+   "expected_code": null,
+   "status": 200,
+   "code": null,
+   "decision": "accepted",
+   "result": "Downy Mildew",
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Valid WEBP photo",
+   "expected_status": 200,
+   "expected_code": null,
+   "status": 200,
+   "code": null,
+   "decision": "accepted",
+   "result": "Downy Mildew",
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Browser sends no content type",
+   "expected_status": 200,
+   "expected_code": null,
+   "status": 200,
+   "code": null,
+   "decision": "accepted",
+   "result": "Downy Mildew",
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "No file in the request",
+   "expected_status": 400,
+   "expected_code": "no_file",
+   "status": 400,
+   "code": "no_file",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Wrong form field name",
+   "expected_status": 400,
+   "expected_code": "no_file",
+   "status": 400,
+   "code": "no_file",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Empty file",
+   "expected_status": 400,
+   "expected_code": "empty_file",
+   "status": 400,
+   "code": "empty_file",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Text file renamed .jpg",
+   "expected_status": 422,
+   "expected_code": "corrupt_image",
+   "status": 422,
+   "code": "corrupt_image",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Truncated JPEG (600 bytes)",
+   "expected_status": 422,
+   "expected_code": "corrupt_image",
+   "status": 422,
+   "code": "corrupt_image",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Half of a JPEG",
+   "expected_status": 422,
+   "expected_code": "corrupt_image",
+   "status": 422,
+   "code": "corrupt_image",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "PDF document",
+   "expected_status": 415,
+   "expected_code": "unsupported_extension",
+   "status": 415,
+   "code": "unsupported_extension",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "GIF image",
+   "expected_status": 415,
+   "expected_code": "unsupported_extension",
+   "status": 415,
+   "code": "unsupported_extension",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "GIF renamed .png",
+   "expected_status": 415,
+   "expected_code": "unsupported_format",
+   "status": 415,
+   "code": "unsupported_format",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "PNG sent as application/pdf",
+   "expected_status": 415,
+   "expected_code": "unsupported_mimetype",
+   "status": 415,
+   "code": "unsupported_mimetype",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "File over the size limit (> 8 MB)",
+   "expected_status": 413,
+   "expected_code": "file_too_large",
+   "status": 413,
+   "code": "file_too_large",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Decompression bomb (96 megapixels)",
+   "expected_status": 422,
+   "expected_code": "too_many_pixels",
+   "status": 422,
+   "code": "too_many_pixels",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Tiny image (64 x 64)",
+   "expected_status": 422,
+   "expected_code": "low_quality",
+   "status": 422,
+   "code": "low_quality",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Blank white frame",
+   "expected_status": 422,
+   "expected_code": "low_quality",
+   "status": 422,
+   "code": "low_quality",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Almost black frame",
+   "expected_status": 422,
+   "expected_code": "low_quality",
+   "status": 422,
+   "code": "low_quality",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Very blurry photo",
+   "expected_status": 422,
+   "expected_code": "low_quality",
+   "status": 422,
+   "code": "low_quality",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Not a cauliflower leaf (validator says no)",
+   "expected_status": 422,
+   "expected_code": "not_cauliflower_leaf",
+   "status": 422,
+   "code": "not_cauliflower_leaf",
+   "decision": "rejected",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  },
+  {
+   "case": "Leaf check cannot be made (fails closed)",
+   "expected_status": 503,
+   "expected_code": "leaf_check_unavailable",
+   "status": 503,
+   "code": "leaf_check_unavailable",
+   "decision": "error",
+   "result": null,
+   "passed": true,
+   "leaks_internals": false
+  }
+ ],
+ "passed": 22,
+ "total": 22,
+ "responses_exposing_internals": 0
+}

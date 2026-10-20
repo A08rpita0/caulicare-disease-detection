@@ -1,0 +1,202 @@
+{
+ "machine": {
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "cpu_count": 12,
+  "tensorflow": "2.20.0",
+  "onnxruntime": "1.20.1",
+  "threads": 1,
+  "rounds": 5,
+  "runs_per_round": 40
+ },
+ "files_kb": {
+  "model1.h5": 2236,
+  "model1.onnx": 720,
+  "model1.gradcam.npz": 67,
+  "model1.int8.onnx": 190
+ },
+ "images": "32 synthetic images (latency does not depend on pixel content)",
+ "parity": {
+  "onnx_fp32": {
+   "max_abs_probability_difference": 8.73e-09,
+   "same_top_class": "32/32"
+  },
+  "onnx_int8_dynamic": {
+   "max_abs_probability_difference": 0.000301,
+   "same_top_class": "32/32"
+  },
+  "gradcam_max_abs_difference_onnx_vs_keras": 2.98e-07
+ },
+ "forward_pass_ms": {
+  "keras": {
+   "mean": 35.53,
+   "p50": 34.85,
+   "p95": 41.46,
+   "min": 32.17,
+   "runs": 40
+  },
+  "onnx_fp32": {
+   "mean": 10.4,
+   "p50": 10.27,
+   "p95": 11.41,
+   "min": 9.77,
+   "runs": 40
+  },
+  "onnx_int8_dynamic": {
+   "mean": 11.33,
+   "p50": 11.25,
+   "p95": 12.68,
+   "min": 9.96,
+   "runs": 40
+  }
+ },
+ "batching": {
+  "batch_1": {
+   "keras_images_per_second": 30.0,
+   "onnx_fp32_images_per_second": 94.4,
+   "onnx_int8_dynamic_images_per_second": 86.4
+  },
+  "batch_4": {
+   "keras_images_per_second": 54.6,
+   "onnx_fp32_images_per_second": 96.1,
+   "onnx_int8_dynamic_images_per_second": 77.4
+  },
+  "batch_8": {
+   "keras_images_per_second": 62.4,
+   "onnx_fp32_images_per_second": 99.6,
+   "onnx_int8_dynamic_images_per_second": 78.1
+  },
+  "batch_16": {
+   "keras_images_per_second": 67.0,
+   "onnx_fp32_images_per_second": 95.5,
+   "onnx_int8_dynamic_images_per_second": 77.3
+  }
+ },
+ "predictor_ms": {
+  "gradcam_keras": {
+   "mean": 100.51,
+   "p50": 99.66,
+   "p95": 110.8,
+   "min": 97.25,
+   "runs": 20
+  },
+  "gradcam_onnx": {
+   "mean": 32.81,
+   "p50": 32.64,
+   "p95": 34.16,
+   "min": 32.15,
+   "runs": 20
+  },
+  "no_gradcam_keras": {
+   "mean": 37.4,
+   "p50": 37.29,
+   "p95": 39.3,
+   "min": 35.97,
+   "runs": 40
+  },
+  "no_gradcam_onnx": {
+   "mean": 21.0,
+   "p50": 16.25,
+   "p95": 44.32,
+   "min": 15.53,
+   "runs": 40
+  }
+ },
+ "api_ms": {
+  "full_gradcam_keras": {
+   "mean": 154.52,
+   "p50": 154.35,
+   "p95": 188.72,
+   "min": 144.73,
+   "runs": 40
+  },
+  "full_gradcam_onnx": {
+   "mean": 89.77,
+   "p50": 83.74,
+   "p95": 120.4,
+   "min": 79.5,
+   "runs": 40
+  },
+  "no_gradcam_onnx": {
+   "mean": 63.03,
+   "p50": 63.37,
+   "p95": 64.96,
+   "min": 58.78,
+   "runs": 40
+  },
+  "compact_onnx": {
+   "mean": 31.82,
+   "p50": 31.84,
+   "p95": 34.45,
+   "min": 28.97,
+   "runs": 40
+  },
+  "repeat_upload_compact_cache_hit": {
+   "mean": 2.0,
+   "p50": 1.73,
+   "p95": 2.92,
+   "min": 1.41,
+   "runs": 40
+  },
+  "repeat_upload_full_cache_hit": {
+   "mean": 2.22,
+   "p50": 2.11,
+   "p95": 2.56,
+   "min": 1.95,
+   "runs": 40
+  },
+  "eight_images_one_batch_request": {
+   "mean": 263.71,
+   "p50": 262.16,
+   "p95": 290.96,
+   "min": 250.1,
+   "runs": 13
+  },
+  "eight_images_eight_compact_requests": {
+   "mean": 259.11,
+   "p50": 256.39,
+   "p95": 275.78,
+   "min": 250.0,
+   "runs": 13
+  },
+  "example_stage_timing_ms_compact": {
+   "inference": 9.9,
+   "leaf_check": 0.0,
+   "preprocess": 5.3,
+   "quality_gate": 13.2,
+   "read_upload": 1.0,
+   "total": 29.9
+  },
+  "example_stage_timing_ms_full": {
+   "decode": 6.0,
+   "explanation_render": 16.1,
+   "inference": 9.2,
+   "leaf_check": 0.0,
+   "preprocess": 5.4,
+   "quality_gate": 13.8,
+   "read_upload": 0.8,
+   "severity": 22.5,
+   "similarity_wait": 0.0,
+   "total": 74.6
+  },
+  "note": "Leaf check and similarity search are stubbed; in production the leaf check adds one network round trip to the similarity service."
+ },
+ "application_process": {
+  "tensorflow": {
+   "start_seconds": 8.41,
+   "rss_mb_after_12_full_analyses": 515,
+   "first_request_ms": 159,
+   "full_request_ms_p50": 158.1,
+   "tensorflow_imported": true,
+   "gradcam_backend": "tensorflow"
+  },
+  "onnx_without_tensorflow": {
+   "start_seconds": 0.8,
+   "rss_mb_after_12_full_analyses": 99,
+   "first_request_ms": 86,
+   "full_request_ms_p50": 77.1,
+   "tensorflow_imported": false,
+   "gradcam_backend": "onnxruntime"
+  }
+ }
+}

@@ -357,3 +357,8 @@ details.more[open] summary::before { transform: rotate(90deg); }
   .xai-grid.affected { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .xai-grid.affected figure:nth-child(2) { grid-column: 1 / -1; order: -1; }
 }
+
+/* API page */
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .88em; background: var(--surface-2); padding: 1px 5px; border-radius: 5px; }
+.code-block { margin: 0 0 12px; padding: 12px 14px; background: #17251c; color: #e8efe3; border-radius: var(--radius-sm); overflow-x: auto; font-size: .82rem; line-height: 1.5; }
+.code-block code { background: none; padding: 0; color: inherit; font-size: inherit; }

@@ -1,0 +1,10 @@
+# CauliCare main service WITHOUT TensorFlow: set INFERENCE_BACKEND=onnx.
+# Serves the CNN and Grad-CAM from models/model1.onnx with ONNX Runtime (scripts/export_onnx.py creates it).
+# Memory and start-up are a fraction of the TensorFlow build; see "Serving without TensorFlow" in README.md.
+flask>=3.0,<4
+gunicorn>=22.0; platform_system != "Windows"
+waitress>=3.0; platform_system == "Windows"
+python-dotenv>=1.0
+onnxruntime>=1.18,<2
+numpy>=1.26
+pillow>=10.3
